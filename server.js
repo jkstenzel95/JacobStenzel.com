@@ -16,12 +16,11 @@ function compile(str, path) {
 
 app.set('views', __dirname + '/app');
 app.set('view engine', 'jade');
-/**app.use(express.logger('dev'));
 app.use(stylus.middleware(
   { src: __dirname + '/app'
   , compile: compile
   }
-));**/
+));
 app.use(express.static(__dirname + "/app"));
 app.use(bodyParser.json());
 
