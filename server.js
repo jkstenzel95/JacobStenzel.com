@@ -24,11 +24,14 @@ app.use(stylus.middleware(
 app.use(express.static(__dirname + "/app"));
 app.use(bodyParser.json());
 
+app.get('/', function(req, res) {
+    res.render('index');
+});
 
 app.get('/heyyo', function (req, res)    {
     res.render('tester');
     console.log('Heyyoooooooooooo World!');
-})
+});
 
 app.listen(3000);
 console.log("Server running on port 3000");
