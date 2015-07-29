@@ -8,6 +8,8 @@ html.no-js(lang='en', ng-app='myApp')
     meta(name='viewport', content='width=device-width, initial-scale=1')
     link(rel='stylesheet', href='bower_components/html5-boilerplate/dist/css/normalize.css')
     link(rel='stylesheet', href='bower_components/html5-boilerplate/dist/css/main.css')
+    link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css")
+    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css")
     link(rel='stylesheet', href='app.css')
     script(src='bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js')
   body
@@ -17,23 +19,19 @@ html.no-js(lang='en', ng-app='myApp')
       | Please <a href="http://browsehappy.com/">upgrade your browser</a>
       | to improve your experience.
     <![endif]-->
+    div.site-background-frame
+        div.site-background
+        div.site-foreground
+            ul.menu
+                li 
+                    a(href="#/view1") view1
+                li 
+                    a(href="#/view2") view2
+                li 
+                    a(href="#/welcome") welcome
 
-    ul.menu
-        li 
-            a(href="#/view1") view1
-        li 
-            a(href="#/view2") view2
+            div(ng-view)
 
-    div(ng-view)
-
-    //In production use: script(src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js">)
-    script(src='bower_components/angular/angular.js')
-    script(src='bower_components/angular-route/angular-route.js')
-    script(src='app.js')
-    script(src='view1/view1.js')
-    script(src='view2/view2.js')
-    script(src="components/version/version.js")
-    script(src="components/version/version-directive.js")
-    script(src="components/version/interpolate-filter.js")
+include ./partials/common-scripts
 
  

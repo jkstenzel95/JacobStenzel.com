@@ -1,0 +1,92 @@
+.menu
+  list-style none
+  border-bottom 0.1em solid black
+  margin-bottom 2em
+  padding 0 0 0.5em
+  
+  
+  &:before
+    content "["
+
+  &:after 
+    content "]"
+
+
+  & > li 
+    display inline
+
+
+    &:before 
+      content "|"
+      padding-right 0.3em
+
+
+    &:nth-child(1):before
+      content ""
+      padding 0
+      
+// Real stuff begins here
+vendor-blur(blurAmt)
+  -webkit-filter: blur(blurAmt)
+  -moz-filter: blur(blurAmt)
+  -o-filter: blur(blurAmt)
+  -ms-filter: blur(blurAmt)
+  filter: blur(blurAmt)
+  
+vendor-offset-blur(blurAmt, elemSize)
+  vendor-blur(blurAmt)
+  position absolute
+  left -moz-calc(0 - blurAmt);
+  left s('-webkit-calc(0px - %s)', blurAmt);
+  left -o-calc(0 - blurAmt);
+  left calc(0 - blurAmt);
+  top -moz-calc(0 - blurAmt);
+  top s('-webkit-calc(0px - %s)', blurAmt);  top -o-calc(0 - blurAmt);
+  top -o-calc(0 - blurAmt);
+  top calc(0 - blurAmt);
+  height -moz-calc(elemSize + 2 * blurAmt);
+  height s('-webkit-calc(%s + 2 * %s)', elemSize, blurAmt);
+  height -o-calc(elemSize + 2 * blurAmt);
+  height calc(elemSize + 2 * blurAmt);
+  width -moz-calc(elemSize + 2 * blurAmt);
+  width s('-webkit-calc(%s + 2 * %s)', elemSize, blurAmt);
+  width -o-calc(elemSize + 2 * blurAmt);
+  width calc(elemSize + 2 * blurAmt);
+  
+
+html, body
+  height 100%
+  width 100%
+  background-color
+
+.site-background
+  background-image url('images/cube1-960x543.JPG')
+  background-size cover
+  height -moz-calc(100% + 10px);
+  height -webkit-calc(100% + 10px);
+  height -o-calc(100% + 10px);
+  height calc(100% + 10px);
+  width -moz-calc(100% + 20px);
+  width -webkit-calc(100% + 20px);
+  width -o-calc(100% + 20px);
+  width calc(100% + 20px);
+  margin-top -5px
+  margin-right -10px
+  margin-bottom -5px
+  margin-left -10px
+  vendor-blur(5px)
+  
+  
+.site-background-frame
+  overflow hidden
+  z-index 1
+  height 100%
+  width 100%
+
+.site-foreground
+  height 100%
+  width 100%
+  position absolute
+  left 0
+  top 0
+  z-index 2
