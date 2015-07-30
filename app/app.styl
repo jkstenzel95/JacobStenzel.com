@@ -1,3 +1,21 @@
+// Fonts
+@import url('http://fonts.googleapis.com/css?family=Josefin+Sans:400,600,700')
+
+// Font fix
+body {
+  -webkit-animation-duration: 0.1s;
+  -webkit-animation-name: fontfix;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-delay: 0.1s;
+}
+
+@-webkit-keyframes fontfix {
+  from { opacity: 1; }
+  to { opacity: 1; }
+}
+
+// Test things
 .menu
   list-style none
   border-bottom 0.1em solid black
@@ -26,12 +44,57 @@
       padding 0
       
 // Real stuff begins here
+
+.logo
+  font-family 'Josefin Sans', sans-serif
+  font-weight 600
+  
+  ul
+    font-size 48px
+    color #608de6
+    list-style none
+    margin-left 0px
+    padding 0px
+    
+    a
+      color #83a6ec
+      text-decoration none
+      &:hover
+        color #A4BEF1
+        text-decoration underline
+      &:active
+        text-decoration underline
+
+    & > li 
+      display inline
+
+
+      &:before 
+        content " | "
+
+      &:nth-child(1)
+        a
+          color #608de6
+          text-decoration none
+          &:hover
+            color #608de6
+            text-decoration underline
+          &:active
+            text-decoration underline
+
+        &:before
+          content ""
+  
+h2.logo
+  font-size 40px
+  color #afa7d4
+
 vendor-blur(blurAmt)
-  -webkit-filter: blur(blurAmt)
-  -moz-filter: blur(blurAmt)
-  -o-filter: blur(blurAmt)
-  -ms-filter: blur(blurAmt)
-  filter: blur(blurAmt)
+  -webkit-filter blur(blurAmt)
+  -moz-filter blur(blurAmt)
+  -o-filter blur(blurAmt)
+  -ms-filter blur(blurAmt)
+  filter blur(blurAmt)
   
 vendor-offset-blur(blurAmt, elemSize)
   vendor-blur(blurAmt)
@@ -57,7 +120,6 @@ vendor-offset-blur(blurAmt, elemSize)
 html, body
   height 100%
   width 100%
-  background-color
 
 .site-background
   background-image url('images/cube1-960x543.JPG')
