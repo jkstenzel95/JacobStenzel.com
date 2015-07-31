@@ -1,6 +1,20 @@
 // Fonts
 @import url('http://fonts.googleapis.com/css?family=Josefin+Sans:400,600,700')
 
+// Some common bootstrap definitions
+
+// Extra small screen / phone
+$screen-xs = 480px
+$screen-xs-max = 767px
+// Small screen / tablet
+$screen-sm = 768px
+$screen-sm-max = 480px
+// Medium screen / desktop
+$screen-md = 992px
+$screen-md-max = 1199px
+// Large screen / wide desktop
+$screen-lg = 1200px
+
 // Font fix
 body {
   -webkit-animation-duration: 0.1s;
@@ -15,45 +29,29 @@ body {
   to { opacity: 1; }
 }
 
-// Test things
-.menu
-  list-style none
-  border-bottom 0.1em solid black
-  margin-bottom 2em
-  padding 0 0 0.5em
-  
-  
-  &:before
-    content "["
 
-  &:after 
-    content "]"
-
-
-  & > li 
-    display inline
-
-
-    &:before 
-      content "|"
-      padding-right 0.3em
-
-
-    &:nth-child(1):before
-      content ""
-      padding 0
-      
 // Real stuff begins here
 
+
 .logo
-  font-family 'Josefin Sans', sans-serif
-  font-weight 600
-  
-  ul
-    font-size 48px
+  @media (max-width: $screen-xs-max)
+    line-height 150%
+    font-family 'Josefin Sans', sans-serif
+    font-weight 600
+    font-size 32px
     color #608de6
+    padding-left 8px
+  @media (min-width: $screen-sm)
+    line-height 150%
+    font-family 'Josefin Sans', sans-serif
+    font-weight 600
+    font-size 40px
+    color #608de6
+    padding-left 8px
+
+  ul
     list-style none
-    margin-left 0px
+    margin 0px
     padding 0px
     
     a
@@ -85,9 +83,13 @@ body {
         &:before
           content ""
   
-h2.logo
-  font-size 40px
+.logo-descriptor
+  line-height 150%
+  font-family 'Josefin Sans', sans-serif
+  font-weight 600
+  font-size 32px
   color #afa7d4
+  padding-left 8px
 
 vendor-blur(blurAmt)
   -webkit-filter blur(blurAmt)

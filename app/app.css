@@ -14,38 +14,29 @@ body {
     opacity: 1;
   }
 }
-.menu {
-  list-style: none;
-  border-bottom: 0.1em solid #000;
-  margin-bottom: 2em;
-  padding: 0 0 0.5em;
+@media (max-width: 767px) {
+  .logo {
+    line-height: 150%;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 600;
+    font-size: 32px;
+    color: #608de6;
+    padding-left: 8px;
+  }
 }
-.menu:before {
-  content: "[";
-}
-.menu:after {
-  content: "]";
-}
-.menu > li {
-  display: inline;
-}
-.menu > li:before {
-  content: "|";
-  padding-right: 0.3em;
-}
-.menu > li:nth-child(1):before {
-  content: "";
-  padding: 0;
-}
-.logo {
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 600;
+@media (min-width: 768px) {
+  .logo {
+    line-height: 150%;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 600;
+    font-size: 40px;
+    color: #608de6;
+    padding-left: 8px;
+  }
 }
 .logo ul {
-  font-size: 48px;
-  color: #608de6;
   list-style: none;
-  margin-left: 0px;
+  margin: 0px;
   padding: 0px;
 }
 .logo ul a {
@@ -79,9 +70,13 @@ body {
 .logo ul > li:nth-child(1):before {
   content: "";
 }
-h2.logo {
-  font-size: 40px;
+.logo-descriptor {
+  line-height: 150%;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 600;
+  font-size: 32px;
   color: #afa7d4;
+  padding-left: 8px;
 }
 html,
 body {
