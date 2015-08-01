@@ -17,9 +17,33 @@ body {
 div.logo {
   line-height: 150%;
   font-family: 'Josefin Sans', sans-serif;
-  font-weight: 600;
+  font-weight: 400;
   color: #608de6;
   position: absolute;
+  top: 0px;
+  -webkit-transition-property: all;
+  -moz-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -webkit-transition-timing: ease-in-out;
+  -moz-transition-timing: ease-in-out;
+  -o-transition-timing: ease-in-out;
+  transition-timing: ease-in-out;
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transition-delay: 0s;
+  -moz-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
+}
+div.logo.welcome_position {
+  top: 160px;
+  -webkit-transition-delay: 0.15s;
+  -moz-transition-delay: 0.15s;
+  -o-transition-delay: 0.15s;
+  transition-delay: 0.15s;
 }
 @media (max-width: 767px) {
   div.logo {
@@ -30,7 +54,6 @@ div.logo {
 @media (min-width: 768px) {
   div.logo {
     font-size: 40px;
-    color: #608de6;
     padding-left: 8px;
   }
 }
@@ -78,7 +101,7 @@ div.logo-descriptor {
   color: #afa7d4;
   padding-left: 8px;
   position: absolute;
-  top: 50px;
+  top: 220px;
 }
 html,
 body {

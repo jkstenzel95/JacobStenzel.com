@@ -1,5 +1,5 @@
 doctype html
-html.no-js(lang='en', ng-app='myApp')
+html.no-js(lang='en', ng-app='myApp' ng-Controller='AppCtrl')
   head
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
@@ -18,7 +18,8 @@ html.no-js(lang='en', ng-app='myApp')
     div.site-background-frame
         div.site-background
         div.site-foreground
-            <div ui-view />
+          include ./partials/component-include
+          div(ui-view)
 
 include ./partials/common-scripts
 

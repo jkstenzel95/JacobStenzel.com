@@ -6,11 +6,11 @@ angular.module('welcome-page', ['ui.router'])
   $stateProvider
   .state('welcome', {
   	url: '/welcome',
-    templateUrl: 'partials/welcome-page',
+    //templateUrl: 'partials/welcome-page',
     controller: 'WelcomePageCtrl'
   });
 }])
 
 .controller('WelcomePageCtrl', [function() {
-
+	
 }]);

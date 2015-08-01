@@ -1,7 +1,7 @@
 // Fonts
 @import url('http://fonts.googleapis.com/css?family=Josefin+Sans:400,600,700')
 
-// Some common bootstrap definitions
+// ----------------USEFUL CONSTANTS----------------
 
 // Extra small screen / phone
 $screen-xs = 480px
@@ -14,6 +14,9 @@ $screen-md = 992px
 $screen-md-max = 1199px
 // Large screen / wide desktop
 $screen-lg = 1200px
+
+// ----------------END USEFUL CONSTANTS----------------
+
 
 // Font fix
 body {
@@ -29,22 +32,66 @@ body {
   to { opacity: 1; }
 }
 
+// ----------------MIXINS----------------
 
-// Real stuff begins here
 
+vendor-blur(blurAmt)
+  -webkit-filter blur(blurAmt)
+  -moz-filter blur(blurAmt)
+  -o-filter blur(blurAmt)
+  -ms-filter blur(blurAmt)
+  filter blur(blurAmt)
+  
+vendor-transition-property(properties)
+  -webkit-transition-property properties
+  -moz-transition-property properties
+  -o-transition-property properties
+  transition-property properties
+
+vendor-transition-duration(duration)
+  -webkit-transition-duration duration
+  -moz-transition-duration duration
+  -o-transition-duration duration
+  transition-duration duration
+
+vendor-transition-timing-function(t-function)
+  -webkit-transition-timing t-function
+  -moz-transition-timing t-function
+  -o-transition-timing t-function
+  transition-timing t-function
+
+vendor-transition-delay(delay)
+  -webkit-transition-delay delay;
+  -moz-transition-delay delay;
+  -o-transition-delay delay;
+  transition-delay delay;
+
+// ----------------END MIXINS----------------
+
+
+// ----------------RULES------------------
 
 div.logo
   line-height 150%
   font-family 'Josefin Sans', sans-serif
-  font-weight 600
+  font-weight 400
   color #608de6
   position absolute
+  top 0px
+  vendor-transition-property(all)
+  vendor-transition-timing-function(ease-in-out)
+  vendor-transition-duration(0.5s)
+  vendor-transition-delay(0s)
+  
+  &.welcome_position
+    top 160px
+    vendor-transition-delay(0.15s)
+    
   @media (max-width: $screen-xs-max)
     font-size 32px
     padding-left 8px
   @media (min-width: $screen-sm)
     font-size 40px
-    color #608de6
     padding-left 8px
 
   ul
@@ -89,35 +136,7 @@ div.logo-descriptor
   color #afa7d4
   padding-left 8px
   position absolute
-  top 50px
-
-vendor-blur(blurAmt)
-  -webkit-filter blur(blurAmt)
-  -moz-filter blur(blurAmt)
-  -o-filter blur(blurAmt)
-  -ms-filter blur(blurAmt)
-  filter blur(blurAmt)
-  
-vendor-offset-blur(blurAmt, elemSize)
-  vendor-blur(blurAmt)
-  position absolute
-  left -moz-calc(0 - blurAmt);
-  left s('-webkit-calc(0px - %s)', blurAmt);
-  left -o-calc(0 - blurAmt);
-  left calc(0 - blurAmt);
-  top -moz-calc(0 - blurAmt);
-  top s('-webkit-calc(0px - %s)', blurAmt);  top -o-calc(0 - blurAmt);
-  top -o-calc(0 - blurAmt);
-  top calc(0 - blurAmt);
-  height -moz-calc(elemSize + 2 * blurAmt);
-  height s('-webkit-calc(%s + 2 * %s)', elemSize, blurAmt);
-  height -o-calc(elemSize + 2 * blurAmt);
-  height calc(elemSize + 2 * blurAmt);
-  width -moz-calc(elemSize + 2 * blurAmt);
-  width s('-webkit-calc(%s + 2 * %s)', elemSize, blurAmt);
-  width -o-calc(elemSize + 2 * blurAmt);
-  width calc(elemSize + 2 * blurAmt);
-  
+  top 220px
 
 html, body
   height 100%
@@ -154,3 +173,5 @@ html, body
   left 0
   top 0
   z-index 2
+  
+//----------------END RULES-----------------

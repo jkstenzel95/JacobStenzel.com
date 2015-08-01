@@ -10,4 +10,9 @@ angular.module('myApp', [
 ]).
 config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise('/welcome');
-}]);
+}])
+
+.controller('AppCtrl', ['$scope', '$state', function($scope, _$state_) {
+    $scope.$state = _$state_;
+    $scope.blah = 2;
+}])
