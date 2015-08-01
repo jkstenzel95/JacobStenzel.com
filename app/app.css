@@ -14,69 +14,71 @@ body {
     opacity: 1;
   }
 }
+div.logo {
+  line-height: 150%;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 600;
+  color: #608de6;
+  position: absolute;
+}
 @media (max-width: 767px) {
-  .logo {
-    line-height: 150%;
-    font-family: 'Josefin Sans', sans-serif;
-    font-weight: 600;
+  div.logo {
     font-size: 32px;
-    color: #608de6;
     padding-left: 8px;
   }
 }
 @media (min-width: 768px) {
-  .logo {
-    line-height: 150%;
-    font-family: 'Josefin Sans', sans-serif;
-    font-weight: 600;
+  div.logo {
     font-size: 40px;
     color: #608de6;
     padding-left: 8px;
   }
 }
-.logo ul {
+div.logo ul {
   list-style: none;
   margin: 0px;
   padding: 0px;
 }
-.logo ul a {
+div.logo ul a {
   color: #83a6ec;
   text-decoration: none;
 }
-.logo ul a:hover {
+div.logo ul a:hover {
   color: #a4bef1;
   text-decoration: underline;
 }
-.logo ul a:active {
+div.logo ul a:active {
   text-decoration: underline;
 }
-.logo ul > li {
+div.logo ul > li {
   display: inline;
 }
-.logo ul > li:before {
+div.logo ul > li:before {
   content: " | ";
 }
-.logo ul > li:nth-child(1) a {
+div.logo ul > li:nth-child(1) a {
   color: #608de6;
   text-decoration: none;
 }
-.logo ul > li:nth-child(1) a:hover {
+div.logo ul > li:nth-child(1) a:hover {
   color: #608de6;
   text-decoration: underline;
 }
-.logo ul > li:nth-child(1) a:active {
+div.logo ul > li:nth-child(1) a:active {
   text-decoration: underline;
 }
-.logo ul > li:nth-child(1):before {
+div.logo ul > li:nth-child(1):before {
   content: "";
 }
-.logo-descriptor {
+div.logo-descriptor {
   line-height: 150%;
   font-family: 'Josefin Sans', sans-serif;
   font-weight: 600;
   font-size: 32px;
   color: #afa7d4;
   padding-left: 8px;
+  position: absolute;
+  top: 50px;
 }
 html,
 body {

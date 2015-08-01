@@ -33,18 +33,16 @@ body {
 // Real stuff begins here
 
 
-.logo
+div.logo
+  line-height 150%
+  font-family 'Josefin Sans', sans-serif
+  font-weight 600
+  color #608de6
+  position absolute
   @media (max-width: $screen-xs-max)
-    line-height 150%
-    font-family 'Josefin Sans', sans-serif
-    font-weight 600
     font-size 32px
-    color #608de6
     padding-left 8px
   @media (min-width: $screen-sm)
-    line-height 150%
-    font-family 'Josefin Sans', sans-serif
-    font-weight 600
     font-size 40px
     color #608de6
     padding-left 8px
@@ -83,13 +81,15 @@ body {
         &:before
           content ""
   
-.logo-descriptor
+div.logo-descriptor
   line-height 150%
   font-family 'Josefin Sans', sans-serif
   font-weight 600
   font-size 32px
   color #afa7d4
   padding-left 8px
+  position absolute
+  top 50px
 
 vendor-blur(blurAmt)
   -webkit-filter blur(blurAmt)
