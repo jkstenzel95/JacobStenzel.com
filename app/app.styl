@@ -43,10 +43,10 @@ vendor-blur(blurAmt)
   filter blur(blurAmt)
   
 vendor-transition-property(properties)
-  -webkit-transition-property properties
-  -moz-transition-property properties
-  -o-transition-property properties
-  transition-property properties
+  -webkit-transition-property unquote(properties)
+  -moz-transition-property unquote(properties)
+  -o-transition-property unquote(properties)
+  transition-property unquote(properties)
 
 vendor-transition-duration(duration)
   -webkit-transition-duration duration
@@ -71,6 +71,48 @@ vendor-transition-delay(delay)
 
 // ----------------RULES------------------
 
+html, body
+  height 100%
+  width 100%
+  
+// Begin background stuff
+
+.site-background
+  background-image url('images/cube1-960x543.JPG')
+  background-size cover
+  height -moz-calc(100% + 10px);
+  height -webkit-calc(100% + 10px);
+  height -o-calc(100% + 10px);
+  height calc(100% + 10px);
+  width -moz-calc(100% + 20px);
+  width -webkit-calc(100% + 20px);
+  width -o-calc(100% + 20px);
+  width calc(100% + 20px);
+  margin-top -5px
+  margin-right -10px
+  margin-bottom -5px
+  margin-left -10px
+  vendor-blur(5px)
+  
+  
+.site-background-frame
+  overflow hidden
+  z-index 1
+  height 100%
+  width 100%
+
+.site-foreground
+  height 100%
+  width 100%
+  position absolute
+  left 0
+  top 0
+  z-index 2
+  
+// End background stuff
+
+// Begin logo
+
 div.logo
   line-height 150%
   font-family 'Josefin Sans', sans-serif
@@ -78,14 +120,14 @@ div.logo
   color #608de6
   position absolute
   top 0px
-  vendor-transition-property(all)
+  vendor-transition-property("top")
   vendor-transition-timing-function(ease-in-out)
-  vendor-transition-duration(0.5s)
+  vendor-transition-duration(0.4s)
   vendor-transition-delay(0s)
   
   &.welcome_position
     top 160px
-    vendor-transition-delay(0.15s)
+    vendor-transition-delay(0,4s)
     
   @media (max-width: $screen-xs-max)
     font-size 32px
@@ -128,6 +170,10 @@ div.logo
         &:before
           content ""
   
+// End logo
+
+// Begin logo descriptor
+
 div.logo-descriptor
   line-height 150%
   font-family 'Josefin Sans', sans-serif
@@ -138,40 +184,59 @@ div.logo-descriptor
   position absolute
   top 220px
 
-html, body
-  height 100%
-  width 100%
-
-.site-background
-  background-image url('images/cube1-960x543.JPG')
-  background-size cover
-  height -moz-calc(100% + 10px);
-  height -webkit-calc(100% + 10px);
-  height -o-calc(100% + 10px);
-  height calc(100% + 10px);
-  width -moz-calc(100% + 20px);
-  width -webkit-calc(100% + 20px);
-  width -o-calc(100% + 20px);
-  width calc(100% + 20px);
-  margin-top -5px
-  margin-right -10px
-  margin-bottom -5px
-  margin-left -10px
-  vendor-blur(5px)
   
-  
-.site-background-frame
-  overflow hidden
-  z-index 1
-  height 100%
-  width 100%
+  &.ng-hide-remove
+    display block !important
+    vendor-transition-delay(0.4s)
+    vendor-transition-property("opacity")
+    vendor-transition-timing-function(ease-in-out)
+    vendor-transition-duration(0.3s)
+    opacity 0
+    
+  &.ng-hide-remove-active
+    opacity 1
 
-.site-foreground
-  height 100%
-  width 100%
+  &.ng-hide-add
+    display block !important
+    vendor-transition-delay(0s)
+    vendor-transition-property("opacity")
+    vendor-transition-timing-function(ease-in-out)
+    vendor-transition-duration(0.2s)
+    opacity 1
+    
+  &.ng-hide-add-active
+    opacity 0
+    
+// End logo descriptor
+
+// Begin navbar
+
+.navbar
   position absolute
-  left 0
-  top 0
-  z-index 2
+  top 60px
+  width 100%
+  background-color #1e1e1e
+  background-image none
   
+  &.ng-hide-remove
+    display block !important
+    vendor-transition-delay(0.4s)
+    vendor-transition-property("opacity")
+    vendor-transition-timing-function(ease-in-out)
+    vendor-transition-duration(0.2s)
+    opacity 0
+  
+  &.ng-hide-remove-active
+    opacity 1
+
+  &.ng-hide-add
+    display block !important
+    vendor-transition-delay(0s)
+    vendor-transition-property("opacity")
+    vendor-transition-timing-function(ease-in-out)
+    vendor-transition-duration(0.2s)
+    opacity 1
+      
+  &.ng-hide-add-active
+    opacity 0
 //----------------END RULES-----------------
