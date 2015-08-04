@@ -4,3 +4,6 @@ include ./view-components/navbar.html
 //---------------WELCOME PAGE----------------
 
 include ./view-components/welcome-message
+
+div.content-box(ng-show="!$state.includes('welcome')")
+	include ./view-components/landing-pages/composer-landing

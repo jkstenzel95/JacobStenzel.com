@@ -7,13 +7,13 @@ angular.module('myApp', [
   'myApp.view1',
   'myApp.view2',
   'myApp.version',
-  'welcome-page'
+  'welcome-page',
+  'composer-landing'
 ]).
 config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
-  $urlRouterProvider.otherwise('/welcome');
+	$urlRouterProvider.otherwise('/welcome');
 }])
 
 .controller('AppCtrl', ['$scope', '$state', function($scope, _$state_) {
     $scope.$state = _$state_;
-    $scope.blah = 2;
 }])

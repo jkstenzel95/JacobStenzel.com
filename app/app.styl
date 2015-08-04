@@ -113,7 +113,7 @@ html, body
 
 // Begin logo
 
-div.logo
+.logo
   line-height 150%
   font-family 'Josefin Sans', sans-serif
   font-weight 400
@@ -174,7 +174,7 @@ div.logo
 
 // Begin logo descriptor
 
-div.logo-descriptor
+.logo-descriptor
   line-height 150%
   font-family 'Josefin Sans', sans-serif
   font-weight 600
@@ -215,8 +215,9 @@ div.logo-descriptor
   position absolute
   top 60px
   width 100%
-  background-color #1e1e1e
-  background-image none
+  margin-bottom 0
+  background-color #180a48
+  background-image: url(http://www.transparenttextures.com/patterns/otis-redding.png)
   
   &.ng-hide-remove
     display block !important
@@ -239,4 +240,40 @@ div.logo-descriptor
       
   &.ng-hide-add-active
     opacity 0
+    
+// Begin landing page stuff
+
+.content-box
+  $content-box-top = 112px
+  position absolute
+  top 110px
+  height -o-calc(100% - $content-box-top)
+  height -webkit-calc(100% - $content-box-top)
+  height calc(100% - $content-box-top)
+  width 100%
+  
+
+.landing-right
+  background-color #674c5c
+  background-image: url(http://www.transparenttextures.com/patterns/otis-redding.png)
+  border-radius 12px
+  box-shadow 1px 1px 1px 1px #4c3845 inset
+  position absolute
+  margin 16px
+  right 0px
+  width 448px
+  padding 16px 24px 16px 24px
+  
+.landing-left
+  background-color #555555
+  position absolute
+  margin 16px
+  left 0px
+  
+//  .video
+    
+//  .video-caption
+    
+// End landing page stuff
+    
 //----------------END RULES-----------------
