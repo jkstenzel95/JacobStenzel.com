@@ -1,5 +1,9 @@
 // Fonts
 @import url('http://fonts.googleapis.com/css?family=Josefin+Sans:400,600,700')
+@import url('http://fonts.googleapis.com/css?family=Open+Sans')
+@import url('http://fonts.googleapis.com/css?family=PT+Sans+Caption')
+@import url('http://fonts.googleapis.com/css?family=Droid+Sans')
+
 
 // ----------------USEFUL CONSTANTS----------------
 
@@ -74,6 +78,12 @@ vendor-transition-delay(delay)
 html, body
   height 100%
   width 100%
+  font-size 15px
+  line-height 125%
+  font-family 'Open Sans', sans-serif
+  
+p
+  margin 0 0 10px
   
 // Begin background stuff
 
@@ -127,14 +137,14 @@ html, body
   
   &.welcome_position
     top 160px
-    vendor-transition-delay(0,4s)
+    vendor-transition-delay(0.2s)
     
   @media (max-width: $screen-xs-max)
-    font-size 32px
-    padding-left 8px
+    font-size 30px
+    padding-left 10px
   @media (min-width: $screen-sm)
     font-size 40px
-    padding-left 8px
+    padding-left 10px
 
   ul
     list-style none
@@ -178,9 +188,9 @@ html, body
   line-height 150%
   font-family 'Josefin Sans', sans-serif
   font-weight 600
-  font-size 32px
+  font-size 30px
   color #afa7d4
-  padding-left 8px
+  padding-left 10px
   position absolute
   top 220px
 
@@ -218,6 +228,7 @@ html, body
   margin-bottom 0
   background-color #180a48
   background-image: url(http://www.transparenttextures.com/patterns/otis-redding.png)
+  font-family 'PT Sans Caption'
   
   &.ng-hide-remove
     display block !important
@@ -256,23 +267,83 @@ html, body
 .landing-right
   background-color #674c5c
   background-image: url(http://www.transparenttextures.com/patterns/otis-redding.png)
-  border-radius 12px
+  border-radius 15px
   box-shadow 1px 1px 1px 1px #4c3845 inset
   position absolute
-  margin 16px
+  margin 20px
   right 0px
-  width 448px
-  padding 16px 24px 16px 24px
+  width 450px
+  padding 15px 20px 15px 20px
+  color #2c2027
+  
+  &.ng-hide-remove
+    display block !important
+    vendor-transition-delay(0.4s)
+    vendor-transition-property("right")
+    vendor-transition-timing-function(ease-in-out)
+    vendor-transition-duration(0.3s)
+    right -500px
+    
+  &.ng-hide-remove-active
+    right 0px
+
+  &.ng-hide-add
+    display block !important
+    vendor-transition-delay(0s)
+    vendor-transition-property("right")
+    vendor-transition-timing-function(ease-in-out)
+    vendor-transition-duration(0.2s)
+    right 0px
+    
+  &.ng-hide-add-active
+    right -500px
   
 .landing-left
-  background-color #555555
   position absolute
-  margin 16px
   left 0px
+  margin 20px
   
-//  .video
+  &.ng-hide-remove
+    display block !important
+    vendor-transition-delay(0.4s)
+    vendor-transition-property("left")
+    vendor-transition-timing-function(ease-in-out)
+    vendor-transition-duration(0.3s)
+    left -700px
     
-//  .video-caption
+  &.ng-hide-remove-active
+    left 0px
+
+  &.ng-hide-add
+    display block !important
+    vendor-transition-delay(0s)
+    vendor-transition-property("right")
+    vendor-transition-timing-function(ease-in-out)
+    vendor-transition-duration(0.2s)
+    left 0px
+    
+  &.ng-hide-add-active
+    left -700px
+  
+  .video
+    background-color #674c5c
+    background-image: url(http://www.transparenttextures.com/patterns/otis-redding.png)
+    border-radius 15px
+    box-shadow 1px 1px 1px 1px #4c3845 inset
+    padding 10px 15px 10px 15px
+    color #2c2027
+    height 335px
+    width 590px
+    
+    iframe
+      background-color #000
+    
+  .video-caption
+    h1
+      color #f1f6fc
+      padding 10px 15px 10px 15px
+      font-size 30px
+
     
 // End landing page stuff
     

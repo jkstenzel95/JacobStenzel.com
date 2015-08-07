@@ -8,7 +8,8 @@ angular.module('myApp', [
   'myApp.view2',
   'myApp.version',
   'welcome-page',
-  'composer-landing'
+  'composer-landing',
+  'programmer-landing'
 ]).
 config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 	$urlRouterProvider.otherwise('/welcome');

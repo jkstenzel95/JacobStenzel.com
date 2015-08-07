@@ -1,4 +1,7 @@
 @import url("http://fonts.googleapis.com/css?family=Josefin+Sans:400,600,700");
+@import url("http://fonts.googleapis.com/css?family=Open+Sans");
+@import url("http://fonts.googleapis.com/css?family=PT+Sans+Caption");
+@import url("http://fonts.googleapis.com/css?family=Droid+Sans");
 body {
   -webkit-animation-duration: 0.1s;
   -webkit-animation-name: fontfix;
@@ -18,6 +21,12 @@ html,
 body {
   height: 100%;
   width: 100%;
+  font-size: 15px;
+  line-height: 125%;
+  font-family: 'Open Sans', sans-serif;
+}
+p {
+  margin: 0 0 10px;
 }
 .site-background {
   background-image: url("images/cube1-960x543.JPG");
@@ -80,21 +89,21 @@ body {
 }
 .logo.welcome_position {
   top: 160px;
-  -webkit-transition-delay: 0;
-  -moz-transition-delay: 0;
-  -o-transition-delay: 0;
-  transition-delay: 0;
+  -webkit-transition-delay: 0.2s;
+  -moz-transition-delay: 0.2s;
+  -o-transition-delay: 0.2s;
+  transition-delay: 0.2s;
 }
 @media (max-width: 767px) {
   .logo {
-    font-size: 32px;
-    padding-left: 8px;
+    font-size: 30px;
+    padding-left: 10px;
   }
 }
 @media (min-width: 768px) {
   .logo {
     font-size: 40px;
-    padding-left: 8px;
+    padding-left: 10px;
   }
 }
 .logo ul {
@@ -137,9 +146,9 @@ body {
   line-height: 150%;
   font-family: 'Josefin Sans', sans-serif;
   font-weight: 600;
-  font-size: 32px;
+  font-size: 30px;
   color: #afa7d4;
-  padding-left: 8px;
+  padding-left: 10px;
   position: absolute;
   top: 220px;
 }
@@ -196,6 +205,7 @@ body {
   margin-bottom: 0;
   background-color: #180a48;
   background-image: url("http://www.transparenttextures.com/patterns/otis-redding.png");
+  font-family: 'PT Sans Caption';
 }
 .navbar.ng-hide-remove {
   display: block !important;
@@ -254,17 +264,127 @@ body {
 .landing-right {
   background-color: #674c5c;
   background-image: url("http://www.transparenttextures.com/patterns/otis-redding.png");
-  border-radius: 12px;
+  border-radius: 15px;
   box-shadow: 1px 1px 1px 1px #4c3845 inset;
   position: absolute;
-  margin: 16px;
+  margin: 20px;
   right: 0px;
-  width: 448px;
-  padding: 16px 24px 16px 24px;
+  width: 450px;
+  padding: 15px 20px 15px 20px;
+  color: #2c2027;
+}
+.landing-right.ng-hide-remove {
+  display: block !important;
+  -webkit-transition-delay: 0.4s;
+  -moz-transition-delay: 0.4s;
+  -o-transition-delay: 0.4s;
+  transition-delay: 0.4s;
+  -webkit-transition-property: right;
+  -moz-transition-property: right;
+  -o-transition-property: right;
+  transition-property: right;
+  -webkit-transition-timing: ease-in-out;
+  -moz-transition-timing: ease-in-out;
+  -o-transition-timing: ease-in-out;
+  transition-timing: ease-in-out;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  right: -500px;
+}
+.landing-right.ng-hide-remove-active {
+  right: 0px;
+}
+.landing-right.ng-hide-add {
+  display: block !important;
+  -webkit-transition-delay: 0s;
+  -moz-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
+  -webkit-transition-property: right;
+  -moz-transition-property: right;
+  -o-transition-property: right;
+  transition-property: right;
+  -webkit-transition-timing: ease-in-out;
+  -moz-transition-timing: ease-in-out;
+  -o-transition-timing: ease-in-out;
+  transition-timing: ease-in-out;
+  -webkit-transition-duration: 0.2s;
+  -moz-transition-duration: 0.2s;
+  -o-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+  right: 0px;
+}
+.landing-right.ng-hide-add-active {
+  right: -500px;
 }
 .landing-left {
-  background-color: #555;
   position: absolute;
-  margin: 16px;
   left: 0px;
+  margin: 20px;
+}
+.landing-left.ng-hide-remove {
+  display: block !important;
+  -webkit-transition-delay: 0.4s;
+  -moz-transition-delay: 0.4s;
+  -o-transition-delay: 0.4s;
+  transition-delay: 0.4s;
+  -webkit-transition-property: left;
+  -moz-transition-property: left;
+  -o-transition-property: left;
+  transition-property: left;
+  -webkit-transition-timing: ease-in-out;
+  -moz-transition-timing: ease-in-out;
+  -o-transition-timing: ease-in-out;
+  transition-timing: ease-in-out;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  left: -700px;
+}
+.landing-left.ng-hide-remove-active {
+  left: 0px;
+}
+.landing-left.ng-hide-add {
+  display: block !important;
+  -webkit-transition-delay: 0s;
+  -moz-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
+  -webkit-transition-property: right;
+  -moz-transition-property: right;
+  -o-transition-property: right;
+  transition-property: right;
+  -webkit-transition-timing: ease-in-out;
+  -moz-transition-timing: ease-in-out;
+  -o-transition-timing: ease-in-out;
+  transition-timing: ease-in-out;
+  -webkit-transition-duration: 0.2s;
+  -moz-transition-duration: 0.2s;
+  -o-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+  left: 0px;
+}
+.landing-left.ng-hide-add-active {
+  left: -700px;
+}
+.landing-left .video {
+  background-color: #674c5c;
+  background-image: url("http://www.transparenttextures.com/patterns/otis-redding.png");
+  border-radius: 15px;
+  box-shadow: 1px 1px 1px 1px #4c3845 inset;
+  padding: 10px 15px 10px 15px;
+  color: #2c2027;
+  height: 335px;
+  width: 590px;
+}
+.landing-left .video iframe {
+  background-color: #000;
+}
+.landing-left .video-caption h1 {
+  color: #f1f6fc;
+  padding: 10px 15px 10px 15px;
+  font-size: 30px;
 }
