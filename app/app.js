@@ -9,10 +9,13 @@ angular.module('myApp', [
   'myApp.version',
   'welcome-page',
   'composer-landing',
-  'programmer-landing'
+  'programmer-landing',
+  'general-landing'
 ]).
 config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
-	$urlRouterProvider.otherwise('/welcome');
+  $urlRouterProvider.when('/landing', '/landing/general')
+  .when('/landing/', '/landing/general')
+	.otherwise('/welcome');
 }])
 
 .controller('AppCtrl', ['$scope', '$state', function($scope, _$state_) {

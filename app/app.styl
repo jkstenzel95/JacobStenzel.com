@@ -1,5 +1,5 @@
 // Fonts
-@import url('http://fonts.googleapis.com/css?family=Josefin+Sans:400,600,700')
+@import url('http://fonts.googleapis.com/css?family=Josefin+Sans:100,300,400,600,700')
 @import url('http://fonts.googleapis.com/css?family=Open+Sans')
 @import url('http://fonts.googleapis.com/css?family=PT+Sans+Caption')
 @import url('http://fonts.googleapis.com/css?family=Droid+Sans')
@@ -88,16 +88,17 @@ p
 // Begin background stuff
 
 .site-background
+  position fixed
   background-image url('images/cube1-960x543.JPG')
   background-size cover
-  height -moz-calc(100% + 10px);
-  height -webkit-calc(100% + 10px);
-  height -o-calc(100% + 10px);
-  height calc(100% + 10px);
-  width -moz-calc(100% + 20px);
-  width -webkit-calc(100% + 20px);
-  width -o-calc(100% + 20px);
-  width calc(100% + 20px);
+  height -moz-calc(100vh + 10px);
+  height -webkit-calc(100vh + 10px);
+  height -o-calc(100vh + 10px);
+  height calc(100vh + 10px);
+  width -moz-calc(100vw + 20px);
+  width -webkit-calc(100vw + 20px);
+  width -o-calc(100vw + 20px);
+  width calc(100vw + 20px);
   margin-top -5px
   margin-right -10px
   margin-bottom -5px
@@ -128,12 +129,13 @@ p
   font-family 'Josefin Sans', sans-serif
   font-weight 400
   color #608de6
-  position absolute
+  position fixed
   top 0px
   vendor-transition-property("top")
   vendor-transition-timing-function(ease-in-out)
   vendor-transition-duration(0.4s)
   vendor-transition-delay(0s)
+  z-index 11
   
   &.welcome_position
     top 160px
@@ -145,6 +147,7 @@ p
   @media (min-width: $screen-sm)
     font-size 40px
     padding-left 10px
+     
 
   ul
     list-style none
@@ -163,7 +166,6 @@ p
     & > li 
       display inline
 
-
       &:before 
         content " | "
 
@@ -179,6 +181,85 @@ p
 
         &:before
           content ""
+
+  table
+    height 40px
+    tr
+      td
+                
+        span.separator:after
+          content "|"
+          font-size 50px
+          font-weight 300
+          margin-left 3.625px
+
+        a
+          color #608de6
+          text-decoration none
+          &:hover
+            color #608de6
+            text-decoration underline
+          &:active
+            text-decoration underline
+        
+        ul
+          list-style none
+          margin-left 5px
+          font-size 20px
+          line-height 137.5%
+          
+          li
+            display block
+            
+            &:before 
+              content ""
+
+            a
+              color #83a6ec
+              text-decoration none
+              &:hover
+                color #A4BEF1
+                text-decoration underline
+              &:active
+                text-decoration underline
+                
+            &:nth-child(1)
+              a
+                color #83a6ec
+                text-decoration none
+                &:hover
+                  color #A4BEF1
+                  text-decoration underline
+                &:active
+                  text-decoration underline
+
+              &:before
+                content ""
+
+.logo-area-mask
+  height 60px
+  width 100%
+  overflow hidden
+  z-index 6
+  position fixed
+  .logo-area-mask-image
+    background-image url('images/cube1-960x543.JPG')
+    background-size cover
+    height -moz-calc(100vh + 10px);
+    height -webkit-calc(100vh + 10px);
+    height -o-calc(100vh + 10px);
+    height calc(100vh + 10px);
+    width -moz-calc(100vw + 20px);
+    width -webkit-calc(100vw + 20px);
+    width -o-calc(100vw + 20px);
+    width calc(100vw + 20px);
+    margin-top -5px
+    margin-right -10px
+    margin-bottom -5px
+    margin-left -10px
+    vendor-blur(5px)
+
+    
   
 // End logo
 
@@ -190,9 +271,14 @@ p
   font-weight 600
   font-size 30px
   color #afa7d4
-  padding-left 10px
-  position absolute
+  position fixed
   top 220px
+  @media (max-width: $screen-xs-max)
+    font-size 20px
+    padding-left 10px
+  @media (min-width: $screen-sm)
+    font-size 30px
+    padding-left 10px
 
   
   &.ng-hide-remove
@@ -222,13 +308,15 @@ p
 // Begin navbar
 
 .navbar
-  position absolute
+  position fixed
   top 60px
   width 100%
   margin-bottom 0
   background-color #180a48
-  background-image: url(http://www.transparenttextures.com/patterns/otis-redding.png)
+  @media (min-width: $screen-sm)
+    background-image: url(http://www.transparenttextures.com/patterns/otis-redding.png)
   font-family 'PT Sans Caption'
+  z-index 10
   
   &.ng-hide-remove
     display block !important
@@ -258,30 +346,51 @@ p
   $content-box-top = 112px
   position absolute
   top 110px
-  height -o-calc(100% - $content-box-top)
-  height -webkit-calc(100% - $content-box-top)
-  height calc(100% - $content-box-top)
+  //height "-o-calc(100% - %s)" % $content-box-top
+  //height "-webkit-calc(100% - %s)" % $content-box-top
+  //height "calc(100% - %s)" % $content-box-top
   width 100%
+  padding 20px
+  overflow-x hidden   
+  
+  &.ng-hide-remove
+    display block !important
+    vendor-transition-property("z-index")
+    vendor-transition-duration(0.8s)
+    z-index 5
+    
+  &.ng-hide-remove-active
+    z-index 5
+
+  &.ng-hide-add
+    display block !important
+    vendor-transition-property("z-index")
+    vendor-transition-duration(0.4s)
+    z-index 4
+    
+  &.ng-hide-add-active
+    z-index 4
+
+.content-panel-1
+  background-color #674c5c
+  @media (min-width: $screen-sm)
+    background-image: url(http://www.transparenttextures.com/patterns/otis-redding.png)
+  border-radius 15px
+  box-shadow 1px 1px 1px 1px #4c3845 inset
+  color #2c2027
+  padding 15px 20px 15px 20px   
   
 
 .landing-right
-  background-color #674c5c
-  background-image: url(http://www.transparenttextures.com/patterns/otis-redding.png)
-  border-radius 15px
-  box-shadow 1px 1px 1px 1px #4c3845 inset
-  position absolute
-  margin 20px
-  right 0px
-  width 450px
-  padding 15px 20px 15px 20px
-  color #2c2027
+  //position absolute
+  right 0px   
   
   &.ng-hide-remove
     display block !important
     vendor-transition-delay(0.4s)
     vendor-transition-property("right")
     vendor-transition-timing-function(ease-in-out)
-    vendor-transition-duration(0.3s)
+    vendor-transition-duration(0.4s)
     right -500px
     
   &.ng-hide-remove-active
@@ -292,23 +401,26 @@ p
     vendor-transition-delay(0s)
     vendor-transition-property("right")
     vendor-transition-timing-function(ease-in-out)
-    vendor-transition-duration(0.2s)
+    vendor-transition-duration(0.4s)
     right 0px
     
   &.ng-hide-add-active
     right -500px
   
+.wrapper-panel
+  padding 0px 0px 0px 0px
+  
+
 .landing-left
-  position absolute
+  //position absolute
   left 0px
-  margin 20px
   
   &.ng-hide-remove
     display block !important
     vendor-transition-delay(0.4s)
     vendor-transition-property("left")
     vendor-transition-timing-function(ease-in-out)
-    vendor-transition-duration(0.3s)
+    vendor-transition-duration(0.4s)
     left -700px
     
   &.ng-hide-remove-active
@@ -317,26 +429,34 @@ p
   &.ng-hide-add
     display block !important
     vendor-transition-delay(0s)
-    vendor-transition-property("right")
+    vendor-transition-property("left")
     vendor-transition-timing-function(ease-in-out)
-    vendor-transition-duration(0.2s)
+    vendor-transition-duration(0.4s)
     left 0px
     
   &.ng-hide-add-active
     left -700px
   
-  .video
+  .video-panel
     background-color #674c5c
-    background-image: url(http://www.transparenttextures.com/patterns/otis-redding.png)
+    @media (min-width: $screen-sm)
+      background-image url(http://www.transparenttextures.com/patterns/otis-redding.png)
     border-radius 15px
     box-shadow 1px 1px 1px 1px #4c3845 inset
-    padding 10px 15px 10px 15px
+    padding 10px 10px 10px 10px
     color #2c2027
-    height 335px
-    width 590px
     
-    iframe
-      background-color #000
+    .video-wrapper
+      width 100%
+      padding-bottom 65.25%
+      position relative
+      
+      iframe
+        background-color #000
+        position absolute
+        top: 0; bottom: 0; 
+        width 100%
+        height 100%
     
   .video-caption
     h1

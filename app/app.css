@@ -1,4 +1,4 @@
-@import url("http://fonts.googleapis.com/css?family=Josefin+Sans:400,600,700");
+@import url("http://fonts.googleapis.com/css?family=Josefin+Sans:100,300,400,600,700");
 @import url("http://fonts.googleapis.com/css?family=Open+Sans");
 @import url("http://fonts.googleapis.com/css?family=PT+Sans+Caption");
 @import url("http://fonts.googleapis.com/css?family=Droid+Sans");
@@ -29,16 +29,17 @@ p {
   margin: 0 0 10px;
 }
 .site-background {
+  position: fixed;
   background-image: url("images/cube1-960x543.JPG");
   background-size: cover;
-  height: -moz-calc(100% + 10px);
-  height: -webkit-calc(100% + 10px);
-  height: -o-calc(100% + 10px);
-  height: calc(100% + 10px);
-  width: -moz-calc(100% + 20px);
-  width: -webkit-calc(100% + 20px);
-  width: -o-calc(100% + 20px);
-  width: calc(100% + 20px);
+  height: -moz-calc(100vh + 10px);
+  height: -webkit-calc(100vh + 10px);
+  height: -o-calc(100vh + 10px);
+  height: calc(100vh + 10px);
+  width: -moz-calc(100vw + 20px);
+  width: -webkit-calc(100vw + 20px);
+  width: -o-calc(100vw + 20px);
+  width: calc(100vw + 20px);
   margin-top: -5px;
   margin-right: -10px;
   margin-bottom: -5px;
@@ -68,7 +69,7 @@ p {
   font-family: 'Josefin Sans', sans-serif;
   font-weight: 400;
   color: #608de6;
-  position: absolute;
+  position: fixed;
   top: 0px;
   -webkit-transition-property: top;
   -moz-transition-property: top;
@@ -86,6 +87,7 @@ p {
   -moz-transition-delay: 0s;
   -o-transition-delay: 0s;
   transition-delay: 0s;
+  z-index: 11;
 }
 .logo.welcome_position {
   top: 160px;
@@ -142,15 +144,111 @@ p {
 .logo ul > li:nth-child(1):before {
   content: "";
 }
+.logo table {
+  height: 40px;
+}
+.logo table tr td span.separator:after {
+  content: "|";
+  font-size: 50px;
+  font-weight: 300;
+  margin-left: 3.625px;
+}
+.logo table tr td a {
+  color: #608de6;
+  text-decoration: none;
+}
+.logo table tr td a:hover {
+  color: #608de6;
+  text-decoration: underline;
+}
+.logo table tr td a:active {
+  text-decoration: underline;
+}
+.logo table tr td ul {
+  list-style: none;
+  margin-left: 5px;
+  font-size: 20px;
+  line-height: 137.5%;
+}
+.logo table tr td ul li {
+  display: block;
+}
+.logo table tr td ul li:before {
+  content: "";
+}
+.logo table tr td ul li a {
+  color: #83a6ec;
+  text-decoration: none;
+}
+.logo table tr td ul li a:hover {
+  color: #a4bef1;
+  text-decoration: underline;
+}
+.logo table tr td ul li a:active {
+  text-decoration: underline;
+}
+.logo table tr td ul li:nth-child(1) a {
+  color: #83a6ec;
+  text-decoration: none;
+}
+.logo table tr td ul li:nth-child(1) a:hover {
+  color: #a4bef1;
+  text-decoration: underline;
+}
+.logo table tr td ul li:nth-child(1) a:active {
+  text-decoration: underline;
+}
+.logo table tr td ul li:nth-child(1):before {
+  content: "";
+}
+.logo-area-mask {
+  height: 60px;
+  width: 100%;
+  overflow: hidden;
+  z-index: 6;
+  position: fixed;
+}
+.logo-area-mask .logo-area-mask-image {
+  background-image: url("images/cube1-960x543.JPG");
+  background-size: cover;
+  height: -moz-calc(100vh + 10px);
+  height: -webkit-calc(100vh + 10px);
+  height: -o-calc(100vh + 10px);
+  height: calc(100vh + 10px);
+  width: -moz-calc(100vw + 20px);
+  width: -webkit-calc(100vw + 20px);
+  width: -o-calc(100vw + 20px);
+  width: calc(100vw + 20px);
+  margin-top: -5px;
+  margin-right: -10px;
+  margin-bottom: -5px;
+  margin-left: -10px;
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+}
 .logo-descriptor {
   line-height: 150%;
   font-family: 'Josefin Sans', sans-serif;
   font-weight: 600;
   font-size: 30px;
   color: #afa7d4;
-  padding-left: 10px;
-  position: absolute;
+  position: fixed;
   top: 220px;
+}
+@media (max-width: 767px) {
+  .logo-descriptor {
+    font-size: 20px;
+    padding-left: 10px;
+  }
+}
+@media (min-width: 768px) {
+  .logo-descriptor {
+    font-size: 30px;
+    padding-left: 10px;
+  }
 }
 .logo-descriptor.ng-hide-remove {
   display: block !important;
@@ -199,13 +297,18 @@ p {
   opacity: 0;
 }
 .navbar {
-  position: absolute;
+  position: fixed;
   top: 60px;
   width: 100%;
   margin-bottom: 0;
   background-color: #180a48;
-  background-image: url("http://www.transparenttextures.com/patterns/otis-redding.png");
   font-family: 'PT Sans Caption';
+  z-index: 10;
+}
+@media (min-width: 768px) {
+  .navbar {
+    background-image: url("http://www.transparenttextures.com/patterns/otis-redding.png");
+  }
 }
 .navbar.ng-hide-remove {
   display: block !important;
@@ -256,22 +359,54 @@ p {
 .content-box {
   position: absolute;
   top: 110px;
-  height: -o-calc(100% - $content-box-top);
-  height: -webkit-calc(100% - $content-box-top);
-  height: calc(100% - $content-box-top);
   width: 100%;
+  padding: 20px;
+  overflow-x: hidden;
 }
-.landing-right {
+.content-box.ng-hide-remove {
+  display: block !important;
+  -webkit-transition-property: z-index;
+  -moz-transition-property: z-index;
+  -o-transition-property: z-index;
+  transition-property: z-index;
+  -webkit-transition-duration: 0.8s;
+  -moz-transition-duration: 0.8s;
+  -o-transition-duration: 0.8s;
+  transition-duration: 0.8s;
+  z-index: 5;
+}
+.content-box.ng-hide-remove-active {
+  z-index: 5;
+}
+.content-box.ng-hide-add {
+  display: block !important;
+  -webkit-transition-property: z-index;
+  -moz-transition-property: z-index;
+  -o-transition-property: z-index;
+  transition-property: z-index;
+  -webkit-transition-duration: 0.4s;
+  -moz-transition-duration: 0.4s;
+  -o-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  z-index: 4;
+}
+.content-box.ng-hide-add-active {
+  z-index: 4;
+}
+.content-panel-1 {
   background-color: #674c5c;
-  background-image: url("http://www.transparenttextures.com/patterns/otis-redding.png");
   border-radius: 15px;
   box-shadow: 1px 1px 1px 1px #4c3845 inset;
-  position: absolute;
-  margin: 20px;
-  right: 0px;
-  width: 450px;
-  padding: 15px 20px 15px 20px;
   color: #2c2027;
+  padding: 15px 20px 15px 20px;
+}
+@media (min-width: 768px) {
+  .content-panel-1 {
+    background-image: url("http://www.transparenttextures.com/patterns/otis-redding.png");
+  }
+}
+.landing-right {
+  right: 0px;
 }
 .landing-right.ng-hide-remove {
   display: block !important;
@@ -287,10 +422,10 @@ p {
   -moz-transition-timing: ease-in-out;
   -o-transition-timing: ease-in-out;
   transition-timing: ease-in-out;
-  -webkit-transition-duration: 0.3s;
-  -moz-transition-duration: 0.3s;
-  -o-transition-duration: 0.3s;
-  transition-duration: 0.3s;
+  -webkit-transition-duration: 0.4s;
+  -moz-transition-duration: 0.4s;
+  -o-transition-duration: 0.4s;
+  transition-duration: 0.4s;
   right: -500px;
 }
 .landing-right.ng-hide-remove-active {
@@ -310,19 +445,20 @@ p {
   -moz-transition-timing: ease-in-out;
   -o-transition-timing: ease-in-out;
   transition-timing: ease-in-out;
-  -webkit-transition-duration: 0.2s;
-  -moz-transition-duration: 0.2s;
-  -o-transition-duration: 0.2s;
-  transition-duration: 0.2s;
+  -webkit-transition-duration: 0.4s;
+  -moz-transition-duration: 0.4s;
+  -o-transition-duration: 0.4s;
+  transition-duration: 0.4s;
   right: 0px;
 }
 .landing-right.ng-hide-add-active {
   right: -500px;
 }
+.wrapper-panel {
+  padding: 0px 0px 0px 0px;
+}
 .landing-left {
-  position: absolute;
   left: 0px;
-  margin: 20px;
 }
 .landing-left.ng-hide-remove {
   display: block !important;
@@ -338,10 +474,10 @@ p {
   -moz-transition-timing: ease-in-out;
   -o-transition-timing: ease-in-out;
   transition-timing: ease-in-out;
-  -webkit-transition-duration: 0.3s;
-  -moz-transition-duration: 0.3s;
-  -o-transition-duration: 0.3s;
-  transition-duration: 0.3s;
+  -webkit-transition-duration: 0.4s;
+  -moz-transition-duration: 0.4s;
+  -o-transition-duration: 0.4s;
+  transition-duration: 0.4s;
   left: -700px;
 }
 .landing-left.ng-hide-remove-active {
@@ -353,35 +489,47 @@ p {
   -moz-transition-delay: 0s;
   -o-transition-delay: 0s;
   transition-delay: 0s;
-  -webkit-transition-property: right;
-  -moz-transition-property: right;
-  -o-transition-property: right;
-  transition-property: right;
+  -webkit-transition-property: left;
+  -moz-transition-property: left;
+  -o-transition-property: left;
+  transition-property: left;
   -webkit-transition-timing: ease-in-out;
   -moz-transition-timing: ease-in-out;
   -o-transition-timing: ease-in-out;
   transition-timing: ease-in-out;
-  -webkit-transition-duration: 0.2s;
-  -moz-transition-duration: 0.2s;
-  -o-transition-duration: 0.2s;
-  transition-duration: 0.2s;
+  -webkit-transition-duration: 0.4s;
+  -moz-transition-duration: 0.4s;
+  -o-transition-duration: 0.4s;
+  transition-duration: 0.4s;
   left: 0px;
 }
 .landing-left.ng-hide-add-active {
   left: -700px;
 }
-.landing-left .video {
+.landing-left .video-panel {
   background-color: #674c5c;
-  background-image: url("http://www.transparenttextures.com/patterns/otis-redding.png");
   border-radius: 15px;
   box-shadow: 1px 1px 1px 1px #4c3845 inset;
-  padding: 10px 15px 10px 15px;
+  padding: 10px 10px 10px 10px;
   color: #2c2027;
-  height: 335px;
-  width: 590px;
 }
-.landing-left .video iframe {
+@media (min-width: 768px) {
+  .landing-left .video-panel {
+    background-image: url("http://www.transparenttextures.com/patterns/otis-redding.png");
+  }
+}
+.landing-left .video-panel .video-wrapper {
+  width: 100%;
+  padding-bottom: 65.25%;
+  position: relative;
+}
+.landing-left .video-panel .video-wrapper iframe {
   background-color: #000;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
 }
 .landing-left .video-caption h1 {
   color: #f1f6fc;

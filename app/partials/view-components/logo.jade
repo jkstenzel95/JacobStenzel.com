@@ -1,4 +1,4 @@
-div.logo.col-xs-12(ng-class="{'welcome_position': $state.includes('welcome')}")
+div.logo.col-xs-12.hidden-xs(ng-class="{'welcome_position': $state.includes('welcome')}")
 	ul
 		li
 			a(ui-sref="welcome") Jacob Stenzel
@@ -6,3 +6,17 @@ div.logo.col-xs-12(ng-class="{'welcome_position': $state.includes('welcome')}")
 			a(ui-sref="programmer-landing") Programmer
 		li
 			a(ui-sref="composer-landing") Composer
+
+div.logo.col-xs-12.visible-xs(ng-class="{'welcome_position': $state.includes('welcome')}")
+	table
+		tr
+			td
+				a(ui-sref="welcome") Jacob Stenzel
+			td
+				span.separator
+			td
+				ul
+					li
+						a(ui-sref="programmer-landing") Programmer
+					li
+						a(ui-sref="composer-landing") Composer
