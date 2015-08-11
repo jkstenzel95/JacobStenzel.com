@@ -10,7 +10,8 @@ angular.module('myApp', [
   'welcome-page',
   'composer-landing',
   'programmer-landing',
-  'general-landing'
+  'general-landing',
+  'about'
 ]).
 config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.when('/landing', '/landing/general')

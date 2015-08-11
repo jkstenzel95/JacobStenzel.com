@@ -240,7 +240,7 @@ p
   height 60px
   width 100%
   overflow hidden
-  z-index 6
+  z-index 7
   position fixed
   .logo-area-mask-image
     background-image url('images/cube1-960x543.JPG')
@@ -351,25 +351,54 @@ p
   //height "calc(100% - %s)" % $content-box-top
   width 100%
   padding 20px
-  overflow-x hidden   
+  overflow-x hidden
   
   &.ng-hide-remove
     display block !important
     vendor-transition-property("z-index")
     vendor-transition-duration(0.8s)
-    z-index 5
+    z-index 6
     
   &.ng-hide-remove-active
-    z-index 5
+    z-index 6
 
   &.ng-hide-add
     display block !important
     vendor-transition-property("z-index")
     vendor-transition-duration(0.4s)
-    z-index 4
+    z-index 5
     
   &.ng-hide-add-active
+    z-index 5
+    
+  .content-box
+  $content-box-top = 112px
+  position absolute
+  top 110px
+  //height "-o-calc(100% - %s)" % $content-box-top
+  //height "-webkit-calc(100% - %s)" % $content-box-top
+  //height "calc(100% - %s)" % $content-box-top
+  width 100%
+  padding 20px
+  overflow-x hidden
+  
+  &.ng-hide-remove
+    display block !important
+    vendor-transition-property("z-index")
+    vendor-transition-duration(0.8s)
     z-index 4
+    
+  &.ng-hide-remove-active
+    z-index 4
+
+  &.ng-hide-add
+    display block !important
+    vendor-transition-property("z-index")
+    vendor-transition-duration(0.4s)
+    z-index 3
+    
+  &.ng-hide-add-active
+    z-index 3
 
 .content-panel-1
   background-color #674c5c
@@ -379,6 +408,58 @@ p
   box-shadow 1px 1px 1px 1px #4c3845 inset
   color #2c2027
   padding 15px 20px 15px 20px   
+  
+  hr
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-width: 1px;
+    border-radius: 2px
+    border-color: #333333
+    
+.about-panel
+  background-color #674c5c
+  @media (min-width: $screen-sm)
+    background-image: url(http://www.transparenttextures.com/patterns/otis-redding.png)
+  border-radius 15px
+  box-shadow 1px 1px 1px 1px #4c3845 inset
+  color #2c2027
+  padding 15px 20px 15px 20px
+  vertical-align center
+
+  hr
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-width: 1px;
+    border-radius: 2px
+    border-color: #333333
+    
+  &.ng-hide-remove
+    display block !important
+    vendor-transition-delay(0s)
+    vendor-transition-property("opacity")
+    vendor-transition-timing-function(ease-in-out)
+    vendor-transition-duration(0.4s)
+    opacity 0
+    
+  &.ng-hide-remove-active
+    opacity 1
+
+  &.ng-hide-add
+    display block !important
+    vendor-transition-delay(0s)
+    vendor-transition-property("opacity")
+    vendor-transition-timing-function(ease-in-out)
+    vendor-transition-duration(0.8s)
+    opacity 1
+    
+  &.ng-hide-add-active
+    opacity 0
   
 
 .landing-right
@@ -463,6 +544,8 @@ p
       color #f1f6fc
       padding 10px 15px 10px 15px
       font-size 30px
+      margin-top 10px
+      margin-bottom 10px
 
     
 // End landing page stuff
