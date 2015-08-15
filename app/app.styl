@@ -75,21 +75,34 @@ vendor-transition-delay(delay)
 
 // ----------------RULES------------------
 
+.clearfix
+  overflow auto
+
 html, body
   height 100%
   width 100%
-  font-size 15px
+  font-size 14px
   line-height 125%
   font-family 'Open Sans', sans-serif
   
 p
   margin 0 0 10px
   
+hr
+  display block
+  margin-top 15px
+  margin-bottom 10px
+  margin-left auto
+  margin-right auto
+  border-width 1px
+  border-radius 2px
+  clear both
+  
 // Begin background stuff
 
 .site-background
   position fixed
-  background-image url('images/cube1-960x543.JPG')
+  background-image url('images/cube-20.JPG')
   background-size cover
   height -moz-calc(100vh + 10px);
   height -webkit-calc(100vh + 10px);
@@ -243,7 +256,7 @@ p
   z-index 7
   position fixed
   .logo-area-mask-image
-    background-image url('images/cube1-960x543.JPG')
+    background-image url('images/cube-20.JPG')
     background-size cover
     height -moz-calc(100vh + 10px);
     height -webkit-calc(100vh + 10px);
@@ -259,8 +272,6 @@ p
     margin-left -10px
     vendor-blur(5px)
 
-    
-  
 // End logo
 
 // Begin logo descriptor
@@ -340,22 +351,18 @@ p
   &.ng-hide-add-active
     opacity 0
     
-// Begin landing page stuff
+// Begin content box style
 
 .content-box
   $content-box-top = 112px
   position absolute
   top 110px
-  //height "-o-calc(100% - %s)" % $content-box-top
-  //height "-webkit-calc(100% - %s)" % $content-box-top
-  //height "calc(100% - %s)" % $content-box-top
-  width 100%
-  padding 20px
+  padding 20px 20px 0px 20px
   overflow-x hidden
   
   &.ng-hide-remove
     display block !important
-    vendor-transition-property("z-index")
+    vendor-transition-property("none")
     vendor-transition-duration(0.8s)
     z-index 6
     
@@ -364,27 +371,24 @@ p
 
   &.ng-hide-add
     display block !important
-    vendor-transition-property("z-index")
+    vendor-transition-property("none")
     vendor-transition-duration(0.4s)
     z-index 5
     
   &.ng-hide-add-active
     z-index 5
     
-  .content-box
+.content-box-subtle
   $content-box-top = 112px
   position absolute
   top 110px
-  //height "-o-calc(100% - %s)" % $content-box-top
-  //height "-webkit-calc(100% - %s)" % $content-box-top
-  //height "calc(100% - %s)" % $content-box-top
   width 100%
-  padding 20px
+  padding 20px 20px 0px 20px
   overflow-x hidden
   
   &.ng-hide-remove
     display block !important
-    vendor-transition-property("z-index")
+    vendor-transition-property("none")
     vendor-transition-duration(0.8s)
     z-index 4
     
@@ -393,12 +397,16 @@ p
 
   &.ng-hide-add
     display block !important
-    vendor-transition-property("z-index")
+    vendor-transition-property("none")
     vendor-transition-duration(0.4s)
     z-index 3
     
   &.ng-hide-add-active
     z-index 3
+    
+// End content box style
+
+// Begin misc div styling
 
 .content-panel-1
   background-color #674c5c
@@ -407,63 +415,61 @@ p
   border-radius 15px
   box-shadow 1px 1px 1px 1px #4c3845 inset
   color #2c2027
-  padding 15px 20px 15px 20px   
+  padding 15px 20px 15px 20px
   
   hr
-    display: block;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-    margin-left: auto;
-    margin-right: auto;
-    border-width: 1px;
-    border-radius: 2px
+    border-color: #333333
+    
+.content-panel-2
+  background-color #f1f6fc
+  border-radius 15px
+  box-shadow 1px 1px 1px 1px #A4BEF1 inset
+  color #83a6ec
+  padding 15px 20px 15px 20px
+  
+  hr
     border-color: #333333
     
 .about-panel
-  background-color #674c5c
+  background-color #e4f2cf
   @media (min-width: $screen-sm)
     background-image: url(http://www.transparenttextures.com/patterns/otis-redding.png)
   border-radius 15px
-  box-shadow 1px 1px 1px 1px #4c3845 inset
-  color #2c2027
+  box-shadow 1px 1px 1px 1px #cde4ae inset
+  color #8b998a
   padding 15px 20px 15px 20px
-  vertical-align center
 
   hr
-    display: block;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-    margin-left: auto;
-    margin-right: auto;
-    border-width: 1px;
-    border-radius: 2px
     border-color: #333333
     
   &.ng-hide-remove
     display block !important
     vendor-transition-delay(0s)
-    vendor-transition-property("opacity")
+    vendor-transition-property("opacity, transform")
     vendor-transition-timing-function(ease-in-out)
     vendor-transition-duration(0.4s)
     opacity 0
+    transform scale(0.5)
     
   &.ng-hide-remove-active
     opacity 1
+    transform scale(1)
 
   &.ng-hide-add
     display block !important
     vendor-transition-delay(0s)
-    vendor-transition-property("opacity")
+    vendor-transition-property("opacity, transform")
     vendor-transition-timing-function(ease-in-out)
     vendor-transition-duration(0.8s)
     opacity 1
+    transform scale(1)
     
   &.ng-hide-add-active
     opacity 0
+    transform scale(0.5)
   
 
 .landing-right
-  //position absolute
   right 0px   
   
   &.ng-hide-remove
@@ -472,10 +478,10 @@ p
     vendor-transition-property("right")
     vendor-transition-timing-function(ease-in-out)
     vendor-transition-duration(0.4s)
-    right -500px
+    right -75%
     
   &.ng-hide-remove-active
-    right 0px
+    right 0%
 
   &.ng-hide-add
     display block !important
@@ -483,17 +489,15 @@ p
     vendor-transition-property("right")
     vendor-transition-timing-function(ease-in-out)
     vendor-transition-duration(0.4s)
-    right 0px
+    right 0%
     
   &.ng-hide-add-active
-    right -500px
+    right -75%
   
 .wrapper-panel
   padding 0px 0px 0px 0px
-  
 
 .landing-left
-  //position absolute
   left 0px
   
   &.ng-hide-remove
@@ -502,10 +506,10 @@ p
     vendor-transition-property("left")
     vendor-transition-timing-function(ease-in-out)
     vendor-transition-duration(0.4s)
-    left -700px
+    left -75%
     
   &.ng-hide-remove-active
-    left 0px
+    left 0%
 
   &.ng-hide-add
     display block !important
@@ -513,10 +517,10 @@ p
     vendor-transition-property("left")
     vendor-transition-timing-function(ease-in-out)
     vendor-transition-duration(0.4s)
-    left 0px
+    left 0%
     
   &.ng-hide-add-active
-    left -700px
+    left -75%
   
   .video-panel
     background-color #674c5c
@@ -542,12 +546,37 @@ p
   .video-caption
     h1
       color #f1f6fc
-      padding 10px 15px 10px 15px
+      padding 5px 15px 10px 15px
       font-size 30px
-      margin-top 10px
-      margin-bottom 10px
+      margin-top 0px
+      margin-bottom 0px
+    
+// End misc div styling
+    
+// Begin image styling
 
-    
-// End landing page stuff
-    
+.thumb
+  img
+    border-radius 5px
+
+
+.thumb-left
+  @extend .thumb
+  float left
+  margin 0px 5px 0px 0px
+  
+  img
+    @extend .thumb img
+
+.thumb-right
+  @extend .thumb
+  float right
+  margin 0px 0px 0px 5px
+
+  
+  img
+    @extend .thumb img  
+
+// End image styling
+
 //----------------END RULES-----------------
