@@ -1,0 +1,15 @@
+div.container-fluid.content-box-projects(ng-model="projects",ng-controller="ProjectsCtrl",ng-show="$state.is('projects')")
+	div.col-xs-12
+		h1 Projects
+	div.row
+		div.col-sm-offset-4.col-sm-4
+			div.input-group
+				span.input-group-addon(id="basic-addon1") 
+					span.glyphicon.glyphicon-search(aria-hidden="true")
+				input.form-control(type="text" placeholder="Search" aria-describedby="basic-addon1")
+	div.col-sm-4.project-box-wrapper(ng-repeat="projectItem in projectItems")
+		div.project-box-wrapper-1
+			div.project-box-wrapper-2
+				a.project-box-link(href="{{ 'projects/' + projectItem.sref }}")
+					div.project-box(style='background-image: url({{ "images/" + projectItem.placecard }});')
+						h2 {{ projectItem.name }}

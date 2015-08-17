@@ -69,6 +69,7 @@ vendor-transition-delay(delay)
   -moz-transition-delay delay;
   -o-transition-delay delay;
   transition-delay delay;
+  
 
 // ----------------END MIXINS----------------
 
@@ -148,7 +149,7 @@ hr
   vendor-transition-timing-function(ease-in-out)
   vendor-transition-duration(0.4s)
   vendor-transition-delay(0s)
-  z-index 11
+  z-index 21
   
   &.welcome_position
     top 160px
@@ -253,7 +254,7 @@ hr
   height 60px
   width 100%
   overflow hidden
-  z-index 7
+  z-index 17
   position fixed
   .logo-area-mask-image
     background-image url('images/cube-20.JPG')
@@ -318,7 +319,7 @@ hr
 
 // Begin navbar
 
-.navbar
+.navbar-inverse
   position fixed
   top 60px
   width 100%
@@ -327,7 +328,7 @@ hr
   @media (min-width: $screen-sm)
     background-image: url(http://www.transparenttextures.com/patterns/otis-redding.png)
   font-family 'PT Sans Caption'
-  z-index 10
+  z-index 20
   
   &.ng-hide-remove
     display block !important
@@ -350,6 +351,12 @@ hr
       
   &.ng-hide-add-active
     opacity 0
+    
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover
+  background-image: none
+  -webkit-box-shadow: inset 0 3px 9px rgba(0,0,0,.5);
+  box-shadow: inset 0 3px 9px rgba(0,0,0,0.5);
+  background-color #180a48
     
 // Begin content box style
 
@@ -390,19 +397,19 @@ hr
     display block !important
     vendor-transition-property("none")
     vendor-transition-duration(0.8s)
-    z-index 4
+    z-index 3
     
   &.ng-hide-remove-active
-    z-index 4
+    z-index 3
 
   &.ng-hide-add
     display block !important
     vendor-transition-property("none")
     vendor-transition-duration(0.4s)
-    z-index 3
+    z-index 4
     
   &.ng-hide-add-active
-    z-index 3
+    z-index 4
     
 // End content box style
 
@@ -460,7 +467,45 @@ hr
     vendor-transition-delay(0s)
     vendor-transition-property("opacity, transform")
     vendor-transition-timing-function(ease-in-out)
-    vendor-transition-duration(0.8s)
+    vendor-transition-duration(0.4s)
+    opacity 1
+    transform scale(1)
+    
+  &.ng-hide-add-active
+    opacity 0
+    transform scale(0.5)
+    
+.connect-panel
+  background-color #e4f2cf
+  @media (min-width: $screen-sm)
+    background-image: url(http://www.transparenttextures.com/patterns/otis-redding.png)
+  border-radius 15px
+  box-shadow 1px 1px 1px 1px #cde4ae inset
+  color #8b998a
+  padding 15px 20px 15px 20px
+
+  hr
+    border-color: #333333
+    
+  &.ng-hide-remove
+    display block !important
+    vendor-transition-delay(0s)
+    vendor-transition-property("opacity, transform")
+    vendor-transition-timing-function(ease-in-out)
+    vendor-transition-duration(0.4s)
+    opacity 0
+    transform scale(0.5)
+    
+  &.ng-hide-remove-active
+    opacity 1
+    transform scale(1)
+
+  &.ng-hide-add
+    display block !important
+    vendor-transition-delay(0s)
+    vendor-transition-property("opacity, transform")
+    vendor-transition-timing-function(ease-in-out)
+    vendor-transition-duration(0.4s)
     opacity 1
     transform scale(1)
     
@@ -575,8 +620,96 @@ hr
 
   
   img
-    @extend .thumb img  
+    @extend .thumb img
 
 // End image styling
+
+// Begin projects styling
+
+.content-box-projects
+  @extend .content-box-subtle
+  h1
+    text-align center
+    color #A4BEF1
+    font-family 'Josefin Sans', sans-serif
+    font-weight 400
+    font-size 50px
+    color #afa7d4
+    margin-top 0px
+    line-height 100%
+  
+  &.ng-hide-remove
+    display block !important
+    vendor-transition-delay(0s)
+    vendor-transition-property("opacity")
+    vendor-transition-timing-function(ease-in-out)
+    vendor-transition-duration(0.4s)
+    opacity 0
+    
+  &.ng-hide-remove-active
+    opacity 1
+
+  &.ng-hide-add
+    display block !important
+    vendor-transition-delay(0s)
+    vendor-transition-property("opacity")
+    vendor-transition-timing-function(ease-in-out)
+    vendor-transition-duration(0.2s)
+    opacity 1
+    
+  &.ng-hide-add-active
+    opacity 0
+  
+.project-box-wrapper-1
+  padding 10px
+    
+.project-box-glow
+  top 0
+  left 0
+  background-color #A4BEF1
+  border-radius 10px
+  width 100%
+  height 100%
+  vendor-blur(5px)
+  z-index 19
+  opacity 1
+    
+.project-box-wrapper-2
+  position relative
+  width 100%
+  padding-bottom 65.25%
+
+.project-box
+  background-size cover
+  border-radius 10px
+  position absolute
+  top: 0; bottom: 0; 
+  width 100%
+  height 100%
+  z-index 8
+  h2
+    color #f1f6fc
+    position absolute
+    bottom 0px
+    left 0px
+    margin 10px
+    text-shadow -2px 1px 3px #000000
+
+.project-box-link      
+  position absolute
+  top 0
+  left 0
+  width 100%
+  height 100%
+  z-index 10
+  vendor-transition-delay(0s)
+  vendor-transition-property("transform")
+  vendor-transition-timing-function(ease-out)
+  vendor-transition-duration(0.2s)
+  transform scale(1)
+  &:hover
+    transform scale(1.1)
+
+// End projects styling
 
 //----------------END RULES-----------------

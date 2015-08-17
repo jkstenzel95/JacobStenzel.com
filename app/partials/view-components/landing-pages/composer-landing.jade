@@ -1,12 +1,12 @@
-div.container-fluid.content-box(ng-show="$state.includes('composer-landing')")
-	div.landing-left.wrapper-panel.col-sm-6(ng-show="$state.includes('composer-landing')")
+div.container-fluid.content-box(ng-show="$state.is('composer-landing')")
+	div.landing-left.wrapper-panel.col-sm-6(ng-show="$state.is('composer-landing')")
 		div.video-panel
 			div.video-wrapper
 				iframe(src="https://www.youtube.com/embed/WlFNjR2TSu4" frameborder="0" allowfullscreen)
 		div.video-caption
 			h1 "The Insomniac" for Laptop Orchestra
 
-	div.landing-right.content-panel-1.col-sm-5.col-sm-offset-1(ng-show="$state.includes('composer-landing')")
+	div.landing-right.content-panel-1.col-sm-5.col-sm-offset-1(ng-show="$state.is('composer-landing')")
 		div.clearfix
 			div.thumb-left
 				img(src="images/cube-19.jpg",width="auto",height="150px")
