@@ -100,7 +100,7 @@ hr {
   -moz-transition-delay: 0s;
   -o-transition-delay: 0s;
   transition-delay: 0s;
-  z-index: 11;
+  z-index: 21;
 }
 .logo.welcome_position {
   top: 160px;
@@ -218,7 +218,7 @@ hr {
   height: 60px;
   width: 100%;
   overflow: hidden;
-  z-index: 7;
+  z-index: 17;
   position: fixed;
 }
 .logo-area-mask .logo-area-mask-image {
@@ -309,21 +309,21 @@ hr {
 .logo-descriptor.ng-hide-add-active {
   opacity: 0;
 }
-.navbar {
+.navbar-inverse {
   position: fixed;
   top: 60px;
   width: 100%;
   margin-bottom: 0;
   background-color: #180a48;
   font-family: 'PT Sans Caption';
-  z-index: 10;
+  z-index: 20;
 }
 @media (min-width: 768px) {
-  .navbar {
+  .navbar-inverse {
     background-image: url("http://www.transparenttextures.com/patterns/otis-redding.png");
   }
 }
-.navbar.ng-hide-remove {
+.navbar-inverse.ng-hide-remove {
   display: block !important;
   -webkit-transition-delay: 0.4s;
   -moz-transition-delay: 0.4s;
@@ -343,10 +343,10 @@ hr {
   transition-duration: 0.2s;
   opacity: 0;
 }
-.navbar.ng-hide-remove-active {
+.navbar-inverse.ng-hide-remove-active {
   opacity: 1;
 }
-.navbar.ng-hide-add {
+.navbar-inverse.ng-hide-add {
   display: block !important;
   -webkit-transition-delay: 0s;
   -moz-transition-delay: 0s;
@@ -366,8 +366,17 @@ hr {
   transition-duration: 0.2s;
   opacity: 1;
 }
-.navbar.ng-hide-add-active {
+.navbar-inverse.ng-hide-add-active {
   opacity: 0;
+}
+.navbar-inverse .navbar-nav>.active>a,
+.navbar-inverse .navbar-nav>.open>a,
+.navbar-inverse .navbar-nav>.active>a:focus,
+.navbar-inverse .navbar-nav>.active>a:hover {
+  background-image: none;
+  -webkit-box-shadow: inset 0 3px 9px rgba(0,0,0,0.5);
+  box-shadow: inset 0 3px 9px rgba(0,0,0,0.5);
+  background-color: #180a48;
 }
 .content-box {
   position: absolute;
@@ -405,14 +414,16 @@ hr {
 .content-box.ng-hide-add-active {
   z-index: 5;
 }
-.content-box-subtle {
+.content-box-subtle,
+.content-box-projects {
   position: absolute;
   top: 110px;
   width: 100%;
   padding: 20px 20px 0px 20px;
   overflow-x: hidden;
 }
-.content-box-subtle.ng-hide-remove {
+.content-box-subtle.ng-hide-remove,
+.content-box-projects.ng-hide-remove {
   display: block !important;
   -webkit-transition-property: none;
   -moz-transition-property: none;
@@ -422,12 +433,14 @@ hr {
   -moz-transition-duration: 0.8s;
   -o-transition-duration: 0.8s;
   transition-duration: 0.8s;
-  z-index: 4;
+  z-index: 3;
 }
-.content-box-subtle.ng-hide-remove-active {
-  z-index: 4;
+.content-box-subtle.ng-hide-remove-active,
+.content-box-projects.ng-hide-remove-active {
+  z-index: 3;
 }
-.content-box-subtle.ng-hide-add {
+.content-box-subtle.ng-hide-add,
+.content-box-projects.ng-hide-add {
   display: block !important;
   -webkit-transition-property: none;
   -moz-transition-property: none;
@@ -437,10 +450,11 @@ hr {
   -moz-transition-duration: 0.4s;
   -o-transition-duration: 0.4s;
   transition-duration: 0.4s;
-  z-index: 3;
+  z-index: 4;
 }
-.content-box-subtle.ng-hide-add-active {
-  z-index: 3;
+.content-box-subtle.ng-hide-add-active,
+.content-box-projects.ng-hide-add-active {
+  z-index: 4;
 }
 .content-panel-1 {
   background-color: #674c5c;
@@ -521,14 +535,79 @@ hr {
   -moz-transition-timing: ease-in-out;
   -o-transition-timing: ease-in-out;
   transition-timing: ease-in-out;
-  -webkit-transition-duration: 0.8s;
-  -moz-transition-duration: 0.8s;
-  -o-transition-duration: 0.8s;
-  transition-duration: 0.8s;
+  -webkit-transition-duration: 0.4s;
+  -moz-transition-duration: 0.4s;
+  -o-transition-duration: 0.4s;
+  transition-duration: 0.4s;
   opacity: 1;
   transform: scale(1);
 }
 .about-panel.ng-hide-add-active {
+  opacity: 0;
+  transform: scale(0.5);
+}
+.connect-panel {
+  background-color: #e4f2cf;
+  border-radius: 15px;
+  box-shadow: 1px 1px 1px 1px #cde4ae inset;
+  color: #8b998a;
+  padding: 15px 20px 15px 20px;
+}
+@media (min-width: 768px) {
+  .connect-panel {
+    background-image: url("http://www.transparenttextures.com/patterns/otis-redding.png");
+  }
+}
+.connect-panel hr {
+  border-color: #333;
+}
+.connect-panel.ng-hide-remove {
+  display: block !important;
+  -webkit-transition-delay: 0s;
+  -moz-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
+  -webkit-transition-property: opacity, transform;
+  -moz-transition-property: opacity, transform;
+  -o-transition-property: opacity, transform;
+  transition-property: opacity, transform;
+  -webkit-transition-timing: ease-in-out;
+  -moz-transition-timing: ease-in-out;
+  -o-transition-timing: ease-in-out;
+  transition-timing: ease-in-out;
+  -webkit-transition-duration: 0.4s;
+  -moz-transition-duration: 0.4s;
+  -o-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  opacity: 0;
+  transform: scale(0.5);
+}
+.connect-panel.ng-hide-remove-active {
+  opacity: 1;
+  transform: scale(1);
+}
+.connect-panel.ng-hide-add {
+  display: block !important;
+  -webkit-transition-delay: 0s;
+  -moz-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
+  -webkit-transition-property: opacity, transform;
+  -moz-transition-property: opacity, transform;
+  -o-transition-property: opacity, transform;
+  transition-property: opacity, transform;
+  -webkit-transition-timing: ease-in-out;
+  -moz-transition-timing: ease-in-out;
+  -o-transition-timing: ease-in-out;
+  transition-timing: ease-in-out;
+  -webkit-transition-duration: 0.4s;
+  -moz-transition-duration: 0.4s;
+  -o-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  opacity: 1;
+  transform: scale(1);
+}
+.connect-panel.ng-hide-add-active {
   opacity: 0;
   transform: scale(0.5);
 }
@@ -677,4 +756,129 @@ hr {
 .thumb-right {
   float: right;
   margin: 0px 0px 0px 5px;
+}
+.content-box-projects h1 {
+  text-align: center;
+  color: #a4bef1;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 400;
+  font-size: 50px;
+  color: #afa7d4;
+  margin-top: 0px;
+  line-height: 100%;
+}
+.content-box-projects.ng-hide-remove {
+  display: block !important;
+  -webkit-transition-delay: 0s;
+  -moz-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
+  -webkit-transition-property: opacity;
+  -moz-transition-property: opacity;
+  -o-transition-property: opacity;
+  transition-property: opacity;
+  -webkit-transition-timing: ease-in-out;
+  -moz-transition-timing: ease-in-out;
+  -o-transition-timing: ease-in-out;
+  transition-timing: ease-in-out;
+  -webkit-transition-duration: 0.4s;
+  -moz-transition-duration: 0.4s;
+  -o-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  opacity: 0;
+}
+.content-box-projects.ng-hide-remove-active {
+  opacity: 1;
+}
+.content-box-projects.ng-hide-add {
+  display: block !important;
+  -webkit-transition-delay: 0s;
+  -moz-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
+  -webkit-transition-property: opacity;
+  -moz-transition-property: opacity;
+  -o-transition-property: opacity;
+  transition-property: opacity;
+  -webkit-transition-timing: ease-in-out;
+  -moz-transition-timing: ease-in-out;
+  -o-transition-timing: ease-in-out;
+  transition-timing: ease-in-out;
+  -webkit-transition-duration: 0.2s;
+  -moz-transition-duration: 0.2s;
+  -o-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+  opacity: 1;
+}
+.content-box-projects.ng-hide-add-active {
+  opacity: 0;
+}
+.project-box-wrapper-1 {
+  padding: 10px;
+}
+.project-box-glow {
+  top: 0;
+  left: 0;
+  background-color: #a4bef1;
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+  z-index: 19;
+  opacity: 1;
+}
+.project-box-wrapper-2 {
+  position: relative;
+  width: 100%;
+  padding-bottom: 65.25%;
+}
+.project-box {
+  background-size: cover;
+  border-radius: 10px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 8;
+}
+.project-box h2 {
+  color: #f1f6fc;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  margin: 10px;
+  text-shadow: -2px 1px 3px #000;
+}
+.project-box-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  -webkit-transition-delay: 0s;
+  -moz-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
+  -webkit-transition-property: transform;
+  -moz-transition-property: transform;
+  -o-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-timing: ease-out;
+  -moz-transition-timing: ease-out;
+  -o-transition-timing: ease-out;
+  transition-timing: ease-out;
+  -webkit-transition-duration: 0.2s;
+  -moz-transition-duration: 0.2s;
+  -o-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+  transform: scale(1);
+}
+.project-box-link:hover {
+  transform: scale(1.1);
 }

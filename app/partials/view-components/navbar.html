@@ -1,4 +1,4 @@
-<nav class="navbar navbar-inverse" ng-hide="$state.includes('welcome')">
+<nav class="navbar navbar-inverse" ng-hide="$state.is('welcome')">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -14,13 +14,13 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a ui-sref="about">About<span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Projects</a></li>
-        <li><a href="#">Music</a></li>
-        <li><a href="#">Blog</a></li>
+        <li ng-class="{'active': $state.is('about')}"><a ui-sref="about">About<span class="sr-only">(current)</span></a></li>
+        <li ng-class="{'active': $state.is('projects')}"><a ui-sref="projects">Projects</a></li>
+        <li ng-class="{'active': $state.is('music')}"><a href="#">Music</a></li>
+        <li ng-class="{'active': $state.is('blog')}"><a href="#">Blog</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Connect</a></li>
+        <li ng-class="{'active': $state.is('connect')}"><a ui-sref="connect">Connect</a></li>
         </li>
       </ul>
     </div><!-- /.navbar-collapse -->

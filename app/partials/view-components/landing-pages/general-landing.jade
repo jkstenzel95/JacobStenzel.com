@@ -1,9 +1,9 @@
-div.container-fluid.content-box(ng-show="$state.includes('general-landing')")
-	div.landing-left.content-panel-2.col-sm-3(ng-show="$state.includes('general-landing')")
+div.container-fluid.content-box(ng-show="$state.is('general-landing')")
+	div.landing-left.content-panel-2.col-sm-3(ng-show="$state.is('general-landing')")
 		div.clearfix
 			p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi efficitur interdum justo, et rhoncus nisi tincidunt ut. Aenean maximus porta leo, eget congue diam facilisis at. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse magna diam, dictum ut nibh id, elementum porttitor ligula. Fusce in vehicula tortor. Nulla semper feugiat vulputate. Vivamus posuere accumsan tincidunt. Ut eu nunc purus.
 
-	div.landing-right.content-panel-1.col-sm-5.col-sm-offset-4(ng-show="$state.includes('general-landing')")
+	div.landing-right.content-panel-1.col-sm-5.col-sm-offset-4(ng-show="$state.is('general-landing')")
 		div.clearfix
 			div.thumb-left
 				img(src="images/photoshoot-03.jpg",width="auto",height="150px")
