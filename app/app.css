@@ -757,6 +757,9 @@ hr {
   float: right;
   margin: 0px 0px 0px 5px;
 }
+.content-box-projects {
+  padding-bottom: 20px;
+}
 .content-box-projects h1 {
   text-align: center;
   color: #a4bef1;
@@ -813,23 +816,11 @@ hr {
 .content-box-projects.ng-hide-add-active {
   opacity: 0;
 }
+.content-box-projects .input-group {
+  margin-bottom: 20px;
+}
 .project-box-wrapper-1 {
   padding: 10px;
-}
-.project-box-glow {
-  top: 0;
-  left: 0;
-  background-color: #a4bef1;
-  border-radius: 10px;
-  width: 100%;
-  height: 100%;
-  -webkit-filter: blur(5px);
-  -moz-filter: blur(5px);
-  -o-filter: blur(5px);
-  -ms-filter: blur(5px);
-  filter: blur(5px);
-  z-index: 19;
-  opacity: 1;
 }
 .project-box-wrapper-2 {
   position: relative;
