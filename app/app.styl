@@ -77,7 +77,7 @@ vendor-transition-delay(delay)
 // ----------------RULES------------------
 
 .clearfix
-  overflow auto
+  overflow visible
 
 html, body
   height 100%
@@ -692,13 +692,15 @@ hr
 .project-box-wrapper-2
   padding 10px
     
+.piece-box-wrapper-3
+  position relative
+  width 100%
+  padding-bottom 25%
+  
 .project-box-wrapper-3
   position relative
-  padding-bottom 65.25%
-  
-.project-box-wrapper-4
   width 100%
-  height 100%
+  padding-bottom 65.25%
 
 .project-box
   background-size cover
@@ -715,6 +717,15 @@ hr
     left 0px
     margin 10px
     text-shadow -2px 1px 3px #000000
+    
+.piece-box
+  background-size cover
+  border-radius 10px
+  position absolute
+  top: 0; bottom: 0; 
+  width 100%
+  height 100%
+  z-index 8
 
 .project-box-link      
   position absolute
@@ -730,7 +741,168 @@ hr
   transform scale(1)
   &:hover
     transform scale(1.1)
+    
+.piece-box-link
+  @extend .project-box-link
+  line-height 100%
+  text-align: center
+  &:hover
+    @extend .project-box-link:hover
 
 // End projects styling
+
+// Begin blog styling
+
+.blog-logo
+  position absolute
+  width 100%
+  @extend .content-panel-2
+  h1
+    font-family 'Josefin Sans'
+    font-size 40px
+    font-weight 400
+    color #608de6
+    margin 0px
+    
+  &.ng-hide-remove
+    display block !important
+    vendor-transition-delay(0.4s)
+    vendor-transition-property("top")
+    vendor-transition-timing-function(ease-in-out)
+    vendor-transition-duration(0.4s)
+    top -200%
+    
+  &.ng-hide-remove-active
+    top 0%
+
+  &.ng-hide-add
+    display block !important
+    vendor-transition-delay(0s)
+    vendor-transition-property("top")
+    vendor-transition-timing-function(ease-in-out)
+    vendor-transition-duration(0.4s)
+    top 0%
+    
+  &.ng-hide-add-active
+    top -200%
+    
+    
+.blog-logo-placeholder
+  position relative
+  width 100%
+  @extend .content-panel-2
+  opacity 0
+  h1
+    @extend .blog-logo h1
+    
+.blog-left
+  position relative
+  width 100%
+  @extend .content-panel-2
+  
+  &.ng-hide-remove
+    display block !important
+    vendor-transition-delay(0.4s)
+    vendor-transition-property("left")
+    vendor-transition-timing-function(ease-in-out)
+    vendor-transition-duration(0.4s)
+    left -200%
+    
+  &.ng-hide-remove-active
+    left 0%
+
+  &.ng-hide-add
+    display block !important
+    vendor-transition-delay(0s)
+    vendor-transition-property("left")
+    vendor-transition-timing-function(ease-in-out)
+    vendor-transition-duration(0.4s)
+    left 0%
+    
+  &.ng-hide-add-active
+    left -200%
+  
+.blog-right
+  @extend .content-panel-2
+  
+  &.ng-hide-remove
+    display block !important
+    vendor-transition-delay(0.4s)
+    vendor-transition-property("right")
+    vendor-transition-timing-function(ease-in-out)
+    vendor-transition-duration(0.4s)
+    right -100%
+    
+  &.ng-hide-remove-active
+    right 0%
+
+  &.ng-hide-add
+    display block !important
+    vendor-transition-delay(0s)
+    vendor-transition-property("right")
+    vendor-transition-timing-function(ease-in-out)
+    vendor-transition-duration(0.4s)
+    right 0%
+    
+  &.ng-hide-add-active
+    right -100%
+    
+.blog-logo-wrapper
+  position relative
+  width 100%  
+  
+.blog-left-wrapper
+  position relative
+  width 100%
+  
+.blog-main
+  h1
+    font-family 'Open Sans'
+    font-size 37.5px
+    font-weight 400
+    color #37179D
+    margin 0px
+  h2
+    font-family 'Open Sans'
+    font-size 30px
+    font-weight 400
+    color #608de6
+    margin 5px 0px 15px 0px
+  h3
+    font-family 'Open Sans'
+    font-size 15px
+    font-weight 400
+    color #608de6
+    margin 0px
+  h4
+    font-family 'Open Sans'
+    font-size 12.5px
+    font-weight 400
+    color #608de6
+    margin 0px
+  hr
+    border-color #37179D
+    margin 10px 0px 10px 0px
+    &.header-hr
+      border-width 2px
+      
+  table.blog-entry-header
+    width 100%
+    tr
+      td:nth-child(2)
+        text-align right
+        
+.year-set
+  line-height 150%
+  .glyphicon
+    margin-right 2.5px
+  .year-selector
+    cursor pointer
+  .month-selector
+    margin-left 10px
+    cursor pointer
+      
+
+// End blog styling
 
 //----------------END RULES-----------------
