@@ -18,7 +18,7 @@ body {
   }
 }
 .clearfix {
-  overflow: auto;
+  overflow: visible;
 }
 html,
 body {
@@ -472,14 +472,22 @@ hr {
 .content-panel-1 hr {
   border-color: #333;
 }
-.content-panel-2 {
+.content-panel-2,
+.blog-logo,
+.blog-logo-placeholder,
+.blog-left,
+.blog-right {
   background-color: #f1f6fc;
   border-radius: 15px;
   box-shadow: 1px 1px 1px 1px #a4bef1 inset;
   color: #83a6ec;
   padding: 15px 20px 15px 20px;
 }
-.content-panel-2 hr {
+.content-panel-2 hr,
+.blog-logo hr,
+.blog-logo-placeholder hr,
+.blog-left hr,
+.blog-right hr {
   border-color: #333;
 }
 .about-panel {
@@ -860,13 +868,15 @@ hr {
 .project-box-wrapper-2 {
   padding: 10px;
 }
+.piece-box-wrapper-3 {
+  position: relative;
+  width: 100%;
+  padding-bottom: 25%;
+}
 .project-box-wrapper-3 {
   position: relative;
-  padding-bottom: 65.25%;
-}
-.project-box-wrapper-4 {
   width: 100%;
-  height: 100%;
+  padding-bottom: 65.25%;
 }
 .project-box {
   background-size: cover;
@@ -886,7 +896,18 @@ hr {
   margin: 10px;
   text-shadow: -2px 1px 3px #000;
 }
-.project-box-link {
+.piece-box {
+  background-size: cover;
+  border-radius: 10px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 8;
+}
+.project-box-link,
+.piece-box-link {
   position: absolute;
   top: 0;
   left: 0;
@@ -911,6 +932,232 @@ hr {
   transition-duration: 0.2s;
   transform: scale(1);
 }
-.project-box-link:hover {
+.project-box-link:hover,
+.piece-box-link:hover {
   transform: scale(1.1);
+}
+.piece-box-link {
+  line-height: 100%;
+  text-align: center;
+}
+.blog-logo {
+  position: absolute;
+  width: 100%;
+}
+.blog-logo h1,
+.blog-logo-placeholder h1 {
+  font-family: 'Josefin Sans';
+  font-size: 40px;
+  font-weight: 400;
+  color: #608de6;
+  margin: 0px;
+}
+.blog-logo.ng-hide-remove {
+  display: block !important;
+  -webkit-transition-delay: 0.4s;
+  -moz-transition-delay: 0.4s;
+  -o-transition-delay: 0.4s;
+  transition-delay: 0.4s;
+  -webkit-transition-property: top;
+  -moz-transition-property: top;
+  -o-transition-property: top;
+  transition-property: top;
+  -webkit-transition-timing: ease-in-out;
+  -moz-transition-timing: ease-in-out;
+  -o-transition-timing: ease-in-out;
+  transition-timing: ease-in-out;
+  -webkit-transition-duration: 0.4s;
+  -moz-transition-duration: 0.4s;
+  -o-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  top: -200%;
+}
+.blog-logo.ng-hide-remove-active {
+  top: 0%;
+}
+.blog-logo.ng-hide-add {
+  display: block !important;
+  -webkit-transition-delay: 0s;
+  -moz-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
+  -webkit-transition-property: top;
+  -moz-transition-property: top;
+  -o-transition-property: top;
+  transition-property: top;
+  -webkit-transition-timing: ease-in-out;
+  -moz-transition-timing: ease-in-out;
+  -o-transition-timing: ease-in-out;
+  transition-timing: ease-in-out;
+  -webkit-transition-duration: 0.4s;
+  -moz-transition-duration: 0.4s;
+  -o-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  top: 0%;
+}
+.blog-logo.ng-hide-add-active {
+  top: -200%;
+}
+.blog-logo-placeholder {
+  position: relative;
+  width: 100%;
+  opacity: 0;
+}
+.blog-left {
+  position: relative;
+  width: 100%;
+}
+.blog-left.ng-hide-remove {
+  display: block !important;
+  -webkit-transition-delay: 0.4s;
+  -moz-transition-delay: 0.4s;
+  -o-transition-delay: 0.4s;
+  transition-delay: 0.4s;
+  -webkit-transition-property: left;
+  -moz-transition-property: left;
+  -o-transition-property: left;
+  transition-property: left;
+  -webkit-transition-timing: ease-in-out;
+  -moz-transition-timing: ease-in-out;
+  -o-transition-timing: ease-in-out;
+  transition-timing: ease-in-out;
+  -webkit-transition-duration: 0.4s;
+  -moz-transition-duration: 0.4s;
+  -o-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  left: -200%;
+}
+.blog-left.ng-hide-remove-active {
+  left: 0%;
+}
+.blog-left.ng-hide-add {
+  display: block !important;
+  -webkit-transition-delay: 0s;
+  -moz-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
+  -webkit-transition-property: left;
+  -moz-transition-property: left;
+  -o-transition-property: left;
+  transition-property: left;
+  -webkit-transition-timing: ease-in-out;
+  -moz-transition-timing: ease-in-out;
+  -o-transition-timing: ease-in-out;
+  transition-timing: ease-in-out;
+  -webkit-transition-duration: 0.4s;
+  -moz-transition-duration: 0.4s;
+  -o-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  left: 0%;
+}
+.blog-left.ng-hide-add-active {
+  left: -200%;
+}
+.blog-right.ng-hide-remove {
+  display: block !important;
+  -webkit-transition-delay: 0.4s;
+  -moz-transition-delay: 0.4s;
+  -o-transition-delay: 0.4s;
+  transition-delay: 0.4s;
+  -webkit-transition-property: right;
+  -moz-transition-property: right;
+  -o-transition-property: right;
+  transition-property: right;
+  -webkit-transition-timing: ease-in-out;
+  -moz-transition-timing: ease-in-out;
+  -o-transition-timing: ease-in-out;
+  transition-timing: ease-in-out;
+  -webkit-transition-duration: 0.4s;
+  -moz-transition-duration: 0.4s;
+  -o-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  right: -100%;
+}
+.blog-right.ng-hide-remove-active {
+  right: 0%;
+}
+.blog-right.ng-hide-add {
+  display: block !important;
+  -webkit-transition-delay: 0s;
+  -moz-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
+  -webkit-transition-property: right;
+  -moz-transition-property: right;
+  -o-transition-property: right;
+  transition-property: right;
+  -webkit-transition-timing: ease-in-out;
+  -moz-transition-timing: ease-in-out;
+  -o-transition-timing: ease-in-out;
+  transition-timing: ease-in-out;
+  -webkit-transition-duration: 0.4s;
+  -moz-transition-duration: 0.4s;
+  -o-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  right: 0%;
+}
+.blog-right.ng-hide-add-active {
+  right: -100%;
+}
+.blog-logo-wrapper {
+  position: relative;
+  width: 100%;
+}
+.blog-left-wrapper {
+  position: relative;
+  width: 100%;
+}
+.blog-main h1 {
+  font-family: 'Open Sans';
+  font-size: 37.5px;
+  font-weight: 400;
+  color: #37179d;
+  margin: 0px;
+}
+.blog-main h2 {
+  font-family: 'Open Sans';
+  font-size: 30px;
+  font-weight: 400;
+  color: #608de6;
+  margin: 5px 0px 15px 0px;
+}
+.blog-main h3 {
+  font-family: 'Open Sans';
+  font-size: 15px;
+  font-weight: 400;
+  color: #608de6;
+  margin: 0px;
+}
+.blog-main h4 {
+  font-family: 'Open Sans';
+  font-size: 12.5px;
+  font-weight: 400;
+  color: #608de6;
+  margin: 0px;
+}
+.blog-main hr {
+  border-color: #37179d;
+  margin: 10px 0px 10px 0px;
+}
+.blog-main hr.header-hr {
+  border-width: 2px;
+}
+.blog-main table.blog-entry-header {
+  width: 100%;
+}
+.blog-main table.blog-entry-header tr td:nth-child(2) {
+  text-align: right;
+}
+.year-set {
+  line-height: 150%;
+}
+.year-set .glyphicon {
+  margin-right: 2.5px;
+}
+.year-set .year-selector {
+  cursor: pointer;
+}
+.year-set .month-selector {
+  margin-left: 10px;
+  cursor: pointer;
 }

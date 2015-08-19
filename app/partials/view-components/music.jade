@@ -1,0 +1,15 @@
+div.container-fluid.content-box-projects(ng-controller="MusicCtrl",ng-show="$state.is('music')")
+	div.col-xs-12
+		h1 Compositions
+	div.row
+		div.col-sm-offset-4.col-sm-4
+			div.input-group
+				span.input-group-addon(id="basic-addon1") 
+					span.glyphicon.glyphicon-search(aria-hidden="true")
+				input.form-control(type="text",placeholder="Search",aria-describedby="basic-addon1",ng-model="musicSearchParam")
+	div.col-sm-4.project-box-wrapper-1(ng-repeat="pieceItem in pieceItems | filter:{name: musicSearchParam}")
+		div.project-box-wrapper-2
+			div.piece-box-wrapper-3
+				a.piece-box-link(href="{{ 'music/' + pieceItem.sref }}")
+					div.piece-box(style='{{ pieceItem.styles }}')
+						h2 {{ pieceItem.name }}
