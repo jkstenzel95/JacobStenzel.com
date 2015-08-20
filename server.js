@@ -34,10 +34,5 @@ app.get('/partials/:name', function (req, res)
     res.render('partials/' + name);
 });
 
-app.get('/heyyo', function (req, res)    {
-    res.render('tester');
-    console.log('Heyyoooooooooooo World!');
-});
-
 app.listen(3000);
 console.log("Server running on port 3000");
