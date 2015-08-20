@@ -14,10 +14,10 @@ div.container-fluid.content-box(ng-controller="BlogCtrl", ng-show="$state.is('bl
 						div.year-selector(ng-click="yearExpansion[year] = !yearExpansion[year]") 
 							span.glyphicon.glyphicon-menu-right(aria-hidden="true",ng-if="!yearExpansion[year]")
 							span.glyphicon.glyphicon-menu-down(aria-hidden="true",ng-if="yearExpansion[year]")
-							{{ year }} ({{ getPostCountFromYear(year) }})
+							span {{ year }} ({{ getPostCountFromYear(year) }})
 						div.month-selector(ng-repeat="(month, count) in monthSet",ng-show="yearExpansion[year]")
 							span.glyphicon.glyphicon-chevron-right(aria-hidden="true")
-							{{ getMonthString(month) }} ({{ count }})
+							span {{ getMonthString(month) }} ({{ count }})
 
 
 	div.blog-right.col-sm-7.col-sm-offset-1(ng-show="$state.is('blog')")
@@ -37,5 +37,5 @@ div.container-fluid.content-box(ng-controller="BlogCtrl", ng-show="$state.is('bl
 					h4 Tags:&nbsp;
 						span(ng-repeat="tag in blogEntry.tags",href='#')
 							a {{ tag }}
-							span(ng-if="!$last"),&nbsp;
+							span(ng-if="!$last") ,&nbsp;
 				hr(ng-if="!$last")

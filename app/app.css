@@ -382,6 +382,7 @@ hr {
 .content-box {
   position: absolute;
   top: 110px;
+  Width: 100%;
   padding: 20px 20px 0px 20px;
   overflow-x: hidden;
 }
@@ -489,6 +490,13 @@ hr {
 .blog-left hr,
 .blog-right hr {
   border-color: #333;
+}
+.content-panel-admin {
+  background-color: #37179d;
+  border-radius: 15px;
+  box-shadow: 1px 1px 1px 1px #a4bef1 inset;
+  color: #83a6ec;
+  padding: 15px 20px 15px 20px;
 }
 .about-panel {
   background-color: #e4f2cf;
@@ -1149,15 +1157,105 @@ hr {
   text-align: right;
 }
 .year-set {
-  line-height: 150%;
+  margin-bottom: 5px;
 }
 .year-set .glyphicon {
   margin-right: 2.5px;
 }
 .year-set .year-selector {
+  margin-bottom: 5px;
   cursor: pointer;
 }
 .year-set .month-selector {
+  margin-bottom: 5px;
   margin-left: 10px;
   cursor: pointer;
+}
+.login-rack {
+  position: fixed;
+  right: 0;
+  z-index: 21;
+  padding-right: 10px;
+  line-height: 60px;
+  font-size: 30px;
+}
+.login-rack .glyphicon {
+  padding-left: 10px;
+}
+.login-rack a {
+  color: #83a6ec;
+  text-decoration: none;
+}
+.login-rack a:hover {
+  color: #a4bef1;
+  text-decoration: underline;
+}
+.login-rack a:active {
+  text-decoration: underline;
+}
+.login {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+}
+.login h1 {
+  margin-top: 0px;
+  text-align: center;
+}
+.login .input-group {
+  width: 100%;
+  margin: 5px;
+}
+.login .btn-group {
+  margin: 5px;
+}
+.login.ng-hide-remove {
+  display: block !important;
+  -webkit-transition-delay: 0s;
+  -moz-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
+  -webkit-transition-property: top;
+  -moz-transition-property: top;
+  -o-transition-property: top;
+  transition-property: top;
+  -webkit-transition-timing: ease-in-out;
+  -moz-transition-timing: ease-in-out;
+  -o-transition-timing: ease-in-out;
+  transition-timing: ease-in-out;
+  -webkit-transition-duration: 0.4s;
+  -moz-transition-duration: 0.4s;
+  -o-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  top: -200%;
+}
+.login.ng-hide-remove-active {
+  top: 0%;
+}
+.login.ng-hide-add {
+  display: block !important;
+  -webkit-transition-delay: 0s;
+  -moz-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
+  -webkit-transition-property: top;
+  -moz-transition-property: top;
+  -o-transition-property: top;
+  transition-property: top;
+  -webkit-transition-timing: ease-in-out;
+  -moz-transition-timing: ease-in-out;
+  -o-transition-timing: ease-in-out;
+  transition-timing: ease-in-out;
+  -webkit-transition-duration: 0.4s;
+  -moz-transition-duration: 0.4s;
+  -o-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  top: 0%;
+}
+.login.ng-hide-add-active {
+  top: -200%;
+}
+.login-wrapper {
+  position: relative;
+  height: 201px;
 }
