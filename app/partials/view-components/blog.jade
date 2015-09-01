@@ -32,7 +32,7 @@ div.container-fluid.content-box(ng-controller="BlogCtrl", ng-show="$state.is('bl
 								h2 {{ blogEntry.title }}
 							td
 								h3 {{ getFormattedDate(blogEntry) }}
-					img(ng-if="typeof blogEntry.image !== 'undefined'",src="{{ 'images/' + blogEntry.image }}")
+					img(ng-if="blogEntry.image !== undefined",src="{{ 'images/' + blogEntry.image }}")
 					p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi efficitur interdum justo, et rhoncus nisi tincidunt ut. Aenean maximus porta leo, eget congue diam facilisis at. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse magna diam, dictum ut nibh id, elementum porttitor ligula. Fusce in vehicula tortor. Nulla semper feugiat vulputate. Vivamus posuere accumsan tincidunt. Ut eu nunc purus.
 					h4 Tags:&nbsp;
 						span(ng-repeat="tag in blogEntry.tags",href='#')
