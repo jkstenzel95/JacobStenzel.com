@@ -1,10 +1,18 @@
 div.container-fluid.content-box(ng-controller="LoginCtrl", ng-show="$state.is('login')")
 	div.login-wrapper.col-sm-offset-4.col-sm-4
+		div.content-panel-admin.login-placeholder(ng-show="$state.is('login')")
+			h1 Login
+			form
+				div.form-group
+					input.form-control(type="text", class="form-control", placeholder="Username")
+				div.form-group
+					input.form-control(type="password", placeholder="Password")
+				button.btn.btn-default(type="submit") Submit
 		div.content-panel-admin.login(ng-show="$state.is('login')")
 			h1 Login
-			div.input-group
-				input.form-control(type="text" class="form-control" placeholder="Username")
-			div.input-group
-				input.form-control(type="password" class="form-control" placeholder="Password")
-			div.btn-group(role="group")
-				button.btn.btn-default(type="button") Submit
+			form(ng-submit="submitLogin(usernameForm, passwordForm)")
+				div.form-group
+					input.form-control(type="text", name='username', class="form-control", placeholder="Username", ng-model="usernameForm")
+				div.form-group
+					input.form-control(type="password", name='password', placeholder="Password", ng-model="passwordForm")
+				button.btn.btn-default(type="submit", id="enter", value="Submit") Submit

@@ -15,7 +15,7 @@ angular.module('blog', ['ui.router'])
 }])
 
 .controller('BlogCtrl', ['$scope', function($scope) {
-  var tzString = "America/Toronto";
+  var tzString = "America/New_York";
 
 	var entry1 = {
 		title: 'My Second Post',
