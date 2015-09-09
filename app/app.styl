@@ -339,9 +339,6 @@ hr
   font-family $general-font
   z-index 20
   
-.navbar-inverse .navbar-nav>li>a 
-  color #a4bef1
-  
   &.ng-hide-remove
     display block !important
     vendor-transition-delay(0.4s)
@@ -364,6 +361,9 @@ hr
   &.ng-hide-add-active
     opacity 0
     
+.navbar-inverse .navbar-nav>li>a 
+  color #a4bef1
+      
 .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover
   background-image: none
   -webkit-box-shadow: inset 0 3px 9px rgba(0,0,0,.5);
@@ -382,6 +382,7 @@ hr
   Width 100%
   padding 20px 20px 0px 20px
   overflow-x hidden
+  overflow-y hidden
   
   &.ng-hide-remove
     display block !important
@@ -408,6 +409,7 @@ hr
   width 100%
   padding 20px 20px 0px 20px
   overflow-x hidden
+  overflow-y hidden
   
   &.ng-hide-remove
     display block !important
@@ -439,7 +441,10 @@ hr
   padding 15px 20px 15px 20px
   
   hr
-    border-color: #333333
+    border-color #37179D
+    margin 10px 0px 10px 0px
+    &.header-hr
+      border-width 2px
     
 .content-panel-2
   background-color #f1f6fc
@@ -449,7 +454,10 @@ hr
   padding 15px 20px 15px 20px
   
   hr
-    border-color: #333333
+    border-color #37179D
+    margin 10px 0px 10px 0px
+    &.header-hr
+      border-width 2px
     
 .content-panel-admin
   background-color #83a6ec
@@ -809,6 +817,7 @@ hr
   width 100%
   @extend .content-panel-2
   opacity 0
+  z-index 0
   h1
     @extend .blog-logo h1
     
@@ -873,6 +882,18 @@ hr
   position relative
   width 100%
   
+.tag-cloud
+  p, .spacer
+    display inline-block
+    font-size 30px
+    line-height 30px
+    margin 0
+  
+.tag:hover
+  text-decoration underline
+  cursor pointer
+    
+
 .blog-main
   h1
     font-family $general-font
@@ -887,7 +908,8 @@ hr
     color #608de6
     margin 5px 0px 15px 0px
   h3
-    font-family $general-font
+    font
+    -family $general-font
     font-size 15px
     font-weight 400
     color #608de6
@@ -1004,5 +1026,24 @@ hr
     top 0%
 
 // End login styling
+
+// Begin admin styling
+
+.admin-landing
+  text-align center
+  margin-top 10px
+  margin-bottom 10px
+  vendor-transition-delay(0s)
+  vendor-transition-property("transform")
+  vendor-transition-timing-function(ease-out)
+  vendor-transition-duration(0.2s)
+  transform scale(1)
+  &:hover
+    transform scale(1.1)
+  h1
+    margin-top 0
+    margin-bottom 0
+
+// End admin styling
 
 //----------------END RULES-----------------

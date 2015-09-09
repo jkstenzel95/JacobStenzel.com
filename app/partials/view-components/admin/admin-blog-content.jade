@@ -1,0 +1,41 @@
+div.container-fluid.content-box(ng-controller="AdminBlogCtrl")
+	div.col-sm-3
+		div.blog-logo-wrapper
+			div.blog-logo
+				h1 Jacob Stenzel
+			div.blog-logo-placeholder
+				h1 Jacob Stenzel
+		div.blog-left-wrapper
+			div.blog-left
+				div.clearfix
+					p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi efficitur interdum justo, et rhoncus nisi tincidunt ut. Aenean maximus porta leo, eget congue diam facilisis at. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse magna diam, dictum ut nibh id, elementum porttitor ligula. Fusce in vehicula tortor. Nulla semper feugiat vulputate. Vivamus posuere accumsan tincidunt. Ut eu nunc purus.
+				div.clearfix
+					div.year-set(ng-repeat="(year, monthSet) in yearMapping")
+						div.year-selector(ng-click="yearExpansion[year] = !yearExpansion[year]") 
+							span.glyphicon.glyphicon-menu-right(aria-hidden="true",ng-if="!yearExpansion[year]")
+							span.glyphicon.glyphicon-menu-down(aria-hidden="true",ng-if="yearExpansion[year]")
+							span {{ year }} ({{ getPostCountFromYear(year) }})
+						div.month-selector(ng-repeat="(month, count) in monthSet",ng-show="yearExpansion[year]")
+							span.glyphicon.glyphicon-chevron-right(aria-hidden="true")
+							span {{ getMonthString(month) }} ({{ count }})
+
+
+	div.blog-right.col-sm-7.col-sm-offset-1
+		div.blog-main
+			h1 Blog
+			hr.header-hr
+			div(ng-repeat="blogEntry in blogEntries")
+				div.clearfix
+					table.blog-entry-header
+						tr
+							td
+								h2 {{ blogEntry.title }}
+							td
+								h3 {{ getFormattedDate(blogEntry) }}
+					img(ng-if="blogEntry.image !== undefined",src="{{ 'images/' + blogEntry.image }}")
+					p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi efficitur interdum justo, et rhoncus nisi tincidunt ut. Aenean maximus porta leo, eget congue diam facilisis at. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse magna diam, dictum ut nibh id, elementum porttitor ligula. Fusce in vehicula tortor. Nulla semper feugiat vulputate. Vivamus posuere accumsan tincidunt. Ut eu nunc purus.
+					h4 Tags:&nbsp;
+						span(ng-repeat="tag in blogEntry.tags",href='#')
+							a {{ tag }}
+							span(ng-if="!$last") ,&nbsp;
+				hr(ng-if="!$last")

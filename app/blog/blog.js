@@ -14,13 +14,14 @@ angular.module('blog', ['ui.router'])
   });
 }])
 
-.controller('BlogCtrl', ['$scope', function($scope) {
+.controller('BlogCtrl', [function() {
+  var self = this;
   var tzString = "America/New_York";
 
 	var entry1 = {
-		title: 'My Second Post',
+		title: 'My Third Post',
 		date: new Date(2015, 3, 16).getTime(),
-		tags: [],
+		tags: ['gnomes', 'wibbly-wobbly'],
 		content: ''
 	};
 
@@ -32,16 +33,16 @@ angular.module('blog', ['ui.router'])
   };
 
   var entry3 = {
-    title: 'My Third Post',
+    title: 'My Second Post',
     date: new Date(2015, 0, 18).getTime(),
-    tags: [],
+    tags: ['important', 'wibbly-wobbly'],
     content: ''
   };
 
   var entry4 = {
     title: 'Hello World!',
     date: new Date(2014, 11, 27).getTime(),
-    tags: [],
+    tags: ['wibbly-wobbly', 'coding', 'site', 'important'],
     content: ''
   };
 
@@ -89,16 +90,60 @@ angular.module('blog', ['ui.router'])
     }
   }
 
-	$scope.blogEntries = blogEntries;
-  $scope.tagWeights = tagWeights;
-  $scope.tagSizes = tagSizes;
-  $scope.yearMapping = yearMapping;
-  $scope.yearExpansion = yearExpansion;
-  $scope.getFormattedDate = function(entry)
+  for (var tag in tagWeights) {
+    if (tagWeights.hasOwnProperty(tag))
+    {
+      var tagWeight = tagWeights[tag];
+      if (tagWeight / tagCountMax >= 7/8)
+      {
+        tagSizes[tag] = '30px';
+      }
+      else if (tagWeight / tagCountMax >= 7/8)
+      {
+        tagSizes[tag] = '27.5px';
+      }
+      else if (tagWeight / tagCountMax >= 6/8)
+      {
+        tagSizes[tag] = '25px';
+      }
+      else if (tagWeight / tagCountMax >= 5/8)
+      {
+        tagSizes[tag] = '22.5px';
+      }
+      else if (tagWeight / tagCountMax >= 4/8)
+      {
+        tagSizes[tag] = '20px';
+      }
+      else if (tagWeight / tagCountMax >= 3/8)
+      {
+        tagSizes[tag] = '17.5px';
+      }
+      else if (tagWeight / tagCountMax >= 2/8)
+      {
+        tagSizes[tag] = '15px';
+      }
+      else if (tagWeight / tagCountMax >= 1/8)
+      {
+        tagSizes[tag] = '12.5px';
+      }
+      else
+      {
+        tagSizes[tag] = '10px';
+      }
+    }
+  };
+
+  self.blogFilterCondition = '';
+	self.blogEntries = blogEntries;
+  self.tagWeights = tagWeights;
+  self.tagSizes = tagSizes;
+  self.yearMapping = yearMapping;
+  self.yearExpansion = yearExpansion;
+  self.getFormattedDate = function(entry)
   {
     return moment.tz(entry.date, tzString).format("MMMM D, YYYY");
   };
-  $scope.getPostCountFromYear = function(year)
+  self.getPostCountFromYear = function(year)
   {
     var sum = 0;
     for (var month in yearMapping[year])
@@ -107,7 +152,7 @@ angular.module('blog', ['ui.router'])
     }
     return sum;
   };
-  $scope.getMonthString = function(monthNum)
+  self.getMonthString = function(monthNum)
   {
     switch(monthNum)
     {
@@ -138,9 +183,50 @@ angular.module('blog', ['ui.router'])
       default:
         return "";
     }
-  }
+  };
+  self.dateToMillis = function(year, day, month)
+  {
+    return (new Date(year, day, month)).getTime();
+  };
 }])
 
-.controller('BlogEntryCtrl', ['$scope', function($scope) {
+.controller('BlogEntryCtrl', [function() {
 
+}])
+
+.filter('blogFilter', [function()  {
+  return function(items, condition) {
+    var filtered = [];
+    if (condition === '')
+    {
+      return items;
+    }
+    else if (typeof condition === 'string')
+    {
+      console.log("GOT A TAG OF ", condition);
+      items.forEach (function(item)
+      {
+        if (item.tags.indexOf(condition) >= 0)
+        {
+          filtered.push(item);
+        }
+      });
+    }
+    else if (typeof condition === 'number')
+    {
+      var checkDate = new Date(condition);
+      var checkMonth = checkDate.getMonth();
+      var checkYear = 1900 + checkDate.getYear();
+      var startTime = (new Date(checkYear, checkMonth, 1)).getTime();
+      var endTime = (new Date(checkMonth == 11 ? checkYear + 1 : checkYear, (checkMonth + 1) % 12, 1)).getTime();
+      items.forEach (function(item)
+      {
+        if (item.date >= startTime && item.date < endTime)
+        {
+          filtered.push(item);
+        }
+      });
+    }
+    return filtered;
+  }
 }])
