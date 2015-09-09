@@ -21,11 +21,6 @@ app.use(passport.session());
 
 //--------BEGIN SETUP--------
 
-var logger = function(req, res, next) {
-    //console.log("GOT A REQUEST:");
-    next();
-}
-
 function compile(str, path) {
   return stylus(str)
     .set('filename', path)
@@ -41,7 +36,6 @@ app.use(stylus.middleware(
 ));
 app.use(express.static(__dirname + "/app"));
 app.use(bodyParser.json());
-app.use(logger);
 
 //--------END SETUP----------
 
@@ -57,50 +51,23 @@ app.get('/partials/:name', function (req, res)
     res.render('partials/' + name);
 });
 
-app.get('/control-panel', isAuthenticated, function (req, res) {
-  console.log("control-panel reached");
-  res.render('control-panel/landing');
+app.get('/admin', isAuthenticated, function (req, res) {
+  res.render('admin/admin-landing');
 });
 
-app.get('/isLoggedIn', function (req, res)  {
-  res.send(req.isAuthenticated() ? true : false);
+app.get('/admin/projects', isAuthenticated, function(req, res)  {
+  res.render('admin/admin-projects');
 });
 
-app.get('/logout', function(req, res) {
-  req.logout();
-  res.redirect('/');
+app.get('/admin/music', isAuthenticated, function(req, res) {
+  res.render('admin/admin-music');
 });
 
-app.get('/testLoggedIn', function(req, res) {
-  res.send("<p>You are " + (req.isAuthenticated() ? "" : "not ") + "logged in.</p>");
+app.get('/admin/blog', isAuthenticated, function(req, res)  {
+  res.render('admin/admin-blog');
 });
 
 //--------END ROUTING----------
-
-//--------BEGIN SUBMISSIONS--------
-
-app.post('/login', passport.authenticate('login'), function (req, res, next)  {
-  res.send(200);
-  next();
-});
-
-app.post('/fakelogin', function(req, res) {
-  User.findOne({ 'username' :  req.body.username }, 
-  function(err, user) {
-    if (!user)
-    {
-      res.status(400);
-      return;
-    }
-    console.log(err);
-    console.log(user);
-    console.log(req.body.password);
-    isValidPassword(user, req.body.password);
-  });
-});
-
-
-//--------END SUBMISSIONS----------
 
 //--------BEGIN MONGODB--------
 
@@ -133,6 +100,24 @@ var blogSchema = new mongoose.Schema({
 //--------END MONGODB----------
 
 //--------BEGIN AUTHENTICATION--------
+
+app.post('/login', passport.authenticate('login'), function (req, res, next)  {
+  res.send(200);
+  next();
+});
+
+app.get('/isLoggedIn', function (req, res)  {
+  res.send(req.isAuthenticated() ? true : false);
+});
+
+app.get('/logout', function(req, res) {
+  req.logout();
+  res.redirect('/');
+});
+
+app.get('/testLoggedIn', function(req, res) {
+  res.send("<p>You are " + (req.isAuthenticated() ? "" : "not ") + "logged in.</p>");
+});
 
 passport.serializeUser(function(user, done) {
   done(null, user._id);

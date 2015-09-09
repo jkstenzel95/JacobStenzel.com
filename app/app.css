@@ -326,10 +326,7 @@ hr {
   font-family: "Questrial";
   z-index: 20;
 }
-.navbar-inverse .navbar-nav>li>a {
-  color: #a4bef1;
-}
-.navbar-inverse .navbar-nav>li>a.ng-hide-remove {
+.navbar-inverse.ng-hide-remove {
   display: block !important;
   -webkit-transition-delay: 0.4s;
   -moz-transition-delay: 0.4s;
@@ -349,10 +346,10 @@ hr {
   transition-duration: 0.2s;
   opacity: 0;
 }
-.navbar-inverse .navbar-nav>li>a.ng-hide-remove-active {
+.navbar-inverse.ng-hide-remove-active {
   opacity: 1;
 }
-.navbar-inverse .navbar-nav>li>a.ng-hide-add {
+.navbar-inverse.ng-hide-add {
   display: block !important;
   -webkit-transition-delay: 0s;
   -moz-transition-delay: 0s;
@@ -372,8 +369,11 @@ hr {
   transition-duration: 0.2s;
   opacity: 1;
 }
-.navbar-inverse .navbar-nav>li>a.ng-hide-add-active {
+.navbar-inverse.ng-hide-add-active {
   opacity: 0;
+}
+.navbar-inverse .navbar-nav>li>a {
+  color: #a4bef1;
 }
 .navbar-inverse .navbar-nav>.active>a,
 .navbar-inverse .navbar-nav>.open>a,
@@ -393,6 +393,7 @@ hr {
   Width: 100%;
   padding: 20px 20px 0px 20px;
   overflow-x: hidden;
+  overflow-y: hidden;
 }
 .content-box.ng-hide-remove {
   display: block !important;
@@ -431,6 +432,7 @@ hr {
   width: 100%;
   padding: 20px 20px 0px 20px;
   overflow-x: hidden;
+  overflow-y: hidden;
 }
 .content-box-subtle.ng-hide-remove,
 .content-box-projects.ng-hide-remove {
@@ -474,7 +476,11 @@ hr {
   padding: 15px 20px 15px 20px;
 }
 .content-panel-1 hr {
-  border-color: #333;
+  border-color: #37179d;
+  margin: 10px 0px 10px 0px;
+}
+.content-panel-1 hr.header-hr {
+  border-width: 2px;
 }
 .content-panel-2,
 .blog-logo,
@@ -492,7 +498,15 @@ hr {
 .blog-logo-placeholder hr,
 .blog-left hr,
 .blog-right hr {
-  border-color: #333;
+  border-color: #37179d;
+  margin: 10px 0px 10px 0px;
+}
+.content-panel-2 hr.header-hr,
+.blog-logo hr.header-hr,
+.blog-logo-placeholder hr.header-hr,
+.blog-left hr.header-hr,
+.blog-right hr.header-hr {
+  border-width: 2px;
 }
 .content-panel-admin {
   background-color: #83a6ec;
@@ -1000,6 +1014,7 @@ hr {
   position: relative;
   width: 100%;
   opacity: 0;
+  z-index: 0;
 }
 .blog-left {
   position: relative;
@@ -1106,6 +1121,17 @@ hr {
   position: relative;
   width: 100%;
 }
+.tag-cloud p,
+.tag-cloud .spacer {
+  display: inline-block;
+  font-size: 30px;
+  line-height: 30px;
+  margin: 0;
+}
+.tag:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
 .blog-main h1 {
   font-family: "Questrial";
   font-size: 37.5px;
@@ -1121,7 +1147,8 @@ hr {
   margin: 5px 0px 15px 0px;
 }
 .blog-main h3 {
-  font-family: "Questrial";
+font
+  -family: "Questrial";
   font-size: 15px;
   font-weight: 400;
   color: #608de6;
@@ -1281,4 +1308,33 @@ hr {
 }
 .login-placeholder.ng-hide-add-active {
   top: 0%;
+}
+.admin-landing {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  -webkit-transition-delay: 0s;
+  -moz-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
+  -webkit-transition-property: transform;
+  -moz-transition-property: transform;
+  -o-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-timing: ease-out;
+  -moz-transition-timing: ease-out;
+  -o-transition-timing: ease-out;
+  transition-timing: ease-out;
+  -webkit-transition-duration: 0.2s;
+  -moz-transition-duration: 0.2s;
+  -o-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+  transform: scale(1);
+}
+.admin-landing:hover {
+  transform: scale(1.1);
+}
+.admin-landing h1 {
+  margin-top: 0;
+  margin-bottom: 0;
 }

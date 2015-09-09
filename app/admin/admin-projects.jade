@@ -1,13 +1,13 @@
 doctype html
-html.no-js(lang='en', ng-app='myApp', ng-Controller='AppCtrl')
+html.no-js(lang='en', ng-app='admin', ng-Controller='AdminCtrl')
   head
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
     title
     meta(name='description', content='')
     meta(name='viewport', content='width=device-width, initial-scale=1')
-    include ./partials/common-include
-    script(src='bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js')
+    include ../partials/admin-common-include
+    script(src='../bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js')
     title Jacob Stenzel | Programmer | Composer
   body
     <!--[if lt IE 8]>
@@ -19,8 +19,9 @@ html.no-js(lang='en', ng-app='myApp', ng-Controller='AppCtrl')
     div.site-background-frame
         div.site-background
         div.site-foreground
-          include ./partials/component-include
+          include ../partials/view-components/admin/logo
+          include ../partials/view-components/admin/navbar.html
+          include ../partials/view-components/logo-area-mask
+          include ../partials/view-components/admin/admin-projects-content
 
-include ./partials/common-scripts
-
- 
+include ../partials/admin-script-include

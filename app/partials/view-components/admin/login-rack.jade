@@ -1,7 +1,7 @@
 div.login-rack
 	a(ui-sref="login", ng-if="!isLoggedIn")
 		span.glyphicon.glyphicon-log-in(aria-hidden="true")
-	a(ng-if="isLoggedIn", href="/admin/control-panel")
+	a(ng-if="isLoggedIn", href="/admin")
 		span.glyphicon.glyphicon-wrench(aria-hidden="true")
 	a(ng-if="isLoggedIn", href="/logout")
 		span.glyphicon.glyphicon-log-out(aria-hidden="true")
