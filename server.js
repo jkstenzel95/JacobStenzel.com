@@ -42,13 +42,13 @@ app.use(bodyParser.json());
 //--------BEGIN ROUTING--------
 
 app.get('/', function(req, res) {
-    res.render('index');
+  res.render('index');
 });
 
 app.get('/partials/:name', function (req, res)
 {
-    var name = req.params.name;
-    res.render('partials/' + name);
+  var name = req.params.name;
+  res.render('partials/' + name);
 });
 
 app.get('/admin', isAuthenticated, function (req, res) {

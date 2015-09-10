@@ -1,7 +1,7 @@
 'use strict';
 
 // Declare app level module which depends on views, and components
-angular.module('myApp', [
+angular.module('siteApp', [
   'ui.router',
   'ngAnimate',
   'isLoggedIn',
@@ -22,12 +22,21 @@ config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRou
 	.otherwise('/welcome');
 }])
 
-.controller('AppCtrl', ['$scope', '$state', '$stateParams', 'isLoggedIn', function($scope, _$state_, _$stateParams_, isLoggedIn) {
+.controller('SiteCtrl', ['$scope', '$http', '$state', '$stateParams', 'isLoggedIn', function($scope, $http, _$state_, _$stateParams_, isLoggedIn) {
   $scope.$state = _$state_;
   $scope.$stateParams = _$stateParams_;
+  $scope.textcontent = {};
   isLoggedIn().then(function(res) {
     $scope.isLoggedIn = res.data;
   }, function(res) {
     $scope.isLoggedIn = false;
+  })
+  $http.get('/constants/text-content.json').then(function(res)
+  {
+    $scope.textcontent = res.data;
+  },
+  function(red)
+  {
+    console.log("ERROR RETRIEVING TEXT CONTENT");
   })
 }])

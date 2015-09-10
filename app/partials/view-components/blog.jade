@@ -29,28 +29,36 @@ div.container-fluid.content-box(ng-show="$state.is('blog') || $state.is('blog.en
 
 	div.blog-right.col-sm-7.col-sm-offset-1(ng-show="$state.is('blog')")
 		div.blog-main
-			div(ng-if="!blogCtrl.tagIsString() && !blogCtrl.tagIsNumber()")
+			div.blog-main-header(ng-if="!blogCtrl.tagIsString() && !blogCtrl.tagIsNumber()")
 				h1 Blog
-			div(ng-if="blogCtrl.tagIsString() || blogCtrl.tagIsNumber()")
-			div(ng-if="blogCtrl.tagIsString()")
-				h1 #[span.glyphicon.glyphicon-chevron-left(aria-hidden="true",ng-click="blogCtrl.blogFilterCondition = ''")]Filtered by Tag: #[span.tag-span '{{ blogCtrl.blogFilterCondition }}']
-			div(ng-if="blogCtrl.tagIsNumber()")
-				h1 #[span.glyphicon.glyphicon-chevron-left(aria-hidden="true",ng-click="blogCtrl.blogFilterCondition = ''")]Filtered by Date: #[span.tag-span {{ blogCtrl.tagToDateString() }}]
+			div.blog-main-header(ng-if="blogCtrl.tagIsString() || blogCtrl.tagIsNumber()")
+				div(ng-if="blogCtrl.tagIsString()")
+					h1 #[span.glyphicon.glyphicon-chevron-left(aria-hidden="true",ng-click="blogCtrl.blogFilterCondition = ''")]Filtered by Tag: #[span.tag-span '{{ blogCtrl.blogFilterCondition }}']
+				div(ng-if="blogCtrl.tagIsNumber()")
+					h1 #[span.glyphicon.glyphicon-chevron-left(aria-hidden="true",ng-click="blogCtrl.blogFilterCondition = ''")]Filtered by Date: #[span.tag-span {{ blogCtrl.tagToDateString() }}]
+			div.blog-main-header.placeholder(ng-if="!blogCtrl.tagIsString() && !blogCtrl.tagIsNumber()")
+				h1 Blog
+			div.blog-main-header.placeholder(ng-if="blogCtrl.tagIsString() || blogCtrl.tagIsNumber()")
+				div(ng-if="blogCtrl.tagIsString()")
+					h1 #[span.glyphicon.glyphicon-chevron-left(aria-hidden="true",ng-click="blogCtrl.blogFilterCondition = ''")]Filtered by Tag: #[span.tag-span '{{ blogCtrl.blogFilterCondition }}']
+				div(ng-if="blogCtrl.tagIsNumber()")
+					h1 #[span.glyphicon.glyphicon-chevron-left(aria-hidden="true",ng-click="blogCtrl.blogFilterCondition = ''")]Filtered by Date: #[span.tag-span {{ blogCtrl.tagToDateString() }}]
 
 
 			hr.header-hr
-			div(ng-repeat="blogEntry in blogCtrl.blogEntries | blogFilter: blogCtrl.blogFilterCondition | orderBy:'-date'")
-				div.clearfix
-					table.blog-entry-header
-						tr
-							td
-								h2 {{ blogEntry.title }}
-							td
-								h3 {{ getFormattedDate(blogEntry) }}
-					img(ng-if="blogEntry.image !== undefined",ng-src="images/{{blogEntry.image}}")
-					p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi efficitur interdum justo, et rhoncus nisi tincidunt ut. Aenean maximus porta leo, eget congue diam facilisis at. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse magna diam, dictum ut nibh id, elementum porttitor ligula. Fusce in vehicula tortor. Nulla semper feugiat vulputate. Vivamus posuere accumsan tincidunt. Ut eu nunc purus.
-					h4 Tags:&nbsp;
-						span(ng-repeat="tag in blogEntry.tags")
-							a.tag(ui-sref='blog',ng-click="blogCtrl.blogFilterCondition = tag") {{ tag }}
-							span(ng-if="!$last") ,&nbsp;
-				hr(ng-if="!$last")
+			div.blog-entry-wrapper
+				div.blog-entry(ng-repeat="blogEntry in blogCtrl.blogEntries | blogFilter: blogCtrl.blogFilterCondition | orderBy:'-date'")
+					hr(ng-if="!$first")
+					div.clearfix
+						table.blog-entry-header
+							tr
+								td
+									h2 {{ blogEntry.title }}
+								td
+									h3 {{ blogCtrl.getFormattedDate(blogEntry) }}
+						img(ng-if="blogEntry.image !== undefined",ng-src="images/{{blogEntry.image}}")
+						p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi efficitur interdum justo, et rhoncus nisi tincidunt ut. Aenean maximus porta leo, eget congue diam facilisis at. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse magna diam, dictum ut nibh id, elementum porttitor ligula. Fusce in vehicula tortor. Nulla semper feugiat vulputate. Vivamus posuere accumsan tincidunt. Ut eu nunc purus.
+						h4 Tags:&nbsp;
+							span(ng-repeat="tag in blogEntry.tags")
+								a.tag(ui-sref='blog',ng-click="blogCtrl.blogFilterCondition = tag") {{ tag }}
+								span(ng-if="!$last") ,&nbsp;
