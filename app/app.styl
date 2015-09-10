@@ -29,6 +29,8 @@ $logo-font = "Trajan Pro Regular"
 $general-font = "Questrial"
 //$general-font = "Open Sans"
 
+$transform-properties = "-webkit-transform, -moz-transform, -ms-transform, -o-transform, transform"
+
 // ----------------END USEFUL CONSTANTS----------------
 
 
@@ -55,6 +57,13 @@ vendor-blur(blurAmt)
   -o-filter blur(blurAmt)
   -ms-filter blur(blurAmt)
   filter blur(blurAmt)
+    
+vendor-transform(type)
+  -webkit-transform: unquote(type);
+  -moz-transform: unquote(type);
+  -ms-transform: unquote(type);
+  -o-transform: unquote(type);
+  transform: unquote(type);
   
 vendor-transition-property(properties)
   -webkit-transition-property unquote(properties)
@@ -634,7 +643,7 @@ iframe
 .thumb-left
   @extend .thumb
   float left
-  margin 0px 5px 0px 0px
+  margin 0px 15px 0px 0px
   
   img
     @extend .thumb img
@@ -642,7 +651,7 @@ iframe
 .thumb-right
   @extend .thumb
   float right
-  margin 0px 0px 0px 5px
+  margin 0px 0px 0px 15px
 
   
   img
@@ -899,9 +908,10 @@ iframe
 .tag:hover
   text-decoration underline
   cursor pointer
-    
 
 .blog-main
+  overflow hidden
+  position relative
   h1
     font-family $general-font
     font-size 37.5px
@@ -944,7 +954,55 @@ iframe
     tr
       td:nth-child(2)
         text-align right
-        
+ 
+.blog-main-header
+  position absolute
+  width 100%
+  &.placeholder
+    position relative
+    z-index 0
+    opacity 0
+    
+  &.ng-enter
+    display block !important
+    vendor-transition-delay(0s)
+    vendor-transition-property("left")
+    vendor-transition-timing-function(ease-in-out)
+    vendor-transition-duration(0.4s)
+    left 100%
+    &.placeholder
+      display block !important
+      vendor-transition-delay(0s)
+      vendor-transition-property("none")
+      vendor-transition-timing-function(ease-in-out)
+      vendor-transition-duration(0s)
+      left inherit
+  
+  &.ng-enter-active
+    left 0%
+    &.placeholder
+      left auto
+
+  &.ng-leave
+    display block !important
+    vendor-transition-delay(0s)
+    vendor-transition-property("left")
+    vendor-transition-timing-function(ease-in-out)
+    vendor-transition-duration(0.4s)
+    left 0%
+    &.placeholder
+      display block !important
+      vendor-transition-delay(0s)
+      vendor-transition-property("none")
+      vendor-transition-timing-function(ease-in-out)
+      vendor-transition-duration(0s)
+      left inherit
+    
+  &.ng-leave-active
+    left -100%
+    &.placeholder
+      left inherit
+
 .year-set
   margin-bottom 5px
   .glyphicon
@@ -956,6 +1014,34 @@ iframe
     margin-bottom 5px
     margin-left 10px
     cursor pointer
+
+.blog-entry
+  &.ng-enter
+    display block !important
+    vendor-transition-delay(0s)
+    vendor-transition-property($transform-properties+", max-height")
+    vendor-transition-timing-function(ease-in-out)
+    vendor-transition-duration(0.4s)
+    vendor-transform("scaleY(0)");
+    max-height 0px
+    
+  &.ng-enter-active
+    vendor-transform("scaleY(1)");
+    max-height 180px
+
+  &.ng-leave
+    display block !important
+    vendor-transition-delay(0s)
+    vendor-transition-property($transform-properties+", max-height")
+    vendor-transition-timing-function(ease-in-out)
+    vendor-transition-duration(0.4s)
+    vendor-transform("scaleY(1)");
+    max-height 180px
+    
+  &.ng-leave-active
+    vendor-transform("scaleY(0)");
+    position relative
+    max-height 0px
       
 // End blog styling
 
@@ -1058,5 +1144,7 @@ iframe
     margin-bottom 0
 
 // End admin styling
+
+
 
 //----------------END RULES-----------------
