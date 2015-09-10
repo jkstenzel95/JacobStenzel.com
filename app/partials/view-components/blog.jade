@@ -1,12 +1,12 @@
-div.container-fluid.content-box(ng-controller="BlogCtrl as blogCtrl", ng-show="$state.is('blog')")
+div.container-fluid.content-box(ng-show="$state.is('blog') || $state.is('blog.entry')")
 	div.col-sm-3
 		div.blog-logo-wrapper
-			div.blog-logo(ng-show="$state.is('blog')")
+			div.blog-logo(ng-show="$state.is('blog') || $state.is('blog.entry')")
 				h1 Jacob Stenzel
 			div.blog-logo-placeholder
 				h1 Jacob Stenzel
 		div.blog-left-wrapper
-			div.blog-left(ng-show="$state.is('blog')")
+			div.blog-left(ng-show="$state.is('blog') || $state.is('blog.entry')")
 				div.clearfix
 					p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi efficitur interdum justo, et rhoncus nisi tincidunt ut. Aenean maximus porta leo, eget congue diam facilisis at. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse magna diam, dictum ut nibh id, elementum porttitor ligula. Fusce in vehicula tortor. Nulla semper feugiat vulputate. Vivamus posuere accumsan tincidunt. Ut eu nunc purus.
 				div.clearfix
@@ -16,20 +16,28 @@ div.container-fluid.content-box(ng-controller="BlogCtrl as blogCtrl", ng-show="$
 							span.glyphicon.glyphicon-menu-right(aria-hidden="true",ng-if="!blogCtrl.yearExpansion[year]")
 							span.glyphicon.glyphicon-menu-down(aria-hidden="true",ng-if="blogCtrl.yearExpansion[year]")
 							span {{ year }} ({{ blogCtrl.getPostCountFromYear(year) }})
-						div.month-selector(ng-repeat="(month, count) in monthSet",ng-show="blogCtrl.yearExpansion[year]",ng-click="blogCtrl.blogFilterCondition = blogCtrl.dateToMillis(year, month, 1)")
+						div.month-selector(ng-repeat="(month, count) in monthSet",ui-sref='blog',ng-show="blogCtrl.yearExpansion[year]",ng-click="blogCtrl.blogFilterCondition = blogCtrl.dateToMillis(year, month, 1)")
 							span.glyphicon.glyphicon-chevron-right(aria-hidden="true")
 							span {{ blogCtrl.getMonthString(month) }} ({{ count }})
 				div.clearfix
 					hr
 					div.tag-cloud
-						p.tag(ng-repeat="(tag, tagSize) in blogCtrl.tagSizes",ng-style="{'font-size': tagSize}",ng-click="blogCtrl.blogFilterCondition = tag") {{ tag }}
+						p.tag(ng-repeat="(tag, tagSize) in blogCtrl.tagSizes",ui-sref='blog',ng-style="{'font-size': tagSize}",ng-click="blogCtrl.blogFilterCondition = tag") {{ tag }}
 							span.tag-spacer(ng-if="!$last") &nbsp;
 						
 
 
 	div.blog-right.col-sm-7.col-sm-offset-1(ng-show="$state.is('blog')")
 		div.blog-main
-			h1 Blog
+			div(ng-if="!blogCtrl.tagIsString() && !blogCtrl.tagIsNumber()")
+				h1 Blog
+			div(ng-if="blogCtrl.tagIsString() || blogCtrl.tagIsNumber()")
+			div(ng-if="blogCtrl.tagIsString()")
+				h1 #[span.glyphicon.glyphicon-chevron-left(aria-hidden="true",ng-click="blogCtrl.blogFilterCondition = ''")]Filtered by Tag: #[span.tag-span '{{ blogCtrl.blogFilterCondition }}']
+			div(ng-if="blogCtrl.tagIsNumber()")
+				h1 #[span.glyphicon.glyphicon-chevron-left(aria-hidden="true",ng-click="blogCtrl.blogFilterCondition = ''")]Filtered by Date: #[span.tag-span {{ blogCtrl.tagToDateString() }}]
+
+
 			hr.header-hr
 			div(ng-repeat="blogEntry in blogCtrl.blogEntries | blogFilter: blogCtrl.blogFilterCondition | orderBy:'-date'")
 				div.clearfix
@@ -43,6 +51,6 @@ div.container-fluid.content-box(ng-controller="BlogCtrl as blogCtrl", ng-show="$
 					p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi efficitur interdum justo, et rhoncus nisi tincidunt ut. Aenean maximus porta leo, eget congue diam facilisis at. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse magna diam, dictum ut nibh id, elementum porttitor ligula. Fusce in vehicula tortor. Nulla semper feugiat vulputate. Vivamus posuere accumsan tincidunt. Ut eu nunc purus.
 					h4 Tags:&nbsp;
 						span(ng-repeat="tag in blogEntry.tags")
-							a.tag(ng-click="blogCtrl.blogFilterCondition = tag") {{ tag }}
+							a.tag(ui-sref='blog',ng-click="blogCtrl.blogFilterCondition = tag") {{ tag }}
 							span(ng-if="!$last") ,&nbsp;
 				hr(ng-if="!$last")

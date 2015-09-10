@@ -22,8 +22,9 @@ config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRou
 	.otherwise('/welcome');
 }])
 
-.controller('AppCtrl', ['$scope', '$state', 'isLoggedIn', function($scope, _$state_, isLoggedIn) {
+.controller('AppCtrl', ['$scope', '$state', '$stateParams', 'isLoggedIn', function($scope, _$state_, _$stateParams_, isLoggedIn) {
   $scope.$state = _$state_;
+  $scope.$stateParams = _$stateParams_;
   isLoggedIn().then(function(res) {
     $scope.isLoggedIn = res.data;
   }, function(res) {
