@@ -9,12 +9,12 @@ angular.module('blog', ['ui.router'])
     controller: 'BlogCtrl'
   })
   .state('blog.entry',	{
-  	url: '/blog/:entry',
-  	controller: 'BlogEntryCtrl'
+  	url: '/:entry',
+  	controller: 'BlogCtrl'
   });
 }])
 
-.controller('BlogCtrl', [function() {
+.controller('BlogCtrl', ['$scope', function($scope) {
   var self = this;
   var tzString = "America/New_York";
 
@@ -139,6 +139,7 @@ angular.module('blog', ['ui.router'])
   self.tagSizes = tagSizes;
   self.yearMapping = yearMapping;
   self.yearExpansion = yearExpansion;
+  self.activeEntry;
   self.getFormattedDate = function(entry)
   {
     return moment.tz(entry.date, tzString).format("MMMM D, YYYY");
@@ -188,10 +189,37 @@ angular.module('blog', ['ui.router'])
   {
     return (new Date(year, day, month)).getTime();
   };
-}])
+  self.tagIsString = function()
+  {
+    return (typeof self.blogFilterCondition === 'string') && self.blogFilterCondition !== '';
+  }
+  self.tagIsNumber = function()
+  {
+    return (typeof self.blogFilterCondition === 'number');
+  }
+  self.tagToDateString = function() {
+    return ((typeof self.blogFilterCondition === 'number') ? moment.tz(self.blogFilterCondition, tzString).format("MMMM YYYY") : '');
+  }
 
-.controller('BlogEntryCtrl', [function() {
+  self.getFromSref = function (entry)  {
+    return self.blogEntries.filter(function(obj)
+    {
+      return obj.date === entry;
+    })[0];
 
+  };
+
+  $scope.$watch('$stateParams.entry', function(val) {
+    if (val == undefined)
+    {
+      self.activeEntry = '';
+    }
+    else
+    {
+      var newEntry = self.getFromSref(val);
+      self.activeEntry = newEntry;
+    }
+  });
 }])
 
 .filter('blogFilter', [function()  {
@@ -203,7 +231,6 @@ angular.module('blog', ['ui.router'])
     }
     else if (typeof condition === 'string')
     {
-      console.log("GOT A TAG OF ", condition);
       items.forEach (function(item)
       {
         if (item.tags.indexOf(condition) >= 0)

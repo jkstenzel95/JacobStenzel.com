@@ -9,12 +9,13 @@ angular.module('projects', ['ui.router'])
     controller: 'ProjectsCtrl'
   })
   .state('projects.project',	{
-  	url: '/projects/:project',
-  	controller: 'ProjectCtrl'
+  	url: '/:project',
+  	controller: 'ProjectsCtrl'
   });
 }])
 
 .controller('ProjectsCtrl', ['$scope', function($scope) {
+	var self = this;
 	var project1 = {
 		name: 'The Insomniac',
 		placecard: 'cube-18.jpg',
@@ -33,11 +34,29 @@ angular.module('projects', ['ui.router'])
 	var project4 =	{
 		name: 'Protein Cavity Finder',
 		placecard: 'cube-13.jpg',
-		sref: 'protein-cavity-finder'
+		sref: 'Protein-Cavity-Finder'
 	}
-	$scope.projectItems = [project1, project2, project3, project4];
+	self.activeProject = '';
+	self.projectItems = [project1, project2, project3, project4];
+
+	self.getFromSref = function (sref)	{
+		return self.projectItems.filter(function(obj)
+		{
+			return obj.sref === sref;
+		})[0];
+
+	};
+
+	$scope.$watch('$stateParams.project', function(val)	{
+		if (val == undefined)
+		{
+			self.activeProject = '';
+		}
+		else
+		{
+			var newProject = self.getFromSref(val);
+			self.activeProject = newProject;
+		}
+	});
+
 }])
-
-.controller('ProjectCtrl', [function()	{
-
-}]);

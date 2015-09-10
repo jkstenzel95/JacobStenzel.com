@@ -1,4 +1,4 @@
-div.container-fluid.content-box-projects(ng-controller="MusicCtrl",ng-show="$state.is('music')")
+div.container-fluid.content-box-projects(ng-show="$state.is('music')")
 	div.col-xs-12
 		h1 Compositions
 	div.row
@@ -7,9 +7,9 @@ div.container-fluid.content-box-projects(ng-controller="MusicCtrl",ng-show="$sta
 				span.input-group-addon(id="basic-addon1") 
 					span.glyphicon.glyphicon-search(aria-hidden="true")
 				input.form-control(type="text",placeholder="Search",aria-describedby="basic-addon1",ng-model="musicSearchParam")
-	div.col-sm-4.project-box-wrapper-1(ng-repeat="pieceItem in pieceItems | filter:{name: musicSearchParam}")
+	div.col-sm-4.project-box-wrapper-1(ng-repeat="pieceItem in musicCtrl.pieceItems | filter:{name: musicSearchParam}")
 		div.project-box-wrapper-2
 			div.piece-box-wrapper-3
-				a.piece-box-link(href="{{ 'music/' + pieceItem.sref }}")
+				a.piece-box-link(ui-sref="music.piece({piece: pieceItem.sref})")
 					div.piece-box
 						h2 {{ pieceItem.name }}
