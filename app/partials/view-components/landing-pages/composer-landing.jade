@@ -10,4 +10,4 @@ div.container-fluid.content-box(ng-show="$state.is('composer-landing')")
 		div.clearfix
 			div.thumb-left
 				img(src="images/cube-19.jpg",width="auto",height="150px")
-			p {{ textcontent["composer-blurb"] }}
+			p(ng-repeat="paragraph in breakByNewLine(textcontent['composer-blurb'])") &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ paragraph }}

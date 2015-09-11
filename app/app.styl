@@ -29,6 +29,10 @@ $logo-font = "Trajan Pro Regular"
 $general-font = "Questrial"
 //$general-font = "Open Sans"
 
+$general-line-height = 1.25
+
+$general-font-size = 15px
+
 $transform-properties = "-webkit-transform, -moz-transform, -ms-transform, -o-transform, transform"
 
 // ----------------END USEFUL CONSTANTS----------------
@@ -101,8 +105,8 @@ vendor-transition-delay(delay)
 html, body
   height 100%
   width 100%
-  font-size 15px
-  line-height 125%
+  font-size $general-font-size
+  line-height $general-line-height
   font-family $general-font, sans-serif
   overflow-y scroll
   
@@ -794,6 +798,8 @@ iframe
 
 // Begin blog styling
 
+$blog-lines-to-show = 3;
+
 .blog-logo
   position absolute
   width 100%
@@ -873,9 +879,11 @@ iframe
     vendor-transition-property("right")
     vendor-transition-timing-function(ease-in-out)
     vendor-transition-duration(0.4s)
+    position absolute
     right -100%
     
   &.ng-hide-remove-active
+    position absolute
     right 0%
 
   &.ng-hide-add
@@ -884,9 +892,11 @@ iframe
     vendor-transition-property("right")
     vendor-transition-timing-function(ease-in-out)
     vendor-transition-duration(0.4s)
+    position absolute
     right 0%
     
   &.ng-hide-add-active
+    position absolute
     right -100%
     
 .blog-logo-wrapper
@@ -918,11 +928,11 @@ iframe
     font-weight 400
     color #37179D
     margin 0px
-    span.glyphicon
-      font-size 30px
-      cursor pointer
     span.tag-span
       color #608de6
+  span.glyphicon
+    font-size 30px
+    cursor pointer
       
   h2
     font-family $general-font
@@ -1042,6 +1052,26 @@ iframe
     vendor-transform("scaleY(0)");
     position relative
     max-height 0px
+
+.blog-preview-wrapper
+  display: block; /* Fallback for non-webkit */
+  display: -webkit-box;
+  height: $general-font-size*$general-line-height*$blog-lines-to-show; /* Fallback for non-webkit */
+  font-size: $font-size;
+  line-height: $line-height;
+  -webkit-line-clamp: $blog-lines-to-show;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  
+.blog-read-more
+  cursor pointer
+  &:hover
+    text-decoration underline
+    
+.blog-right-wrapper
+  width 100%
+  
       
 // End blog styling
 
