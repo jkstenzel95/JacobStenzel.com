@@ -31,6 +31,10 @@ config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRou
   }, function(res) {
     $scope.isLoggedIn = false;
   })
+  $scope.breakByNewLine = function (str)
+  {
+    return str.split('\n');
+  }
   $http.get('/constants/text-content.json').then(function(res)
   {
     $scope.textcontent = res.data;

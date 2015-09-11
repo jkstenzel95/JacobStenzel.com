@@ -31,7 +31,7 @@ body {
   height: 100%;
   width: 100%;
   font-size: 15px;
-  line-height: 125%;
+  line-height: 1.25;
   font-family: "Questrial", sans-serif;
   overflow-y: scroll;
 }
@@ -1090,9 +1090,11 @@ iframe {
   -moz-transition-duration: 0.4s;
   -o-transition-duration: 0.4s;
   transition-duration: 0.4s;
+  position: absolute;
   right: -100%;
 }
 .blog-right.ng-hide-remove-active {
+  position: absolute;
   right: 0%;
 }
 .blog-right.ng-hide-add {
@@ -1113,9 +1115,11 @@ iframe {
   -moz-transition-duration: 0.4s;
   -o-transition-duration: 0.4s;
   transition-duration: 0.4s;
+  position: absolute;
   right: 0%;
 }
 .blog-right.ng-hide-add-active {
+  position: absolute;
   right: -100%;
 }
 .blog-logo-wrapper {
@@ -1149,12 +1153,12 @@ iframe {
   color: #37179d;
   margin: 0px;
 }
-.blog-main h1 span.glyphicon {
-  font-size: 30px;
-  cursor: pointer;
-}
 .blog-main h1 span.tag-span {
   color: #608de6;
+}
+.blog-main span.glyphicon {
+  font-size: 30px;
+  cursor: pointer;
 }
 .blog-main h2 {
   font-family: "Questrial";
@@ -1373,6 +1377,26 @@ font
   transform: scaleY(0);
   position: relative;
   max-height: 0px;
+}
+.blog-preview-wrapper {
+  display: block; /* Fallback for non-webkit */
+  display: -webkit-box;
+  height: 56.25px; /* Fallback for non-webkit */
+  font-size: $font-size;
+  line-height: $line-height;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.blog-read-more {
+  cursor: pointer;
+}
+.blog-read-more:hover {
+  text-decoration: underline;
+}
+.blog-right-wrapper {
+  width: 100%;
 }
 .login-rack {
   position: fixed;

@@ -204,7 +204,7 @@ angular.module('blog', ['ui.router'])
   self.getFromSref = function (entry)  {
     return self.blogEntries.filter(function(obj)
     {
-      return obj.date === entry;
+      return obj.date === parseFloat(entry);
     })[0];
 
   };

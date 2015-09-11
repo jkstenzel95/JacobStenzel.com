@@ -8,7 +8,7 @@ div.container-fluid.content-box(ng-show="$state.is('blog') || $state.is('blog.en
 		div.blog-left-wrapper
 			div.blog-left(ng-show="$state.is('blog') || $state.is('blog.entry')")
 				div.clearfix
-					p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi efficitur interdum justo, et rhoncus nisi tincidunt ut. Aenean maximus porta leo, eget congue diam facilisis at. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse magna diam, dictum ut nibh id, elementum porttitor ligula. Fusce in vehicula tortor. Nulla semper feugiat vulputate. Vivamus posuere accumsan tincidunt. Ut eu nunc purus.
+					p {{ textcontent["blog-introduction"] }}
 				div.clearfix
 					hr
 					div.year-set(ng-repeat="(year, monthSet) in blogCtrl.yearMapping")
@@ -56,9 +56,28 @@ div.container-fluid.content-box(ng-show="$state.is('blog') || $state.is('blog.en
 									h2 {{ blogEntry.title }}
 								td
 									h3 {{ blogCtrl.getFormattedDate(blogEntry) }}
+						div.blog-preview-wrapper
+							img(ng-if="blogEntry.image !== undefined",ng-src="images/{{blogEntry.image}}")
+							p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi efficitur interdum justo, et rhoncus nisi tincidunt ut. Aenean maximus porta leo, eget congue diam facilisis at. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse magna diam, dictum ut nibh id, elementum porttitor ligula. Fusce in vehicula tortor. Nulla semper feugiat vulputate. Vivamus posuere accumsan tincidunt. Ut eu nunc purus.
+						h3.blog-read-more(ui-sref="blog.entry({entry: blogEntry.date})") Read More
+						h4 Tags:&nbsp;
+							span(ng-repeat="tag in blogEntry.tags")
+								a.tag(ui-sref='blog',ng-click="blogCtrl.blogFilterCondition = tag") {{ tag }}
+								span(ng-if="!$last") ,&nbsp;
+	div.blog-right.col-sm-7.col-sm-offset-1(ng-show="$state.is('blog.entry')")
+		div.blog-main
+			div.blog-entry-wrapper
+				div.blog-entry
+					div.clearfix
+						table.blog-entry-header
+							tr
+								td
+									h2 #[span.glyphicon.glyphicon-chevron-left(aria-hidden="true",ui-sref='blog',ng-click="blogCtrl.blogFilterCondition = ''")]{{ blogCtrl.activeEntry.title }}
+								td
+									h3 {{ blogCtrl.getFormattedDate(blogCtrl.activeEntry) }}
 						img(ng-if="blogEntry.image !== undefined",ng-src="images/{{blogEntry.image}}")
 						p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi efficitur interdum justo, et rhoncus nisi tincidunt ut. Aenean maximus porta leo, eget congue diam facilisis at. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse magna diam, dictum ut nibh id, elementum porttitor ligula. Fusce in vehicula tortor. Nulla semper feugiat vulputate. Vivamus posuere accumsan tincidunt. Ut eu nunc purus.
 						h4 Tags:&nbsp;
-							span(ng-repeat="tag in blogEntry.tags")
+							span(ng-repeat="tag in blogCtrl.activeEntry.tags")
 								a.tag(ui-sref='blog',ng-click="blogCtrl.blogFilterCondition = tag") {{ tag }}
 								span(ng-if="!$last") ,&nbsp;
