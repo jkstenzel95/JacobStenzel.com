@@ -22,7 +22,7 @@ config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRou
 	.otherwise('/welcome');
 }])
 
-.controller('SiteCtrl', ['$scope', '$http', '$state', '$stateParams', 'isLoggedIn', function($scope, $http, _$state_, _$stateParams_, isLoggedIn) {
+.controller('SiteCtrl', ['$scope', '$http', '$state', '$stateParams', '$window', '$rootScope', 'isLoggedIn', function($scope, $http, _$state_, _$stateParams_, $window, $rootScope, isLoggedIn) {
   $scope.$state = _$state_;
   $scope.$stateParams = _$stateParams_;
   $scope.textcontent = {};
@@ -42,6 +42,25 @@ config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRou
   function(res)
   {
     console.log("ERROR RETRIEVING TEXT CONTENT");
+  });
+
+  // THIS CODE HELPS THE bindToHeight DIRECTIVE BY TELLING ANGULAR TO REEVALUATE ON WINDOW RESIZE
+  angular.element($window).bind('resize', function () {
+    $scope.$apply();
+  });
+
+  // I reeeeeeeally really really don't like the magic number nature of this, but it'll have to do for now.
+  // TODO: Change these magic numbers to next digest cycle maybe?
+  $rootScope.$on('$stateChangeStart', 
+    function(event, toState, toParams, fromState, fromParams){ 
+      setTimeout(function() {
+        console.log("LESGO");
+        $scope.$apply();
+      }, 50); 
+      setTimeout(function() {
+        console.log("LESGO");
+        $scope.$apply();
+      }, 850);
   });
 }])
 

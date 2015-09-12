@@ -1,13 +1,19 @@
 div.container-fluid.content-box(ng-show="$state.is('programmer-landing')")
-	div.landing-left.wrapper-panel.col-sm-6(ng-show="$state.is('programmer-landing')")
-		div.video-panel
-			div.video-wrapper
-				iframe(src="https://www.youtube.com/embed/F39zXiwbk6E" frameborder="0" allowfullscreen)
-		div.video-caption
-			h1 TileTraveler
+	div.col-sm-6
+		div.column-spacer(bind-to-height="['height','#programmer-landing-left']")
+		div#programmer-landing-left.landing-left(ng-show="$state.is('programmer-landing')")
+			div.wrapper-panel
+				div.video-panel
+					div.video-wrapper
+						iframe(src="https://www.youtube.com/embed/F39zXiwbk6E" frameborder="0" allowfullscreen)
+				div.video-caption
+					h1 TileTraveler
 
-	div.landing-right.content-panel-1.col-sm-5.col-sm-offset-1(ng-show="$state.is('programmer-landing')")
-		div.clearfix
-			div.thumb-left
-				img(src="images/tiletraveler-01.jpg",width="auto",height="150px")
-			p(ng-repeat="paragraph in breakByNewLine(textcontent['programmer-blurb'])") &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ paragraph }}
+	div.col-sm-6
+		div.column-spacer(bind-to-height="['height','#programmer-landing-right']")
+		div#programmer-landing-right.landing-right(ng-show="$state.is('programmer-landing')")
+			div.content-panel-1
+				div.clearfix
+					div.thumb-left
+						img(src="images/tiletraveler-01.jpg",width="auto",height="150px")
+					p(ng-repeat="paragraph in breakByNewLine(textcontent['programmer-blurb'])") &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ paragraph }}

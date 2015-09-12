@@ -14,18 +14,18 @@ angular.module('blog', ['ui.router'])
   });
 }])
 
-.controller('BlogCtrl', ['$scope', '$state', function($scope, $state) {
+.controller('BlogCtrl', ['$scope', '$state', '$rootScope', function($scope, $state, $rootScope) {
   var self = this;
   var tzString = "America/New_York";
 
-	var entry1 = {
+	var entry2 = {
 		title: 'My Third Post',
 		date: new Date(2015, 3, 16).getTime(),
 		tags: ['gnomes', 'wibbly-wobbly'],
 		content: ''
 	};
 
-  var entry2 = {
+  var entry1 = {
     title: 'This Just In!',
     date: new Date().getTime(),
     tags: ['important', 'wibbly-wobbly', 'music', 'site'],
@@ -47,6 +47,7 @@ angular.module('blog', ['ui.router'])
   };
 
   var blogEntries = [entry1, entry2, entry3, entry4];
+  var blogFormData = [];
   var tagWeights = {};
   var tagSizes = {};
   var yearMapping = {};
@@ -55,6 +56,7 @@ angular.module('blog', ['ui.router'])
 
   for (var i = 0; i < blogEntries.length; i++)
   {
+    blogFormData.push({});
     var blogEntry = blogEntries[i];
     for (var j = 0; j < blogEntry.tags.length; j++)
     {
@@ -135,11 +137,31 @@ angular.module('blog', ['ui.router'])
 
   self.blogFilterCondition = '';
 	self.blogEntries = blogEntries;
+  self.blogMetaData = blogFormData;
   self.tagWeights = tagWeights;
   self.tagSizes = tagSizes;
   self.yearMapping = yearMapping;
   self.yearExpansion = yearExpansion;
   self.activeEntry = null;
+
+
+  $scope.$watch(self.blogFilterCondition)
+  {
+    $scope.$broadcast("blogFilterConditionChange");
+  }
+
+  // I reeeeeeeally really really don't like the magic number nature of this, but it'll have to do for now.
+  // TODO: Change these magic numbers to next digest cycle maybe?
+  $scope.$on('blogFilterConditionChange', function(){ 
+    setTimeout(function() {
+      console.log("Got a filter condition change");
+      $rootScope.$apply();
+    }, 50);
+    setTimeout(function() {
+      $rootScope.$apply();
+    }, 850);
+  });
+
   self.getFormattedDate = function(entry)
   {
     return entry === null || entry === undefined ? null : moment.tz(entry.date, tzString).format("MMMM D, YYYY");
