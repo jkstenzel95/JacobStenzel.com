@@ -340,7 +340,7 @@ hr
     
 // End logo descriptor
 
-// Begin navbar
+// Begin bootstrap ui
 
 .navbar-inverse
   position fixed
@@ -385,6 +385,11 @@ hr
   
 .navbar-collapse
   padding-left 0
+  
+#landingCarousel
+  position absolute
+  
+// End bootstrap ui
     
 // Begin content box style
 
@@ -452,6 +457,7 @@ hr
   box-shadow 1px 1px 1px 1px #608de6 inset
   color #f1f6fc
   padding 15px 20px 15px 20px
+  margin 10px
   
   hr
     border-color #37179D
@@ -465,30 +471,16 @@ hr
   box-shadow 1px 1px 1px 1px #A4BEF1 inset
   color #83a6ec
   padding 15px 20px 15px 20px
+  margin 10px
   
   hr
     border-color #37179D
     margin 10px 0px 10px 0px
     &.header-hr
-      border-width 2px
+      border-width 2px  
     
-.content-panel-admin
-  background-color #83a6ec
-  border-radius 15px
-  box-shadow 1px 1px 1px 1px #608de6 inset
-  color #f1f6fc
-  padding 15px 20px 15px 20px
-  
-    
-.about-panel
-  background-color #83a6ec
-  border-radius 15px
-  box-shadow 1px 1px 1px 1px #608de6 inset
-  color #f1f6fc
-  padding 15px 20px 15px 20px
-
-  hr
-    border-color: #333333
+.pop-panel
+  @extend .content-panel-1
     
   &.ng-hide-remove
     display block !important
@@ -514,47 +506,13 @@ hr
     
   &.ng-hide-add-active
     opacity 0
-    transform scale(0.5)
-    
-.connect-panel
-  background-color #83a6ec
-  border-radius 15px
-  box-shadow 1px 1px 1px 1px #608de6 inset
-  color #f1f6fc
-  padding 15px 20px 15px 20px
-
-  hr
-    border-color: #333333
-    
-  &.ng-hide-remove
-    display block !important
-    vendor-transition-delay(0s)
-    vendor-transition-property("opacity, transform")
-    vendor-transition-timing-function(ease-in-out)
-    vendor-transition-duration(0.4s)
-    opacity 0
-    transform scale(0.5)
-    
-  &.ng-hide-remove-active
-    opacity 1
-    transform scale(1)
-
-  &.ng-hide-add
-    display block !important
-    vendor-transition-delay(0s)
-    vendor-transition-property("opacity, transform")
-    vendor-transition-timing-function(ease-in-out)
-    vendor-transition-duration(0.4s)
-    opacity 1
-    transform scale(1)
-    
-  &.ng-hide-add-active
-    opacity 0
-    transform scale(0.5)
-  
+    transform scale(0.5)  
 
 .landing-right
-  right 0px   
+  position absolute
+  right 0px
+  top 0px 
+  width 100% 
   
   &.ng-hide-remove
     display block !important
@@ -582,7 +540,10 @@ hr
   padding 0px 0px 0px 0px
 
 .landing-left
+  position absolute
   left 0px
+  top 0px
+  width 100%
   
   &.ng-hide-remove
     display block !important
@@ -623,17 +584,18 @@ iframe
   box-shadow 1px 1px 1px 1px #608de6 inset
   padding 10px 10px 10px 10px
   color #f1f6fc
-    
-    iframe
-      background-color #000
+  margin 10px  
+  iframe
+    background-color #000
   
 .video-caption
+  margin 0px 10px 10px 10px
+  padding 5px 15px 10px 15px
   h1
     color #f1f6fc
-    padding 5px 15px 10px 15px
     font-size 30px
-    margin-top 0px
-    margin-bottom 0px
+    margin 0px
+
     
 // End misc div styling
     
@@ -1078,10 +1040,6 @@ $blog-lines-to-show = 3;
 .blog-right-wrapper
   width 100%
   
-.blog-right-spacer
-  width 100%
-  padding 15px 20px 15px 20px
-  
       
 // End blog styling
 
@@ -1185,6 +1143,16 @@ $blog-lines-to-show = 3;
 
 // End admin styling
 
+// Begin misc styling
+  
+.column-spacer
+  position relative
+  width 100%
+  padding 15px 20px 15px 20px
+  
+
+  
+// End misc styling
 
 
 //----------------END RULES-----------------

@@ -31,10 +31,10 @@ div.container-fluid.content-box(ng-show="$state.is('blog') || $state.is('blog.en
 		div.blog-right-wrapper
 			//
 				This watches the height of the blog preview panel, should it be active
-			div.blog-right-spacer(bind-to-height="['height','#blog-preview-panel']",ng-if="$state.is('blog')") 
+			div.column-spacer(bind-to-height="['height','#blog-preview-panel']",ng-if="$state.is('blog')") 
 			//
 				This watches the height of the blog entry panel, should it be active
-			div.blog-right-spacer(bind-to-height="['height','#blog-entry-panel']",ng-if="$state.is('blog.entry')")
+			div.column-spacer(bind-to-height="['height','#blog-entry-panel']",ng-if="$state.is('blog.entry')")
 			div#blog-preview-panel.blog-right(ng-show="$state.is('blog')")
 				div.blog-main
 					div.blog-main-header(ng-if="!blogCtrl.tagIsString() && !blogCtrl.tagIsNumber()")
@@ -55,7 +55,7 @@ div.container-fluid.content-box(ng-show="$state.is('blog') || $state.is('blog.en
 
 					hr.header-hr
 					div.blog-entry-wrapper
-						div.blog-entry(ng-repeat="blogEntry in blogCtrl.blogEntries | blogFilter: blogCtrl.blogFilterCondition | orderBy:'-date'")
+						div.blog-entry(ng-repeat="blogEntry in blogCtrl.blogEntries | blogFilter: blogCtrl.blogFilterCondition")
 							hr(ng-if="!$first")
 							div.clearfix
 								table.blog-entry-header
@@ -63,16 +63,15 @@ div.container-fluid.content-box(ng-show="$state.is('blog') || $state.is('blog.en
 										td
 											h2 {{ blogEntry.title }}
 										td
-
 											h3 {{ blogCtrl.getFormattedDate(blogEntry) }}
 								div.blog-preview-wrapper
 									img(ng-if="blogEntry.image !== undefined",ng-src="images/{{blogEntry.image}}")
 									p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi efficitur interdum justo, et rhoncus nisi tincidunt ut. Aenean maximus porta leo, eget congue diam facilisis at. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse magna diam, dictum ut nibh id, elementum porttitor ligula. Fusce in vehicula tortor. Nulla semper feugiat vulputate. Vivamus posuere accumsan tincidunt. Ut eu nunc purus.
 								p.blog-read-more(ui-sref="blog.entry({entry: blogEntry.date})") Read More...
 								h4 Tags:&nbsp;
-								span(ng-repeat="tag in blogEntry.tags")
-									a.tag(ui-sref='blog',ng-click="blogCtrl.blogFilterCondition = tag") {{ tag }}
-									span(ng-if="!$last") ,&nbsp;
+									span(ng-repeat="tag in blogEntry.tags")
+										a.tag(ui-sref='blog',ng-click="blogCtrl.blogFilterCondition = tag") {{ tag }}
+										span(ng-if="!$last") ,&nbsp;
 
 			div#blog-entry-panel.blog-right(ng-show="$state.is('blog.entry')")
 				div.blog-entry-wrapper
@@ -88,6 +87,6 @@ div.container-fluid.content-box(ng-show="$state.is('blog') || $state.is('blog.en
 								img(ng-if="blogCtrl.activeEntry.image !== undefined",ng-src="images/{{blogEntry.image}}")
 								p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi efficitur interdum justo, et rhoncus nisi tincidunt ut. Aenean maximus porta leo, eget congue diam facilisis at. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse magna diam, dictum ut nibh id, elementum porttitor ligula. Fusce in vehicula tortor. Nulla semper feugiat vulputate. Vivamus posuere accumsan tincidunt. Ut eu nunc purus.
 								h4 Tags:&nbsp;
-								span(ng-repeat="tag in blogCtrl.activeEntry.tags")
-									a.tag(ui-sref='blog',ng-click="blogCtrl.blogFilterCondition = tag") {{ tag }}
-									span(ng-if="!$last") ,&nbsp;
+									span(ng-repeat="tag in blogCtrl.activeEntry.tags")
+										a.tag(ui-sref='blog',ng-click="blogCtrl.blogFilterCondition = tag") {{ tag }}
+										span(ng-if="!$last") ,&nbsp;

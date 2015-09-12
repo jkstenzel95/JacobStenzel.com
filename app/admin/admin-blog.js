@@ -3,16 +3,17 @@
 angular.module('admin-blog', [])
 
 .controller('AdminBlogCtrl', ['$scope', function($scope) {
+  var self = this;
   var tzString = "America/New_York";
 
-	var entry1 = {
-		title: 'My Second Post',
-		date: new Date(2015, 3, 16).getTime(),
-		tags: [],
-		content: ''
-	};
-
   var entry2 = {
+    title: 'My Third Post',
+    date: new Date(2015, 3, 16).getTime(),
+    tags: ['gnomes', 'wibbly-wobbly'],
+    content: ''
+  };
+
+  var entry1 = {
     title: 'This Just In!',
     date: new Date().getTime(),
     tags: ['important', 'wibbly-wobbly', 'music', 'site'],
@@ -20,16 +21,16 @@ angular.module('admin-blog', [])
   };
 
   var entry3 = {
-    title: 'My Third Post',
+    title: 'My Second Post',
     date: new Date(2015, 0, 18).getTime(),
-    tags: [],
+    tags: ['important', 'wibbly-wobbly'],
     content: ''
   };
 
   var entry4 = {
     title: 'Hello World!',
     date: new Date(2014, 11, 27).getTime(),
-    tags: [],
+    tags: ['wibbly-wobbly', 'coding', 'site', 'important'],
     content: ''
   };
 
@@ -77,16 +78,61 @@ angular.module('admin-blog', [])
     }
   }
 
-	$scope.blogEntries = blogEntries;
-  $scope.tagWeights = tagWeights;
-  $scope.tagSizes = tagSizes;
-  $scope.yearMapping = yearMapping;
-  $scope.yearExpansion = yearExpansion;
-  $scope.getFormattedDate = function(entry)
-  {
-    return moment.tz(entry.date, tzString).format("MMMM D, YYYY");
+  for (var tag in tagWeights) {
+    if (tagWeights.hasOwnProperty(tag))
+    {
+      var tagWeight = tagWeights[tag];
+      if (tagWeight / tagCountMax >= 7/8)
+      {
+        tagSizes[tag] = '30px';
+      }
+      else if (tagWeight / tagCountMax >= 7/8)
+      {
+        tagSizes[tag] = '27.5px';
+      }
+      else if (tagWeight / tagCountMax >= 6/8)
+      {
+        tagSizes[tag] = '25px';
+      }
+      else if (tagWeight / tagCountMax >= 5/8)
+      {
+        tagSizes[tag] = '22.5px';
+      }
+      else if (tagWeight / tagCountMax >= 4/8)
+      {
+        tagSizes[tag] = '20px';
+      }
+      else if (tagWeight / tagCountMax >= 3/8)
+      {
+        tagSizes[tag] = '17.5px';
+      }
+      else if (tagWeight / tagCountMax >= 2/8)
+      {
+        tagSizes[tag] = '15px';
+      }
+      else if (tagWeight / tagCountMax >= 1/8)
+      {
+        tagSizes[tag] = '12.5px';
+      }
+      else
+      {
+        tagSizes[tag] = '10px';
+      }
+    }
   };
-  $scope.getPostCountFromYear = function(year)
+
+  self.blogFilterCondition = '';
+  self.blogEntries = blogEntries;
+  self.tagWeights = tagWeights;
+  self.tagSizes = tagSizes;
+  self.yearMapping = yearMapping;
+  self.yearExpansion = yearExpansion;
+  self.activeEntry = null;
+  self.getFormattedDate = function(entry)
+  {
+    return entry === null || entry === undefined ? null : moment.tz(entry.date, tzString).format("MMMM D, YYYY");
+  };
+  self.getPostCountFromYear = function(year)
   {
     var sum = 0;
     for (var month in yearMapping[year])
@@ -95,7 +141,7 @@ angular.module('admin-blog', [])
     }
     return sum;
   };
-  $scope.getMonthString = function(monthNum)
+  self.getMonthString = function(monthNum)
   {
     switch(monthNum)
     {
@@ -126,9 +172,70 @@ angular.module('admin-blog', [])
       default:
         return "";
     }
+  };
+  self.dateToMillis = function(year, day, month)
+  {
+    return (new Date(year, day, month)).getTime();
+  };
+  self.tagIsString = function()
+  {
+    return (typeof self.blogFilterCondition === 'string') && self.blogFilterCondition !== '';
   }
+  self.tagIsNumber = function()
+  {
+    return (typeof self.blogFilterCondition === 'number');
+  }
+  self.tagToDateString = function() {
+    return ((typeof self.blogFilterCondition === 'number') ? moment.tz(self.blogFilterCondition, tzString).format("MMMM YYYY") : '');
+  }
+
 }])
 
-.controller('BlogEntryCtrl', ['$scope', function($scope) {
+.filter('blogFilter', [function()  {
+  return function(items, condition) {
+    var filtered = [];
+    if (condition === '')
+    {
+      return items;
+    }
+    else if (typeof condition === 'string')
+    {
+      items.forEach (function(item)
+      {
+        if (item.tags.indexOf(condition) >= 0)
+        {
+          filtered.push(item);
+        }
+      });
+    }
+    else if (typeof condition === 'number')
+    {
+      var checkDate = new Date(condition);
+      var checkMonth = checkDate.getMonth();
+      var checkYear = 1900 + checkDate.getYear();
+      var startTime = (new Date(checkYear, checkMonth, 1)).getTime();
+      var endTime = (new Date(checkMonth == 11 ? checkYear + 1 : checkYear, (checkMonth + 1) % 12, 1)).getTime();
+      items.forEach (function(item)
+      {
+        if (item.date >= startTime && item.date < endTime)
+        {
+          filtered.push(item);
+        }
+      });
+    }
+    return filtered;
+  }
 
-}])
+  self.toTagString = function(arr)  {
+    var tagString = '';
+    for (var i = 0; i < arr.length; i++)
+    {
+      tagString += arr[i];
+      if (i !== arr.length - 1)
+      {
+        tagString += ' ';
+      }
+    }
+    return tadString;
+  }
+}]);

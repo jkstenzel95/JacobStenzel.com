@@ -387,6 +387,9 @@ hr {
 .navbar-collapse {
   padding-left: 0;
 }
+#landingCarousel {
+  position: absolute;
+}
 .content-box {
   position: absolute;
   top: 110px;
@@ -468,18 +471,22 @@ hr {
 .content-box-projects.ng-hide-add-active {
   z-index: 4;
 }
-.content-panel-1 {
+.content-panel-1,
+.pop-panel {
   background-color: #83a6ec;
   border-radius: 15px;
   box-shadow: 1px 1px 1px 1px #608de6 inset;
   color: #f1f6fc;
   padding: 15px 20px 15px 20px;
+  margin: 10px;
 }
-.content-panel-1 hr {
+.content-panel-1 hr,
+.pop-panel hr {
   border-color: #37179d;
   margin: 10px 0px 10px 0px;
 }
-.content-panel-1 hr.header-hr {
+.content-panel-1 hr.header-hr,
+.pop-panel hr.header-hr {
   border-width: 2px;
 }
 .content-panel-2,
@@ -492,6 +499,7 @@ hr {
   box-shadow: 1px 1px 1px 1px #a4bef1 inset;
   color: #83a6ec;
   padding: 15px 20px 15px 20px;
+  margin: 10px;
 }
 .content-panel-2 hr,
 .blog-logo hr,
@@ -508,24 +516,7 @@ hr {
 .blog-right hr.header-hr {
   border-width: 2px;
 }
-.content-panel-admin {
-  background-color: #83a6ec;
-  border-radius: 15px;
-  box-shadow: 1px 1px 1px 1px #608de6 inset;
-  color: #f1f6fc;
-  padding: 15px 20px 15px 20px;
-}
-.about-panel {
-  background-color: #83a6ec;
-  border-radius: 15px;
-  box-shadow: 1px 1px 1px 1px #608de6 inset;
-  color: #f1f6fc;
-  padding: 15px 20px 15px 20px;
-}
-.about-panel hr {
-  border-color: #333;
-}
-.about-panel.ng-hide-remove {
+.pop-panel.ng-hide-remove {
   display: block !important;
   -webkit-transition-delay: 0s;
   -moz-transition-delay: 0s;
@@ -546,11 +537,11 @@ hr {
   opacity: 0;
   transform: scale(0.5);
 }
-.about-panel.ng-hide-remove-active {
+.pop-panel.ng-hide-remove-active {
   opacity: 1;
   transform: scale(1);
 }
-.about-panel.ng-hide-add {
+.pop-panel.ng-hide-add {
   display: block !important;
   -webkit-transition-delay: 0s;
   -moz-transition-delay: 0s;
@@ -571,72 +562,15 @@ hr {
   opacity: 1;
   transform: scale(1);
 }
-.about-panel.ng-hide-add-active {
-  opacity: 0;
-  transform: scale(0.5);
-}
-.connect-panel {
-  background-color: #83a6ec;
-  border-radius: 15px;
-  box-shadow: 1px 1px 1px 1px #608de6 inset;
-  color: #f1f6fc;
-  padding: 15px 20px 15px 20px;
-}
-.connect-panel hr {
-  border-color: #333;
-}
-.connect-panel.ng-hide-remove {
-  display: block !important;
-  -webkit-transition-delay: 0s;
-  -moz-transition-delay: 0s;
-  -o-transition-delay: 0s;
-  transition-delay: 0s;
-  -webkit-transition-property: opacity, transform;
-  -moz-transition-property: opacity, transform;
-  -o-transition-property: opacity, transform;
-  transition-property: opacity, transform;
-  -webkit-transition-timing: ease-in-out;
-  -moz-transition-timing: ease-in-out;
-  -o-transition-timing: ease-in-out;
-  transition-timing: ease-in-out;
-  -webkit-transition-duration: 0.4s;
-  -moz-transition-duration: 0.4s;
-  -o-transition-duration: 0.4s;
-  transition-duration: 0.4s;
-  opacity: 0;
-  transform: scale(0.5);
-}
-.connect-panel.ng-hide-remove-active {
-  opacity: 1;
-  transform: scale(1);
-}
-.connect-panel.ng-hide-add {
-  display: block !important;
-  -webkit-transition-delay: 0s;
-  -moz-transition-delay: 0s;
-  -o-transition-delay: 0s;
-  transition-delay: 0s;
-  -webkit-transition-property: opacity, transform;
-  -moz-transition-property: opacity, transform;
-  -o-transition-property: opacity, transform;
-  transition-property: opacity, transform;
-  -webkit-transition-timing: ease-in-out;
-  -moz-transition-timing: ease-in-out;
-  -o-transition-timing: ease-in-out;
-  transition-timing: ease-in-out;
-  -webkit-transition-duration: 0.4s;
-  -moz-transition-duration: 0.4s;
-  -o-transition-duration: 0.4s;
-  transition-duration: 0.4s;
-  opacity: 1;
-  transform: scale(1);
-}
-.connect-panel.ng-hide-add-active {
+.pop-panel.ng-hide-add-active {
   opacity: 0;
   transform: scale(0.5);
 }
 .landing-right {
+  position: absolute;
   right: 0px;
+  top: 0px;
+  width: 100%;
 }
 .landing-right.ng-hide-remove {
   display: block !important;
@@ -688,7 +622,10 @@ hr {
   padding: 0px 0px 0px 0px;
 }
 .landing-left {
+  position: absolute;
   left: 0px;
+  top: 0px;
+  width: 100%;
 }
 .landing-left.ng-hide-remove {
   display: block !important;
@@ -753,16 +690,20 @@ iframe {
   border-radius: 15px;
   box-shadow: 1px 1px 1px 1px #608de6 inset;
   padding: 10px 10px 10px 10px;
+  color: #f1f6fc;
+  margin: 10px;
 }
-.video-panel color #f1f6fc iframe {
+.video-panel iframe {
   background-color: #000;
+}
+.video-caption {
+  margin: 0px 10px 10px 10px;
+  padding: 5px 15px 10px 15px;
 }
 .video-caption h1 {
   color: #f1f6fc;
-  padding: 5px 15px 10px 15px;
   font-size: 30px;
-  margin-top: 0px;
-  margin-bottom: 0px;
+  margin: 0px;
 }
 .thumb img,
 .thumb-left img,
@@ -1406,10 +1347,6 @@ font
 .blog-right-wrapper {
   width: 100%;
 }
-.blog-right-spacer {
-  width: 100%;
-  padding: 15px 20px 15px 20px;
-}
 .login-rack {
   position: fixed;
   right: 0;
@@ -1558,4 +1495,9 @@ font
 .admin-landing h1 {
   margin-top: 0;
   margin-bottom: 0;
+}
+.column-spacer {
+  position: relative;
+  width: 100%;
+  padding: 15px 20px 15px 20px;
 }
