@@ -1072,16 +1072,22 @@ iframe {
 .blog-left.ng-hide-add-active {
   left: -200%;
 }
+.blog-right {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
 .blog-right.ng-hide-remove {
   display: block !important;
   -webkit-transition-delay: 0.4s;
   -moz-transition-delay: 0.4s;
   -o-transition-delay: 0.4s;
   transition-delay: 0.4s;
-  -webkit-transition-property: right;
-  -moz-transition-property: right;
-  -o-transition-property: right;
-  transition-property: right;
+  -webkit-transition-property: left;
+  -moz-transition-property: left;
+  -o-transition-property: left;
+  transition-property: left;
   -webkit-transition-timing: ease-in-out;
   -moz-transition-timing: ease-in-out;
   -o-transition-timing: ease-in-out;
@@ -1091,11 +1097,11 @@ iframe {
   -o-transition-duration: 0.4s;
   transition-duration: 0.4s;
   position: absolute;
-  right: -100%;
+  left: 150%;
 }
 .blog-right.ng-hide-remove-active {
   position: absolute;
-  right: 0%;
+  left: 0%;
 }
 .blog-right.ng-hide-add {
   display: block !important;
@@ -1103,10 +1109,10 @@ iframe {
   -moz-transition-delay: 0s;
   -o-transition-delay: 0s;
   transition-delay: 0s;
-  -webkit-transition-property: right;
-  -moz-transition-property: right;
-  -o-transition-property: right;
-  transition-property: right;
+  -webkit-transition-property: left;
+  -moz-transition-property: left;
+  -o-transition-property: left;
+  transition-property: left;
   -webkit-transition-timing: ease-in-out;
   -moz-transition-timing: ease-in-out;
   -o-transition-timing: ease-in-out;
@@ -1116,11 +1122,11 @@ iframe {
   -o-transition-duration: 0.4s;
   transition-duration: 0.4s;
   position: absolute;
-  right: 0%;
+  left: 0%;
 }
 .blog-right.ng-hide-add-active {
   position: absolute;
-  right: -100%;
+  left: 150%;
 }
 .blog-logo-wrapper {
   position: relative;
@@ -1167,7 +1173,8 @@ iframe {
   color: #608de6;
   margin: 5px 0px 15px 0px;
 }
-.blog-main h3 {
+.blog-main h3,
+.blog-read-more {
 font
   -family: "Questrial";
   font-size: 15px;
@@ -1391,12 +1398,17 @@ font
 }
 .blog-read-more {
   cursor: pointer;
+  margin-bottom: 5px;
 }
 .blog-read-more:hover {
   text-decoration: underline;
 }
 .blog-right-wrapper {
   width: 100%;
+}
+.blog-right-spacer {
+  width: 100%;
+  padding: 15px 20px 15px 20px;
 }
 .login-rack {
   position: fixed;
