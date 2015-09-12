@@ -30,17 +30,40 @@ config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRou
     $scope.isLoggedIn = res.data;
   }, function(res) {
     $scope.isLoggedIn = false;
-  })
+  });
   $scope.breakByNewLine = function (str)
   {
-    return str.split('\n');
-  }
+    return str === undefined ? [] : str.split('\n');
+  };
   $http.get('/constants/text-content.json').then(function(res)
   {
     $scope.textcontent = res.data;
   },
-  function(red)
+  function(res)
   {
     console.log("ERROR RETRIEVING TEXT CONTENT");
-  })
+  });
 }])
+
+// Borrowed from post by 'Chris' on StackOverflow
+.directive('bindToHeight', function ($window) {
+
+    return {
+        restrict: 'A',
+
+        link: function (scope, elem, attrs) {
+            var attributes = scope.$eval(attrs['bindToHeight']);
+            var targetElem = angular.element(document.querySelector(attributes[1]));
+
+            // Watch for changes
+            scope.$watch(function () {
+                return targetElem.height();
+            },
+            function (newValue, oldValue) {
+                if (newValue != oldValue) {
+                    elem.css(attributes[0], newValue);
+                }
+            });
+        }
+    };
+});

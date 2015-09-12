@@ -869,35 +869,39 @@ $blog-lines-to-show = 3;
     
   &.ng-hide-add-active
     left -200%
-  
+
 .blog-right
   @extend .content-panel-2
+  position absolute
+  top 0
+  left 0
+  width 100%
   
   &.ng-hide-remove
     display block !important
     vendor-transition-delay(0.4s)
-    vendor-transition-property("right")
+    vendor-transition-property("left")
     vendor-transition-timing-function(ease-in-out)
     vendor-transition-duration(0.4s)
     position absolute
-    right -100%
+    left 150%
     
   &.ng-hide-remove-active
     position absolute
-    right 0%
+    left 0%
 
   &.ng-hide-add
     display block !important
     vendor-transition-delay(0s)
-    vendor-transition-property("right")
+    vendor-transition-property("left")
     vendor-transition-timing-function(ease-in-out)
     vendor-transition-duration(0.4s)
     position absolute
-    right 0%
+    left 0%
     
   &.ng-hide-add-active
     position absolute
-    right -100%
+    left 150%
     
 .blog-logo-wrapper
   position relative
@@ -1065,12 +1069,18 @@ $blog-lines-to-show = 3;
   text-overflow: ellipsis;
   
 .blog-read-more
+  @extend .blog-main h3
   cursor pointer
+  margin-bottom 5px
   &:hover
     text-decoration underline
     
 .blog-right-wrapper
   width 100%
+  
+.blog-right-spacer
+  width 100%
+  padding 15px 20px 15px 20px
   
       
 // End blog styling

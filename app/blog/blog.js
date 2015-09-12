@@ -14,7 +14,7 @@ angular.module('blog', ['ui.router'])
   });
 }])
 
-.controller('BlogCtrl', ['$scope', function($scope) {
+.controller('BlogCtrl', ['$scope', '$state', function($scope, $state) {
   var self = this;
   var tzString = "America/New_York";
 
@@ -139,10 +139,10 @@ angular.module('blog', ['ui.router'])
   self.tagSizes = tagSizes;
   self.yearMapping = yearMapping;
   self.yearExpansion = yearExpansion;
-  self.activeEntry;
+  self.activeEntry = null;
   self.getFormattedDate = function(entry)
   {
-    return moment.tz(entry.date, tzString).format("MMMM D, YYYY");
+    return entry === null || entry === undefined ? null : moment.tz(entry.date, tzString).format("MMMM D, YYYY");
   };
   self.getPostCountFromYear = function(year)
   {
@@ -202,24 +202,29 @@ angular.module('blog', ['ui.router'])
   }
 
   self.getFromSref = function (entry)  {
-    return self.blogEntries.filter(function(obj)
+    var theEntry = self.blogEntries.filter(function(obj)
     {
       return obj.date === parseFloat(entry);
-    })[0];
-
+    });
+    return ((theEntry[0] === null || theEntry[0] === undefined) ? null : theEntry[0]);
   };
-
+  
   $scope.$watch('$stateParams.entry', function(val) {
     if (val == undefined)
     {
-      self.activeEntry = '';
+      self.activeEntry = null;
     }
     else
     {
       var newEntry = self.getFromSref(val);
       self.activeEntry = newEntry;
+      if (newEntry == null)
+      {
+        $state.go('blog');
+      }
     }
   });
+
 }])
 
 .filter('blogFilter', [function()  {
@@ -256,4 +261,4 @@ angular.module('blog', ['ui.router'])
     }
     return filtered;
   }
-}])
+}]);
