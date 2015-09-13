@@ -49,11 +49,7 @@ angular.module('music', ['ui.router'])
 
 	// Watching for a route change so I can search it up based on its sref and set pieceItems accordingly
 	$scope.$watch('$stateParams.piece', function(val)	{
-		if (val == undefined)
-		{
-			self.activePiece = '';
-		}
-		else
+		if (val != null)
 		{
 			var newPiece = self.getFromSref(val);
 			if (newPiece.video !== undefined) {

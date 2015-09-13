@@ -49,19 +49,19 @@ config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRou
     $scope.$apply();
   });
 
-  // I reeeeeeeally really really don't like the magic number nature of this, but it'll have to do for now.
-  // TODO: Change these magic numbers to next digest cycle maybe?
-  $rootScope.$on('$stateChangeStart', 
-    function(event, toState, toParams, fromState, fromParams){ 
+ // I reeeeeeeally really really don't like the magic number nature of this, but it'll have to do for now.
+ // TODO: Change these magic numbers to next digest cycle maybe?
+  var applyTwice = function(){ 
       setTimeout(function() {
-        console.log("LESGO");
         $scope.$apply();
       }, 50); 
       setTimeout(function() {
-        console.log("LESGO");
         $scope.$apply();
       }, 850);
-  });
+  }
+ 
+  $scope.$on('absoluteSizeChange', applyTwice);
+  $scope.$on('$stateChangeStart', applyTwice);
 }])
 
 // Borrowed from post by 'Chris' on StackOverflow

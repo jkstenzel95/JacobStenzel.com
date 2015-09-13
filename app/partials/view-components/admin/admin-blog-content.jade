@@ -1,71 +1,100 @@
-div.container-fluid.content-box(ng-controller="AdminBlogCtrl as blogCtrl")
-	div.col-sm-3
-		div.blog-logo-wrapper
-			div.blog-logo
-				h1 Jacob Stenzel
-			div.blog-logo-placeholder
-				h1 Jacob Stenzel
-		div.blog-left-wrapper
-			div.blog-left
-				div.clearfix
-					p {{ textcontent["blog-introduction"] }}
-				div.clearfix
-					hr
-					div.year-set(ng-repeat="(year, monthSet) in blogCtrl.yearMapping")
-						div.year-selector(ng-click="blogCtrl.yearExpansion[year] = !blogCtrl.yearExpansion[year]") 
-							span.glyphicon.glyphicon-menu-right(aria-hidden="true",ng-if="!blogCtrl.yearExpansion[year]")
-							span.glyphicon.glyphicon-menu-down(aria-hidden="true",ng-if="blogCtrl.yearExpansion[year]")
-							span {{ year }} ({{ blogCtrl.getPostCountFromYear(year) }})
-						div.month-selector(ng-repeat="(month, count) in monthSet",ui-sref='blog',ng-show="blogCtrl.yearExpansion[year]",ng-click="blogCtrl.blogFilterCondition = blogCtrl.dateToMillis(year, month, 1)")
-							span.glyphicon.glyphicon-chevron-right(aria-hidden="true")
-							span {{ blogCtrl.getMonthString(month) }} ({{ count }})
-				div.clearfix
-					hr
-					div.tag-cloud
-						p.tag(ng-repeat="(tag, tagSize) in blogCtrl.tagSizes",ui-sref='blog',ng-style="{'font-size': tagSize}",ng-click="blogCtrl.blogFilterCondition = tag") {{ tag }}
-							span.tag-spacer(ng-if="!$last") &nbsp;
-						
+div.container-fluid.content-box
+	div.col-md-4.col-sm-5
+		div.relative
+			div.column-spacer(bind-to-height="['height','#blog-logo']")
+			div#blog-logo.blog-logo
+				div.content-panel-2
+					h1 Jacob Stenzel
+		div.relative
+			div.column-spacer(bind-to-height="['height','#blog-left']")
+			div#blog-left.blog-left
+				div.content-panel-2
+					div.clearfix
+						p {{ textcontent["blog-introduction"] }}
+					div.clearfix
+						hr
+						div.year-set(ng-repeat="(year, monthSet) in blogCtrl.yearMapping")
+							div.year-selector(ng-click="blogCtrl.yearExpansion[year] = !blogCtrl.yearExpansion[year]") 
+								span.glyphicon.glyphicon-menu-right(aria-hidden="true",ng-if="!blogCtrl.yearExpansion[year]")
+								span.glyphicon.glyphicon-menu-down(aria-hidden="true",ng-if="blogCtrl.yearExpansion[year]")
+								span {{ year }} ({{ blogCtrl.getPostCountFromYear(year) }})
+							div.month-selector(ng-repeat="(month, count) in monthSet",ui-sref='blog',ng-show="blogCtrl.yearExpansion[year]",ng-click="blogCtrl.blogFilterCondition = blogCtrl.dateToMillis(year, month, 1)")
+								span.glyphicon.glyphicon-chevron-right(aria-hidden="true")
+								span {{ blogCtrl.getMonthString(month) }} ({{ count }})
+					div.clearfix
+						hr
+						div.tag-cloud
+							p.tag(ng-repeat="(tag, tagSize) in blogCtrl.tagSizes",ui-sref='blog',ng-style="{'font-size': tagSize}",ng-click="blogCtrl.blogFilterCondition = tag") {{ tag }}
+								span.tag-spacer(ng-if="!$last") &nbsp;
+							
 
 
-	div.col-sm-7.col-sm-offset-1
-		div.blog-right-wrapper
-			//
-				This watches the height of the blog preview panel
+	div.col-sm-7.col-md-offset-1
+		div.relative
 			div.column-spacer(bind-to-height="['height','#blog-preview-panel']") 
 			div#blog-preview-panel.blog-right
-				div.blog-main
-					div.blog-main-header(ng-if="!blogCtrl.tagIsString() && !blogCtrl.tagIsNumber()")
-						h1 Blog
-					div.blog-main-header(ng-if="blogCtrl.tagIsString() || blogCtrl.tagIsNumber()")
-						div(ng-if="blogCtrl.tagIsString()")
-							h1 #[span.glyphicon.glyphicon-chevron-left(aria-hidden="true",ng-click="blogCtrl.blogFilterCondition = ''")]Filtered by Tag: #[span.tag-span '{{ blogCtrl.blogFilterCondition }}']
-						div(ng-if="blogCtrl.tagIsNumber()")
-							h1 #[span.glyphicon.glyphicon-chevron-left(aria-hidden="true",ng-click="blogCtrl.blogFilterCondition = ''")]Filtered by Date: #[span.tag-span {{ blogCtrl.tagToDateString() }}]
-					div.blog-main-header.placeholder(ng-if="!blogCtrl.tagIsString() && !blogCtrl.tagIsNumber()")
-						h1 Blog
-					div.blog-main-header.placeholder(ng-if="blogCtrl.tagIsString() || blogCtrl.tagIsNumber()")
-						div(ng-if="blogCtrl.tagIsString()")
-							h1 #[span.glyphicon.glyphicon-chevron-left(aria-hidden="true",ng-click="blogCtrl.blogFilterCondition = ''")]Filtered by Tag: #[span.tag-span '{{ blogCtrl.blogFilterCondition }}']
-						div(ng-if="blogCtrl.tagIsNumber()")
-							h1 #[span.glyphicon.glyphicon-chevron-left(aria-hidden="true",ng-click="blogCtrl.blogFilterCondition = ''")]Filtered by Date: #[span.tag-span {{ blogCtrl.tagToDateString() }}]
+				div.content-panel-2
+					div.blog-main
+						div.column-spacer(bind-to-height="['height','#blog-main-header-regular']",ng-show="!blogCtrl.tagIsString() && !blogCtrl.tagIsNumber()")
+						div#blog-main-header-regular.blog-main-header(ng-show="!blogCtrl.tagIsString() && !blogCtrl.tagIsNumber()")
+							h1 Blog
+						div.column-spacer(bind-to-height="['height','#blog-main-header-filter']",ng-show="blogCtrl.tagIsString() || blogCtrl.tagIsNumber()")
+						div#blog-main-header-filter.blog-main-header(ng-show="blogCtrl.tagIsString() || blogCtrl.tagIsNumber()")
+							div(ng-if="blogCtrl.tagIsString()")
+								h1 #[span.glyphicon.glyphicon-chevron-left(aria-hidden="true",ng-click="blogCtrl.blogFilterCondition = ''")]Filtered by Tag: #[span.tag-span '{{ blogCtrl.blogFilterCondition }}']
+							div(ng-if="blogCtrl.tagIsNumber()")
+								h1 #[span.glyphicon.glyphicon-chevron-left(aria-hidden="true",ng-click="blogCtrl.blogFilterCondition = ''")]Filtered by Date: #[span.tag-span {{ blogCtrl.tagToDateString() }}]
 
-
-					hr.header-hr
-					div.blog-entry-wrapper
-						div.blog-entry(ng-repeat="blogEntry in blogCtrl.blogEntries track by $index | blogFilter: blogCtrl.blogFilterCondition")
-							hr(ng-if="!$first")
-							div.clearfix
-								div.form-group
-								table.blog-entry-header
-									tr
-										td
-											div.form-group
-												input.form-control.admin-blog-title(type="text", name='title', class="form-control", placeholder="Title", ng-init="blogCtrl.blogFormData[$index].title = blogCtrl.blogEntries[$index].title", ng-model="blogCtrl.blogFormData[$index].title")
-										td
-											h3 {{ blogCtrl.getFormattedDate(blogEntry) }}
-								div.blog-preview-wrapper
-									//
-										img(ng-if="blogEntry.image !== undefined",ng-src="images/{{blogEntry.image}}")
-									input.form-control.admin-blog-content(type="text", name='title', class="form-control", placeholder="Content", ng-init="blogCtrl.blogFormData[$index].content = blogCtrl.blogEntries[$index].content", ng-model="blogCtrl.blogFormData[$index].content")								p.blog-read-more(ui-sref="blog.entry({entry: blogEntry.date})") Read More...
-								h4 Tags:&nbsp;
-									span.admin-blog-tags(ng-init="blogCtrl.blogFormData[$index].tagString = blogCtrl.toTagString(blogCtrl.blogEntries[$index].tags)", ng-model="blogCtrl.blogFormData[$index].tagString")
+						hr.header-hr
+						div.blog-entry-wrapper
+							div.blog-entry(ng-if="!blogCtrl.tagIsString() && !blogCtrl.tagIsNumber()")
+								form(ng-submit="blogCtrl.submitEntry($index)")
+									div.clearfix
+										table.blog-entry-header
+											tr
+												td
+													div.form-group
+														input.form-control.admin-blog-title(type="text", name='title', placeholder="Title", ng-init="blogCtrl.blogFormData[$index].title = blogCtrl.blogEntries[$index].title", ng-model="blogCtrl.blogFormData[$index].title")
+												td
+													h3 {{ blogCtrl.getFormattedDate(blogEntry) }}
+										div
+											//
+												img(ng-if="blogEntry.image !== undefined",ng-src="images/{{blogEntry.image}}")
+											textarea.form-control.admin-blog-content(type="text", name='content', placeholder="Content", rows=5, ng-init="blogCtrl.blogFormData[$index].content = blogCtrl.blogEntries[$index].content", ng-model="blogCtrl.blogFormData[$index].content")
+										table.admin-tag-table
+											tr
+												td
+													h4 Tags:&nbsp;
+												td
+													input.form-control-admin-blog-tags(type="text", name='title', placeholder="Tags", ng-init="blogCtrl.blogFormData[$index].tagString = blogCtrl.toTagString(blogCtrl.blogEntries[$index].tags)", ng-model="blogCtrl.blogFormData[$index].tagString")
+										table.admin-submit-reset-table
+											tr
+												td
+													button.btn.btn-default.admin-blog-submit(type="submit", value="Submit") Submit
+							div.blog-entry(ng-repeat="blogEntry in blogCtrl.blogEntries | blogFilter: blogCtrl.blogFilterCondition")
+								form(ng-submit="blogCtrl.updateEntry($index)")
+									hr
+									div.clearfix
+										table.blog-entry-header
+											tr
+												td
+													div.form-group
+														input.form-control.admin-blog-title(type="text", name='title', placeholder="Title", ng-init="blogCtrl.blogFormData[$index].title = blogCtrl.blogEntries[$index].title", ng-model="blogCtrl.blogFormData[$index].title")
+												td
+													h3 {{ blogCtrl.getFormattedDate(blogEntry) }}
+										div
+											//
+												img(ng-if="blogEntry.image !== undefined",ng-src="images/{{blogEntry.image}}")
+											textarea.form-control.admin-blog-content(type="text", name='content', placeholder="Content", rows=5, ng-init="blogCtrl.blogFormData[$index].content = blogCtrl.blogEntries[$index].content", ng-model="blogCtrl.blogFormData[$index].content")
+										table.admin-tag-table
+											tr
+												td
+													h4 Tags:&nbsp;
+												td
+													input.form-control-admin-blog-tags(type="text", name='title', placeholder="Tags", ng-init="blogCtrl.blogFormData[$index].tagString = blogCtrl.toTagString(blogCtrl.blogEntries[$index].tags)", ng-model="blogCtrl.blogFormData[$index].tagString")
+										table.admin-submit-reset-table
+											tr
+												td
+													button.btn.btn-default.admin-blog-submit(type="submit", value="Submit") Update
+												td
+													button.btn.btn-default.admin-blog-reset(type="button", value="Reset", ng-click="blogCtrl.resetBlogForm($index)") Reset

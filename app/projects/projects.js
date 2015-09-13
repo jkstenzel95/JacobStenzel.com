@@ -48,11 +48,7 @@ angular.module('projects', ['ui.router'])
 	};
 
 	$scope.$watch('$stateParams.project', function(val)	{
-		if (val == undefined)
-		{
-			self.activeProject = '';
-		}
-		else
+		if (val != null)
 		{
 			var newProject = self.getFromSref(val);
 			self.activeProject = newProject;
