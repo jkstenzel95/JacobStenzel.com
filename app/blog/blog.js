@@ -144,22 +144,9 @@ angular.module('blog', ['ui.router'])
   self.yearExpansion = yearExpansion;
   self.activeEntry = null;
 
-
-  $scope.$watch(self.blogFilterCondition)
-  {
-    $scope.$broadcast("blogFilterConditionChange");
-  }
-
-  // I reeeeeeeally really really don't like the magic number nature of this, but it'll have to do for now.
-  // TODO: Change these magic numbers to next digest cycle maybe?
-  $scope.$on('blogFilterConditionChange', function(){ 
-    setTimeout(function() {
-      console.log("Got a filter condition change");
-      $rootScope.$apply();
-    }, 50);
-    setTimeout(function() {
-      $rootScope.$apply();
-    }, 850);
+  $scope.$watch('blogCtrl.blogFilterCondition', function()  {
+    console.log('Oops... I emitted.');
+    $scope.$emit("absoluteSizeChange");
   });
 
   self.getFormattedDate = function(entry)
@@ -232,11 +219,7 @@ angular.module('blog', ['ui.router'])
   };
   
   $scope.$watch('$stateParams.entry', function(val) {
-    if (val == undefined)
-    {
-      self.activeEntry = null;
-    }
-    else
+    if (val != null)
     {
       var newEntry = self.getFromSref(val);
       self.activeEntry = newEntry;

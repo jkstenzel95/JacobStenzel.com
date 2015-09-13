@@ -7,7 +7,7 @@ div.container-fluid.content-box-projects(ng-show="$state.is('projects')")
 				span.input-group-addon(id="basic-addon1") 
 					span.glyphicon.glyphicon-search(aria-hidden="true")
 				input.form-control(type="text",placeholder="Search",aria-describedby="basic-addon1",ng-model="projectSearchParam")
-	div.col-sm-4.project-box-wrapper-1(ng-repeat="projectItem in projectsCtrl.projectItems | filter:{name: projectSearchParam}")
+	div.col-md-4.col-sm-6.project-box-wrapper-1(ng-repeat="projectItem in projectsCtrl.projectItems | filter:{name: projectSearchParam}")
 		div.project-box-wrapper-2
 			div.project-box-wrapper-3
 				a.project-box-link(ui-sref="projects.project({project: projectItem.sref})")

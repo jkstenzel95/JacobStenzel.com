@@ -10,28 +10,28 @@ angular.module('admin-blog', [])
     title: 'My Third Post',
     date: new Date(2015, 3, 16).getTime(),
     tags: ['gnomes', 'wibbly-wobbly'],
-    content: ''
+    content: 'Just imagine... a bunch of little gnomes with pickaxes. This is how we teach financial literacy.'
   };
 
   var entry1 = {
     title: 'This Just In!',
     date: new Date().getTime(),
     tags: ['important', 'wibbly-wobbly', 'music', 'site'],
-    content: ''
+    content: 'Computer science is the bomb.com!'
   };
 
   var entry3 = {
     title: 'My Second Post',
     date: new Date(2015, 0, 18).getTime(),
     tags: ['important', 'wibbly-wobbly'],
-    content: ''
+    content: 'If a cow ever got the chance, he\'d eat you and everyone you care about'
   };
 
   var entry4 = {
     title: 'Hello World!',
     date: new Date(2014, 11, 27).getTime(),
     tags: ['wibbly-wobbly', 'coding', 'site', 'important'],
-    content: ''
+    content: 'Lauren Epson'
   };
 
   var blogEntries = [entry1, entry2, entry3, entry4];
@@ -128,6 +128,12 @@ angular.module('admin-blog', [])
   self.yearMapping = yearMapping;
   self.yearExpansion = yearExpansion;
   self.activeEntry = null;
+
+  $scope.$watch('blogCtrl.blogFilterCondition', function()  {
+    console.log('Oops... I emitted.');
+    $scope.$emit("absoluteSizeChange");
+  });
+
   self.getFormattedDate = function(entry)
   {
     return entry === null || entry === undefined ? null : moment.tz(entry.date, tzString).format("MMMM D, YYYY");
@@ -188,7 +194,27 @@ angular.module('admin-blog', [])
   self.tagToDateString = function() {
     return ((typeof self.blogFilterCondition === 'number') ? moment.tz(self.blogFilterCondition, tzString).format("MMMM YYYY") : '');
   }
-
+  self.toTagString = function(arr)  {
+    var tagString = '';
+    for (var i = 0; i < arr.length; i++)
+    {
+      tagString += arr[i];
+      if (i !== arr.length - 1)
+      {
+        tagString += ' ';
+      }
+    }
+    return tagString;
+  }
+  self.resetBlogForm = function(index)  {
+    self.blogFormData[index].title = self.blogEntries[index].title;
+    self.blogFormData[index].tagString = self.toTagString(self.blogEntries[index].tags);
+    self.blogFormData[index].content = self.blogEntries[index].content;
+  }
+  self.updateEntry = function(index)
+  {
+    console.log("Updated: \n", self.blogFormData[index]);
+  }
 }])
 
 .filter('blogFilter', [function()  {
@@ -224,18 +250,5 @@ angular.module('admin-blog', [])
       });
     }
     return filtered;
-  }
-
-  self.toTagString = function(arr)  {
-    var tagString = '';
-    for (var i = 0; i < arr.length; i++)
-    {
-      tagString += arr[i];
-      if (i !== arr.length - 1)
-      {
-        tagString += ' ';
-      }
-    }
-    return tadString;
   }
 }]);

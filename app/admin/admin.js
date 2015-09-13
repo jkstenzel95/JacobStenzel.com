@@ -6,7 +6,7 @@ angular.module('admin', [
   'admin-blog'
 ])
 
-.controller('AdminCtrl', ['$scope', '$http', function($scope, $http) {
+.controller('AdminCtrl', ['$scope', '$http', '$window', function($scope, $http, $window) {
   $scope.textcontent = {};
   $scope.breakByNewLine = function (str)
   {
@@ -20,6 +20,26 @@ angular.module('admin', [
   {
     console.log("ERROR RETRIEVING TEXT CONTENT");
   });
+  // THIS CODE HELPS THE bindToHeight DIRECTIVE BY TELLING ANGULAR TO REEVALUATE ON WINDOW RESIZE
+  angular.element($window).bind('resize', function () {
+    console.log("RESIZED");
+    $scope.$apply();
+  });
+
+ // I reeeeeeeally really really don't like the magic number nature of this, but it'll have to do for now.
+ // TODO: Change these magic numbers to next digest cycle maybe?
+  var applyTwice = function(){ 
+      setTimeout(function() {
+        console.log("APPLYING ONCE..");
+        $scope.$apply();
+      }, 50); 
+      setTimeout(function() {
+        console.log("APPLYING TWICE");
+        $scope.$apply();
+      }, 850);
+  };
+ 
+  $scope.$on('absoluteSizeChange', applyTwice);
 }])
 
 // Borrowed from post by 'Chris' on StackOverflow
@@ -37,7 +57,8 @@ angular.module('admin', [
                 return targetElem.height();
             },
             function (newValue, oldValue) {
-                if (newValue != oldValue) {
+                // I don't like this any more than you do.
+                if (/**newValue != oldValue**/ true) {
                     elem.css(attributes[0], newValue);
                 }
             });
