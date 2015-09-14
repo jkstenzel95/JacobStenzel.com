@@ -1,0 +1,28 @@
+div.container-fluid.content-box-subtle
+	div.col-md-offset-2.col-md-8
+		div.content-panel-1
+			div(ng-repeat="projectItem in projectCtrl.projectItems")
+				form(ng-submit="projectCtrl.updateProject()")
+					hr(ng-if="!$first")
+					div.clearfix
+						table.blog-entry-header
+							tr
+								td
+									div.form-group
+										input.form-control.admin-projects-name(type="text", name='name', placeholder="Title", ng-model="projectCtrl.projectFormData[\"_\"+projectItem.sref].title")
+								td
+									table
+										tr
+											td
+
+											td
+						div
+							textarea.form-control.admin-project-content(type="text", name='content', placeholder="Content", rows=5, ng-model="projectCtrl.projectFormData[\"_\"+projectItem.sref].content")
+						table.admin-submit-reset-table
+							tr
+								td
+									button.btn.btn-default.admin-project-submit(type="submit", value="Submit") Update
+								td
+									button.btn.btn-default.admin-project-reset(type="button", value="Reset", ng-click="blogCtrl.resetBlogForm(blogEntry.date)") Reset
+								td
+									button.btn.btn-default.admin-project-reset(type="button", value="Delete", ng-click="blogCtrl.deleteEntry(blogEntry.date)") Delete

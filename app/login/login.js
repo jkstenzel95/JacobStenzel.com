@@ -18,8 +18,9 @@ angular.module('login', ['ui.router'])
 			data: {'username': username, 'password': password} // pass in data as strings
 		}).then(function(res)	{
 			$window.location.href = '/admin';
-		}), function(res)	{
-			alert("Incorrect username/password! Try again... or don't.");
+		}, function(res)	{
+			console.log("nope");
+			$window.alert("Incorrect username/password! Try again... or don't.");
 		}
-	}
-}]);
+	)
+}}]);

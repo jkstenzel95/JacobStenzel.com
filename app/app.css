@@ -1513,7 +1513,7 @@ font
   width: 100%;
 }
 .admin-submit-reset-table td {
-  width: 50%;
+  width: 33.3%;
 }
 .column-spacer {
   z-index: -1;

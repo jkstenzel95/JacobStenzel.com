@@ -2,7 +2,7 @@
 
 angular.module('admin-blog', [])
 
-.controller('AdminBlogCtrl', ['$scope', function($scope) {
+.controller('AdminBlogCtrl', ['$scope', '$window', function($scope, $window) {
   var self = this;
   var tzString = "America/New_York";
 
@@ -34,12 +34,110 @@ angular.module('admin-blog', [])
     content: 'Lauren Epson'
   };
 
+    self.getFormattedDate = function(entry)
+  {
+    return entry === null || entry === undefined ? null : moment.tz(entry.date, tzString).format("MMMM D, YYYY");
+  };
+  self.getPostCountFromYear = function(year)
+  {
+    var sum = 0;
+    for (var month in yearMapping[year])
+    {
+      sum += yearMapping[year][month];
+    }
+    return sum;
+  };
+  self.getMonthString = function(monthNum)
+  {
+    switch(monthNum)
+    {
+      case '0':
+        return "January";
+      case '1':
+        return "Febuary";
+      case '2':
+        return "March";
+      case '3':
+        return "April";
+      case '4':
+        return "May";
+      case '5':
+        return "June";
+      case '6':
+        return "July";
+      case '7':
+        return "August";
+      case '8':
+        return "September";
+      case '9':
+        return "October";
+      case '10':
+        return "November";
+      case '11':
+        return "December";
+      default:
+        return "";
+    }
+  };
+  self.dateToMillis = function(year, day, month)
+  {
+    return (new Date(year, day, month)).getTime();
+  };
+  self.tagIsString = function()
+  {
+    return (typeof self.blogFilterCondition === 'string') && self.blogFilterCondition !== '';
+  }
+  self.tagIsNumber = function()
+  {
+    return (typeof self.blogFilterCondition === 'number');
+  }
+  self.tagToDateString = function() {
+    return ((typeof self.blogFilterCondition === 'number') ? moment.tz(self.blogFilterCondition, tzString).format("MMMM YYYY") : '');
+  }
+  self.toTagString = function(arr)  {
+    var tagString = '';
+    for (var i = 0; i < arr.length; i++)
+    {
+      tagString += arr[i];
+      if (i !== arr.length - 1)
+      {
+        tagString += ' ';
+      }
+    }
+    return tagString;
+  }
+  self.stringToTags = function(str)  {
+    var afterSplit = str.split(/[\s,]+/);
+    if (afterSplit.length == 1 && afterSplit[0] == "")
+      return []
+    else
+      return afterSplit;
+  }
+  self.getFromDate = function (date)  {
+    var theEntry = self.blogEntries.filter(function(obj)
+    {
+      return obj.date === parseFloat(date);
+    });
+    return ((theEntry[0] === null || theEntry[0] === undefined) ? null : theEntry[0]);
+  };
+
   var blogEntries = [entry1, entry2, entry3, entry4];
   var tagWeights = {};
   var tagSizes = {};
   var yearMapping = {};
   var yearExpansion = {};
   var tagCountMax = 0;
+  var blogFormData = [];
+
+  for (var i = 0; i < blogEntries.length; i++)
+  {
+    var blogEntry = blogEntries[i];
+    blogFormData["_" + blogEntry.date] = {};
+    blogFormData["_" + blogEntry.date].title = blogEntry.title;
+    blogFormData["_" + blogEntry.date].date = blogEntry.date;
+    blogFormData["_" + blogEntry.date].content = blogEntry.content;
+    blogFormData["_" + blogEntry.date].tagString = self.toTagString(blogEntry.tags);
+  }
 
   for (var i = 0; i < blogEntries.length; i++)
   {
@@ -128,92 +226,38 @@ angular.module('admin-blog', [])
   self.yearMapping = yearMapping;
   self.yearExpansion = yearExpansion;
   self.activeEntry = null;
+  self.blogFormData = blogFormData;
+  self.newEntry = {title: '', tagString: '', content: ''};
 
   $scope.$watch('blogCtrl.blogFilterCondition', function()  {
     console.log('Oops... I emitted.');
     $scope.$emit("absoluteSizeChange");
   });
 
-  self.getFormattedDate = function(entry)
+  self.resetBlogForm = function(date)  {
+    var modelEntry = self.getFromDate(date);
+    self.blogFormData["_" + date].title = modelEntry.title;
+    self.blogFormData["_" + date].tagString = self.toTagString(modelEntry.tags);
+    self.blogFormData["_" + date].content = modelEntry.content;
+  }
+  self.updateEntry = function(date)
   {
-    return entry === null || entry === undefined ? null : moment.tz(entry.date, tzString).format("MMMM D, YYYY");
-  };
-  self.getPostCountFromYear = function(year)
+    var entryFields = self.blogFormData["_"+date];
+    var updatedEntry = {title: entryFields.title, date: (new Date).getTime(), tags: self.stringToTags(entryFields.tagString), content: entryFields.content};
+    console.log("Updated: \n", updatedEntry);
+  }
+  self.deleteEntry = function(date)
   {
-    var sum = 0;
-    for (var month in yearMapping[year])
+    var delEntry = self.getFromDate(date);
+    if($window.confirm("Delete entry '" + delEntry.title + "'?"))
     {
-      sum += yearMapping[year][month];
+      console.log("Deleted: \n", delEntry);
     }
-    return sum;
-  };
-  self.getMonthString = function(monthNum)
-  {
-    switch(monthNum)
-    {
-      case '0':
-        return "January";
-      case '1':
-        return "Febuary";
-      case '2':
-        return "March";
-      case '3':
-        return "April";
-      case '4':
-        return "May";
-      case '5':
-        return "June";
-      case '6':
-        return "July";
-      case '7':
-        return "August";
-      case '8':
-        return "September";
-      case '9':
-        return "October";
-      case '10':
-        return "November";
-      case '11':
-        return "December";
-      default:
-        return "";
-    }
-  };
-  self.dateToMillis = function(year, day, month)
-  {
-    return (new Date(year, day, month)).getTime();
-  };
-  self.tagIsString = function()
-  {
-    return (typeof self.blogFilterCondition === 'string') && self.blogFilterCondition !== '';
   }
-  self.tagIsNumber = function()
-  {
-    return (typeof self.blogFilterCondition === 'number');
-  }
-  self.tagToDateString = function() {
-    return ((typeof self.blogFilterCondition === 'number') ? moment.tz(self.blogFilterCondition, tzString).format("MMMM YYYY") : '');
-  }
-  self.toTagString = function(arr)  {
-    var tagString = '';
-    for (var i = 0; i < arr.length; i++)
-    {
-      tagString += arr[i];
-      if (i !== arr.length - 1)
-      {
-        tagString += ' ';
-      }
-    }
-    return tagString;
-  }
-  self.resetBlogForm = function(index)  {
-    self.blogFormData[index].title = self.blogEntries[index].title;
-    self.blogFormData[index].tagString = self.toTagString(self.blogEntries[index].tags);
-    self.blogFormData[index].content = self.blogEntries[index].content;
-  }
-  self.updateEntry = function(index)
-  {
-    console.log("Updated: \n", self.blogFormData[index]);
+  self.submitEntry = function() {
+    var entryFields = self.newEntry;
+    var newEntry = {title: entryFields.title, date: (new Date).getTime(), tags: self.stringToTags(entryFields.tagString), content: entryFields.content};
+    console.log("Submitting: ", newEntry);
   }
 }])
 

@@ -18,36 +18,35 @@ angular.module('blog', ['ui.router'])
   var self = this;
   var tzString = "America/New_York";
 
-	var entry2 = {
-		title: 'My Third Post',
-		date: new Date(2015, 3, 16).getTime(),
-		tags: ['gnomes', 'wibbly-wobbly'],
-		content: ''
-	};
+  var entry2 = {
+    title: 'My Third Post',
+    date: new Date(2015, 3, 16).getTime(),
+    tags: ['gnomes', 'wibbly-wobbly'],
+    content: 'Just imagine... a bunch of little gnomes with pickaxes. This is how we teach financial literacy.'
+  };
 
   var entry1 = {
     title: 'This Just In!',
     date: new Date().getTime(),
     tags: ['important', 'wibbly-wobbly', 'music', 'site'],
-    content: ''
+    content: 'Computer science is the bomb.com!'
   };
 
   var entry3 = {
     title: 'My Second Post',
     date: new Date(2015, 0, 18).getTime(),
     tags: ['important', 'wibbly-wobbly'],
-    content: ''
+    content: 'If a cow ever got the chance, he\'d eat you and everyone you care about'
   };
 
   var entry4 = {
     title: 'Hello World!',
     date: new Date(2014, 11, 27).getTime(),
     tags: ['wibbly-wobbly', 'coding', 'site', 'important'],
-    content: ''
+    content: 'Lauren Epson'
   };
 
   var blogEntries = [entry1, entry2, entry3, entry4];
-  var blogFormData = [];
   var tagWeights = {};
   var tagSizes = {};
   var yearMapping = {};
@@ -56,7 +55,6 @@ angular.module('blog', ['ui.router'])
 
   for (var i = 0; i < blogEntries.length; i++)
   {
-    blogFormData.push({});
     var blogEntry = blogEntries[i];
     for (var j = 0; j < blogEntry.tags.length; j++)
     {
@@ -137,7 +135,7 @@ angular.module('blog', ['ui.router'])
 
   self.blogFilterCondition = '';
 	self.blogEntries = blogEntries;
-  self.blogMetaData = blogFormData;
+  self.blogFormData = [];
   self.tagWeights = tagWeights;
   self.tagSizes = tagSizes;
   self.yearMapping = yearMapping;
@@ -210,10 +208,10 @@ angular.module('blog', ['ui.router'])
     return ((typeof self.blogFilterCondition === 'number') ? moment.tz(self.blogFilterCondition, tzString).format("MMMM YYYY") : '');
   }
 
-  self.getFromSref = function (entry)  {
+  self.getFromDate = function (date)  {
     var theEntry = self.blogEntries.filter(function(obj)
     {
-      return obj.date === parseFloat(entry);
+      return obj.date === parseFloat(date);
     });
     return ((theEntry[0] === null || theEntry[0] === undefined) ? null : theEntry[0]);
   };
@@ -221,7 +219,7 @@ angular.module('blog', ['ui.router'])
   $scope.$watch('$stateParams.entry', function(val) {
     if (val != null)
     {
-      var newEntry = self.getFromSref(val);
+      var newEntry = self.getFromDate(val);
       self.activeEntry = newEntry;
       if (newEntry == null)
       {
