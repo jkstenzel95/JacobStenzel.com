@@ -22,6 +22,7 @@ html.no-js(lang='en', ng-app='admin', ng-Controller='AdminCtrl')
           include ../partials/view-components/admin/logo
           include ../partials/view-components/admin/navbar.html
           include ../partials/view-components/logo-area-mask
-          include ../partials/view-components/admin/admin-projects-content
+          div(ng-Controller='AdminProjectsCtrl as projectsCtrl')
+            include ../partials/view-components/admin/admin-projects-content
 
 include ../partials/admin-script-include

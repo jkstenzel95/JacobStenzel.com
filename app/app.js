@@ -79,7 +79,8 @@ config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRou
                 return targetElem.height();
             },
             function (newValue, oldValue) {
-                if (newValue != oldValue) {
+                // I don't like this any more than you do.
+                if (/**newValue != oldValue**/ true) {
                     elem.css(attributes[0], newValue);
                 }
             });

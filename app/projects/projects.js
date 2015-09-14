@@ -19,22 +19,26 @@ angular.module('projects', ['ui.router'])
 	var project1 = {
 		name: 'The Insomniac',
 		placecard: 'cube-18.jpg',
-		sref: 'The-Insomniac'
+		sref: 'The-Insomniac',
+		content: ''
 	};
 	var project2 = {
 		name: 'TileTraveler',
 		placecard: 'composition-01.jpg',
-		sref: 'TileTraveler'
+		sref: 'TileTraveler',
+		content: ''
 	};
 	var project3 =  {
 		name: 'GIS Lookup System',
 		placecard: 'photoshoot-09.jpg',
-		sref: 'GIS'
+		sref: 'GIS',
+		content: ''
 	};
 	var project4 =	{
 		name: 'Protein Cavity Finder',
 		placecard: 'cube-13.jpg',
-		sref: 'Protein-Cavity-Finder'
+		sref: 'Protein-Cavity-Finder',
+		content: ''
 	}
 	self.activeProject = '';
 	self.projectItems = [project1, project2, project3, project4];

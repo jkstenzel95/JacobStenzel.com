@@ -48,53 +48,57 @@ div.container-fluid.content-box
 						hr.header-hr
 						div.blog-entry-wrapper
 							div.blog-entry(ng-if="!blogCtrl.tagIsString() && !blogCtrl.tagIsNumber()")
-								form(ng-submit="blogCtrl.submitEntry($index)")
+								form(ng-submit="blogCtrl.submitEntry()")
 									div.clearfix
 										table.blog-entry-header
 											tr
 												td
 													div.form-group
-														input.form-control.admin-blog-title(type="text", name='title', placeholder="Title", ng-init="blogCtrl.blogFormData[$index].title = blogCtrl.blogEntries[$index].title", ng-model="blogCtrl.blogFormData[$index].title")
+														input.form-control.admin-blog-title(type="text", name='title', placeholder="Title", ng-model="blogCtrl.newEntry.title")
 												td
 													h3 {{ blogCtrl.getFormattedDate(blogEntry) }}
 										div
 											//
 												img(ng-if="blogEntry.image !== undefined",ng-src="images/{{blogEntry.image}}")
-											textarea.form-control.admin-blog-content(type="text", name='content', placeholder="Content", rows=5, ng-init="blogCtrl.blogFormData[$index].content = blogCtrl.blogEntries[$index].content", ng-model="blogCtrl.blogFormData[$index].content")
+											textarea.form-control.admin-blog-content(type="text", name='content', placeholder="Content", rows=5, ng-model="blogCtrl.newEntry.content")
 										table.admin-tag-table
 											tr
 												td
 													h4 Tags:&nbsp;
 												td
-													input.form-control-admin-blog-tags(type="text", name='title', placeholder="Tags", ng-init="blogCtrl.blogFormData[$index].tagString = blogCtrl.toTagString(blogCtrl.blogEntries[$index].tags)", ng-model="blogCtrl.blogFormData[$index].tagString")
+													input.form-control-admin-blog-tags(type="text", name='title', placeholder="Tags", ng-model="blogCtrl.newEntry.tagString")
 										table.admin-submit-reset-table
 											tr
 												td
 													button.btn.btn-default.admin-blog-submit(type="submit", value="Submit") Submit
+									hr.header-hr
+									div.clearfix
 							div.blog-entry(ng-repeat="blogEntry in blogCtrl.blogEntries | blogFilter: blogCtrl.blogFilterCondition")
-								form(ng-submit="blogCtrl.updateEntry($index)")
-									hr
+								form(ng-submit="blogCtrl.updateEntry(blogEntry.date)")
+									hr(ng-if="!$first")
 									div.clearfix
 										table.blog-entry-header
 											tr
 												td
 													div.form-group
-														input.form-control.admin-blog-title(type="text", name='title', placeholder="Title", ng-init="blogCtrl.blogFormData[$index].title = blogCtrl.blogEntries[$index].title", ng-model="blogCtrl.blogFormData[$index].title")
+														input.form-control.admin-blog-title(type="text", name='title', placeholder="Title", ng-model="blogCtrl.blogFormData[\"_\"+blogEntry.date].title")
 												td
 													h3 {{ blogCtrl.getFormattedDate(blogEntry) }}
 										div
 											//
 												img(ng-if="blogEntry.image !== undefined",ng-src="images/{{blogEntry.image}}")
-											textarea.form-control.admin-blog-content(type="text", name='content', placeholder="Content", rows=5, ng-init="blogCtrl.blogFormData[$index].content = blogCtrl.blogEntries[$index].content", ng-model="blogCtrl.blogFormData[$index].content")
+											textarea.form-control.admin-blog-content(type="text", name='content', placeholder="Content", rows=5, ng-model="blogCtrl.blogFormData[\"_\"+blogEntry.date].content")
 										table.admin-tag-table
 											tr
 												td
 													h4 Tags:&nbsp;
 												td
-													input.form-control-admin-blog-tags(type="text", name='title', placeholder="Tags", ng-init="blogCtrl.blogFormData[$index].tagString = blogCtrl.toTagString(blogCtrl.blogEntries[$index].tags)", ng-model="blogCtrl.blogFormData[$index].tagString")
+													input.form-control-admin-blog-tags(type="text", name='title', placeholder="Tags", ng-model="blogCtrl.blogFormData[\"_\"+blogEntry.date].tagString")
 										table.admin-submit-reset-table
 											tr
 												td
 													button.btn.btn-default.admin-blog-submit(type="submit", value="Submit") Update
 												td
-													button.btn.btn-default.admin-blog-reset(type="button", value="Reset", ng-click="blogCtrl.resetBlogForm($index)") Reset
+													button.btn.btn-default.admin-blog-reset(type="button", value="Reset", ng-click="blogCtrl.resetBlogForm(blogEntry.date)") Reset
+												td
+													button.btn.btn-default.admin-blog-reset(type="button", value="Delete", ng-click="blogCtrl.deleteEntry(blogEntry.date)") Delete
