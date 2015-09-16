@@ -4,8 +4,9 @@
   "version": "0.0.0",
   "description": "A starter project for AngularJS",
   "engines":  {
-    node: "*"
-  }
+    "node": "1.0.x",
+    "npm": "2.1.x"
+  },
   "repository": "https://github.com/angular/angular-seed",
   "license": "MIT",
   "devDependencies": {
