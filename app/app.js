@@ -22,7 +22,7 @@ config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRou
 	.otherwise('/welcome');
 }])
 
-.controller('SiteCtrl', ['$scope', '$http', '$state', '$stateParams', '$window', '$rootScope', 'isLoggedIn', function($scope, $http, _$state_, _$stateParams_, $window, $rootScope, isLoggedIn) {
+.controller('SiteCtrl', ['$scope', '$http', '$state', '$stateParams', '$window', '$rootScope', '$sce', 'isLoggedIn', function($scope, $http, _$state_, _$stateParams_, $window, $rootScope, $sce, isLoggedIn) {
   $scope.$state = _$state_;
   $scope.$stateParams = _$stateParams_;
   $scope.textcontent = {};
@@ -33,7 +33,7 @@ config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRou
   });
   $scope.breakByNewLine = function (str)
   {
-    return str === undefined ? [] : str.split('\n');
+    return str === undefined ? [] : str.split(/[\n]+/);
   };
   $http.get('/constants/text-content.json').then(function(res)
   {
@@ -62,6 +62,11 @@ config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRou
  
   $scope.$on('absoluteSizeChange', applyTwice);
   $scope.$on('$stateChangeStart', applyTwice);
+
+  $scope.getSanitizedVideoURL = function (piece)
+  {
+    return $sce.trustAsResourceUrl(piece.video);
+  };
 }])
 
 // Borrowed from post by 'Chris' on StackOverflow

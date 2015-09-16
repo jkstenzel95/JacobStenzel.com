@@ -10,7 +10,7 @@ div.container-fluid.content-box(ng-show="$state.is('blog') || $state.is('blog.en
 			div#blog-left.blog-left(ng-show="$state.is('blog') || $state.is('blog.entry')")
 				div.content-panel-2
 					div.clearfix
-						p {{ textcontent["blog-introduction"] }}
+						p(ng-repeat="paragraph in breakByNewLine(textcontent['blog-introduction'])") &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{paragraph}}
 					div.clearfix
 						hr
 						div.year-set(ng-repeat="(year, monthSet) in blogCtrl.yearMapping")
@@ -60,7 +60,7 @@ div.container-fluid.content-box(ng-show="$state.is('blog') || $state.is('blog.en
 												h3 {{ blogCtrl.getFormattedDate(blogEntry) }}
 									div.blog-preview-wrapper
 										img(ng-if="blogEntry.image !== undefined",ng-src="images/{{blogEntry.image}}")
-										p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi efficitur interdum justo, et rhoncus nisi tincidunt ut. Aenean maximus porta leo, eget congue diam facilisis at. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse magna diam, dictum ut nibh id, elementum porttitor ligula. Fusce in vehicula tortor. Nulla semper feugiat vulputate. Vivamus posuere accumsan tincidunt. Ut eu nunc purus.
+										p &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{blogEntry.content}}
 									p.blog-read-more(ui-sref="blog.entry({entry: blogEntry.date})") Read More...
 									h4 Tags:&nbsp;
 										span(ng-repeat="tag in blogEntry.tags")
@@ -82,9 +82,9 @@ div.container-fluid.content-box(ng-show="$state.is('blog') || $state.is('blog.en
 												h2 #[span.glyphicon.glyphicon-chevron-left(aria-hidden="true",ui-sref='blog',ng-click="blogCtrl.blogFilterCondition = ''")]{{ blogCtrl.activeEntry.title }}
 											td
 												h3 {{ blogCtrl.getFormattedDate(blogCtrl.activeEntry) }}
-									div.blog-preview-wrapper
+									div
 										img(ng-if="blogCtrl.activeEntry.image !== undefined",ng-src="images/{{blogEntry.image}}")
-										p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi efficitur interdum justo, et rhoncus nisi tincidunt ut. Aenean maximus porta leo, eget congue diam facilisis at. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse magna diam, dictum ut nibh id, elementum porttitor ligula. Fusce in vehicula tortor. Nulla semper feugiat vulputate. Vivamus posuere accumsan tincidunt. Ut eu nunc purus.
+										p(ng-repeat="paragraph in breakByNewLine(blogCtrl.activeEntry.content)") &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{paragraph}}
 										h4 Tags:&nbsp;
 											span(ng-repeat="tag in blogCtrl.activeEntry.tags")
 												a.tag(ui-sref='blog',ng-click="blogCtrl.blogFilterCondition = tag") {{ tag }}
