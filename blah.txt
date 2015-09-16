@@ -1,0 +1,101 @@
+2015-09-16T03:06:40.586611+00:00 app[web.1]: npm WARN package.json fs@0.0.2 No description
+2015-09-16T03:06:40.597760+00:00 app[web.1]: npm WARN package.json fs@0.0.2 No README data
+2015-09-16T03:06:44.437138+00:00 app[web.1]: > angular-seed@0.0.0 start /app
+2015-09-16T03:06:44.437134+00:00 app[web.1]: 
+2015-09-16T03:06:44.437140+00:00 app[web.1]: > node server
+2015-09-16T03:06:44.437141+00:00 app[web.1]: 
+2015-09-16T03:06:45.566454+00:00 app[web.1]: module.js:338
+2015-09-16T03:06:45.566458+00:00 app[web.1]:     throw err;
+2015-09-16T03:06:45.566460+00:00 app[web.1]:     ^
+2015-09-16T03:06:45.619417+00:00 app[web.1]: npm ERR! Linux 3.13.0-61-generic
+2015-09-16T03:06:45.566462+00:00 app[web.1]: Error: Cannot find module './config/database.js'
+2015-09-16T03:06:45.625304+00:00 app[web.1]: npm ERR! Exit status 1
+2015-09-16T03:06:45.624036+00:00 app[web.1]: npm ERR! code ELIFECYCLE
+2015-09-16T03:06:45.566463+00:00 app[web.1]:     at Function.Module._resolveFilename (module.js:336:15)
+2015-09-16T03:06:45.626704+00:00 app[web.1]: npm ERR! Failed at the angular-seed@0.0.0 start script 'node server'.
+2015-09-16T03:06:45.627924+00:00 app[web.1]: npm ERR! not with npm itself.
+2015-09-16T03:06:45.566465+00:00 app[web.1]:     at Function.Module._load (module.js:278:25)
+2015-09-16T03:06:45.629560+00:00 app[web.1]: npm ERR! You can get their info via:
+2015-09-16T03:06:45.629263+00:00 app[web.1]: npm ERR!     node server
+2015-09-16T03:06:45.632280+00:00 app[web.1]: npm ERR! There is likely additional logging output above.
+2015-09-16T03:06:45.631933+00:00 app[web.1]: npm ERR!     npm owner ls angular-seed
+2015-09-16T03:06:45.642930+00:00 app[web.1]: 
+2015-09-16T03:06:45.566471+00:00 app[web.1]:     at Module._compile (module.js:460:26)
+2015-09-16T03:06:45.566468+00:00 app[web.1]:     at require (module.js:384:17)
+2015-09-16T03:06:45.566469+00:00 app[web.1]:     at Object.<anonymous> (/app/server.js:14:23)
+2015-09-16T03:06:45.566474+00:00 app[web.1]:     at Module.load (module.js:355:32)
+2015-09-16T03:06:45.566466+00:00 app[web.1]:     at Module.require (module.js:365:17)
+2015-09-16T03:06:45.566472+00:00 app[web.1]:     at Object.Module._extensions..js (module.js:478:10)
+2015-09-16T03:06:45.566476+00:00 app[web.1]:     at Function.Module.runMain (module.js:501:10)
+2015-09-16T03:06:45.566475+00:00 app[web.1]:     at Function.Module._load (module.js:310:12)
+2015-09-16T03:06:45.566478+00:00 app[web.1]:     at startup (node.js:129:16)
+2015-09-16T03:06:45.566479+00:00 app[web.1]:     at node.js:814:3
+2015-09-16T03:06:45.607820+00:00 app[web.1]: 
+2015-09-16T03:06:45.620448+00:00 app[web.1]: npm ERR! argv "node" "/app/.heroku/node/bin/npm" "start"
+2015-09-16T03:06:45.620856+00:00 app[web.1]: npm ERR! node v0.12.7
+2015-09-16T03:06:45.622911+00:00 app[web.1]: npm ERR! npm  v2.1.18
+2015-09-16T03:06:45.624752+00:00 app[web.1]: npm ERR! angular-seed@0.0.0 start: `node server`
+2015-09-16T03:06:45.626052+00:00 app[web.1]: npm ERR! 
+2015-09-16T03:06:45.627280+00:00 app[web.1]: npm ERR! This is most likely a problem with the angular-seed package,
+2015-09-16T03:06:45.628532+00:00 app[web.1]: npm ERR! Tell the author that this fails on your system:
+2015-09-16T03:06:45.643750+00:00 app[web.1]: npm ERR!     /app/npm-debug.log
+2015-09-16T03:06:45.643464+00:00 app[web.1]: npm ERR! Please include the following file with any support request:
+2015-09-16T03:06:46.555081+00:00 heroku[web.1]: Process exited with status 1
+2015-09-16T03:06:46.571837+00:00 heroku[web.1]: State changed from starting to crashed
+2015-09-16T03:06:46.573162+00:00 heroku[web.1]: State changed from crashed to starting
+2015-09-16T03:06:52.795756+00:00 heroku[web.1]: Starting process with command `npm start`
+2015-09-16T03:06:55.094612+00:00 app[web.1]: 
+2015-09-16T03:06:55.094632+00:00 app[web.1]: > angular-seed@0.0.0 prestart /app
+2015-09-16T03:06:55.094633+00:00 app[web.1]: > npm install
+2015-09-16T03:06:55.094635+00:00 app[web.1]: 
+2015-09-16T03:06:56.003700+00:00 app[web.1]: npm WARN package.json fs@0.0.2 No description
+2015-09-16T03:06:56.005845+00:00 app[web.1]: npm WARN package.json fs@0.0.2 No README data
+2015-09-16T03:06:56.002760+00:00 app[web.1]: npm WARN package.json fs@0.0.2 fs is also the name of a node core module.
+2015-09-16T03:06:56.005156+00:00 app[web.1]: npm WARN package.json fs@0.0.2 No repository field.
+2015-09-16T03:06:56.062332+00:00 app[web.1]: 
+2015-09-16T03:06:56.062336+00:00 app[web.1]: > angular-seed@0.0.0 postinstall /app
+2015-09-16T03:06:56.062338+00:00 app[web.1]: > bower install
+2015-09-16T03:06:56.062339+00:00 app[web.1]: 
+2015-09-16T03:06:59.121585+00:00 app[web.1]: 
+2015-09-16T03:06:59.121590+00:00 app[web.1]: > angular-seed@0.0.0 start /app
+2015-09-16T03:06:59.121592+00:00 app[web.1]: > node server
+2015-09-16T03:06:59.121593+00:00 app[web.1]: 
+2015-09-16T03:07:00.635224+00:00 app[web.1]: module.js:338
+2015-09-16T03:07:00.635229+00:00 app[web.1]:     throw err;
+2015-09-16T03:07:00.635230+00:00 app[web.1]:     ^
+2015-09-16T03:07:00.635233+00:00 app[web.1]: Error: Cannot find module './config/database.js'
+2015-09-16T03:07:00.635234+00:00 app[web.1]:     at Function.Module._resolveFilename (module.js:336:15)
+2015-09-16T03:07:00.662692+00:00 app[web.1]: npm ERR! Linux 3.13.0-61-generic
+2015-09-16T03:07:00.663331+00:00 app[web.1]: npm ERR! argv "node" "/app/.heroku/node/bin/npm" "start"
+2015-09-16T03:07:00.635236+00:00 app[web.1]:     at Function.Module._load (module.js:278:25)
+2015-09-16T03:07:00.635237+00:00 app[web.1]:     at Module.require (module.js:365:17)
+2015-09-16T03:07:00.635239+00:00 app[web.1]:     at require (module.js:384:17)
+2015-09-16T03:07:00.635240+00:00 app[web.1]:     at Object.<anonymous> (/app/server.js:14:23)
+2015-09-16T03:07:00.635242+00:00 app[web.1]:     at Module._compile (module.js:460:26)
+2015-09-16T03:07:00.663957+00:00 app[web.1]: npm ERR! npm  v2.1.18
+2015-09-16T03:07:00.663676+00:00 app[web.1]: npm ERR! node v0.12.7
+2015-09-16T03:07:00.635243+00:00 app[web.1]:     at Object.Module._extensions..js (module.js:478:10)
+2015-09-16T03:07:00.664730+00:00 app[web.1]: npm ERR! code ELIFECYCLE
+2015-09-16T03:07:00.635244+00:00 app[web.1]:     at Module.load (module.js:355:32)
+2015-09-16T03:07:00.664980+00:00 app[web.1]: npm ERR! angular-seed@0.0.0 start: `node server`
+2015-09-16T03:07:00.635246+00:00 app[web.1]:     at Function.Module._load (module.js:310:12)
+2015-09-16T03:07:00.665161+00:00 app[web.1]: npm ERR! Exit status 1
+2015-09-16T03:07:00.635247+00:00 app[web.1]:     at Function.Module.runMain (module.js:501:10)
+2015-09-16T03:07:00.665338+00:00 app[web.1]: npm ERR! 
+2015-09-16T03:07:00.635250+00:00 app[web.1]:     at node.js:814:3
+2015-09-16T03:07:00.635248+00:00 app[web.1]:     at startup (node.js:129:16)
+2015-09-16T03:07:00.665900+00:00 app[web.1]: npm ERR! Failed at the angular-seed@0.0.0 start script 'node server'.
+2015-09-16T03:07:00.656455+00:00 app[web.1]: 
+2015-09-16T03:07:00.670604+00:00 app[web.1]: npm ERR! Please include the following file with any support request:
+2015-09-16T03:07:00.666489+00:00 app[web.1]: npm ERR! not with npm itself.
+2015-09-16T03:07:00.667098+00:00 app[web.1]: npm ERR!     npm owner ls angular-seed
+2015-09-16T03:07:00.666142+00:00 app[web.1]: npm ERR! This is most likely a problem with the angular-seed package,
+2015-09-16T03:07:00.670768+00:00 app[web.1]: npm ERR!     /app/npm-debug.log
+2015-09-16T03:07:00.666618+00:00 app[web.1]: npm ERR! Tell the author that this fails on your system:
+2015-09-16T03:07:00.666955+00:00 app[web.1]: npm ERR! You can get their info via:
+2015-09-16T03:07:00.666767+00:00 app[web.1]: npm ERR!     node server
+2015-09-16T03:07:00.667248+00:00 app[web.1]: npm ERR! There is likely additional logging output above.
+2015-09-16T03:07:00.670330+00:00 app[web.1]: 
+2015-09-16T03:07:01.662034+00:00 heroku[web.1]: State changed from starting to crashed
+2015-09-16T03:07:01.640517+00:00 heroku[web.1]: Process exited with status 1
+2015-09-16T03:07:04.683338+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=warm-harbor-9667.herokuapp.com request_id=a9515144-7560-42e8-92b4-e0d922b46f28 fwd="50.206.156.115" dyno= connect= service= status=503 bytes=

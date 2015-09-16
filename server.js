@@ -11,10 +11,10 @@ var session         = require('express-session');
 var fs              = require('fs');
 var bCrypt          = require('bcrypt-nodejs');
 
-var dataConfig      = require('./config/database.js');
+var dataConfig      = process.env.JACOBSTENZEL_DATABASE;
 
 var app = express();
-mongoose.connect(process.env.JACOBSTENZEL_DATABASE);
+mongoose.connect(dataConfig);
 app.use(session({secret: "ifACowEverGotTheChanceHe'dEatYouAndEveryoneYouCareAbout"}));
 app.use(passport.initialize());
 app.use(passport.session());
