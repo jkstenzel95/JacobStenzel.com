@@ -211,5 +211,5 @@ function isAuthenticated(req, res, next) {
 
 
 //--------END AUTHENTICATION----------
-app.listen(3000);
-console.log("Server running on port 3000");
+app.listen(process.env.PORT || 5000);
+console.log("Server running on port " + (process.env.PORT || 5000));
