@@ -18,6 +18,7 @@
         <li ng-class="{'active': $state.is('music')}"><a ui-sref="music">Music</a></li>
         <li ng-class="{'active': $state.is('blog')}"><a ui-sref="blog">Blog</a></li>
         <li ng-class="{'active': $state.is('connect')}"><a ui-sref="connect">Connect</a></li>
+        <li ng-class="{'active': $state.is('blog.entry') && $stateParams.entry == 1444881600000}"><a ui-sref="blog.entry({entry:1444881600000})">Under Construction!</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li ng-if="!isLoggedIn"><a ui-sref="login"><span class="glyphicon glyphicon-log-in" aria-hidden="true"/></a></li>

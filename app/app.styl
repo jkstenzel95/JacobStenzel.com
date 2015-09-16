@@ -113,6 +113,12 @@ html, body
 p
   margin 0 0 10px
   
+h1
+  margin-top 0px
+  
+h2
+  margin-top 0px
+  
 hr
   display block
   margin-top 15px
@@ -617,6 +623,9 @@ iframe
   top: 0; bottom: 0; 
   width 100%
   height 100%
+  
+div.video-wrapper img
+  border-radius 10px
 
 .video-wrapper
   width 100%
@@ -761,7 +770,7 @@ iframe
     bottom 0px
     left 0px
     margin 10px
-    text-shadow -2px 1px 3px #000000
+    text-shadow -2px 1px 1px #000000
     
 .piece-box
   background-size cover
@@ -802,6 +811,24 @@ iframe
   margin-bottom 20px
 
 // End projects styling
+
+// Begin connect styling
+
+.connect-card
+  h1
+    font-size $general-font-size
+    margin-bottom 2em
+    margin-top 0
+  p
+    margin-bottom 0.25em
+  td:nth-child(2)
+    a
+      color #f1f6fc
+      margin-bottom 0.25em
+      margin-left 10px
+    
+
+// End connect styling
 
 // Begin blog styling
 

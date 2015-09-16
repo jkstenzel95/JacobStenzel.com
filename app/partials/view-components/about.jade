@@ -4,9 +4,47 @@ div.container-fluid.content-box-subtle(ng-show="$state.is('about')")
 		div#about-panel.pop-panel(ng-show="$state.is('about')")
 			div.content-panel-1
 				div.clearfix
+					h1 About Jacob Stenzel
+					hr.header-hr
+				div.clearfix
 					div.thumb-left
 						img(src="images/photoshoot-01.jpg",width="auto",height="150px")
-					p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi efficitur interdum justo, et rhoncus nisi tincidunt ut. Aenean maximus porta leo, eget congue diam facilisis at. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse magna diam, dictum ut nibh id, elementum porttitor ligula. Fusce in vehicula tortor. Nulla semper feugiat vulputate. Vivamus posuere accumsan tincidunt. Ut eu nunc purus.
-				hr
+					p(ng-repeat="paragraph in breakByNewLine(textcontent['about-intro'])") &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ paragraph }}
 				div.clearfix
-					p Mauris cursus, leo sed convallis ultrices, magna odio maximus arcu, finibus venenatis urna augue nec erat. Nulla nec augue felis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse luctus ac nisl hendrerit egestas. Maecenas eleifend blandit risus. Morbi dolor lorem, varius ut urna condimentum, sagittis rhoncus est. Ut eget metus a nulla semper accumsan. Duis eu aliquet quam. Quisque vitae congue nibh, nec venenatis enim. Maecenas ut imperdiet orci.
+					hr
+				div.clearfix
+					h2 Academic
+				div.clearfix
+					div.thumb-right
+						img(src="images/tiletraveler-01.jpg",width="auto",height="150px")
+					p(ng-repeat="paragraph in breakByNewLine(textcontent['about-academic'])") &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ paragraph }}
+				div.clearfix
+					hr
+				div.clearfix
+					h2 Fidelity
+				div.clearfix
+					div.thumb-left
+						img(src="images/fidelity.jpg",width="auto",height="150px")
+					p(ng-repeat="paragraph in breakByNewLine(textcontent['about-fidelity'])") &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ paragraph }}
+				div.clearfix
+					hr
+				div.clearfix
+					h2 L2Ork
+				div.clearfix
+					div.thumb-right
+						img(src="images/l2ork.jpg",width="auto",height="150px")
+					p(ng-repeat="paragraph in breakByNewLine(textcontent['about-l2ork'])") &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ paragraph }}
+				div.clearfix
+					hr
+				div.clearfix
+					h2 MusiComp
+				div.clearfix
+					div.thumb-left
+						img(src="images/musicomp.png",width="auto",height="150px")
+					p(ng-repeat="paragraph in breakByNewLine(textcontent['about-musicomp'])") &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ paragraph }}
+				div.clearfix
+					hr
+				div.clearfix
+				div.clearfix
+					p For those interested, you may contact Jacob or learn more about him #[a(ui-sref="connect") here].
+				div.clearfix
