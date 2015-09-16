@@ -14,7 +14,7 @@ var bCrypt          = require('bcrypt-nodejs');
 var dataConfig      = require('./config/database.js');
 
 var app = express();
-mongoose.connect(dataConfig.url);
+mongoose.connect(process.env.JACOBSTENZEL_DATABASE);
 app.use(session({secret: "ifACowEverGotTheChanceHe'dEatYouAndEveryoneYouCareAbout"}));
 app.use(passport.initialize());
 app.use(passport.session());
