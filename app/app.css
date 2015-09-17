@@ -273,7 +273,13 @@ hr {
   position: fixed;
   top: 220px;
 }
-@media (max-width: 991px) {
+@media (max-width: 767px) {
+  .logo-descriptor {
+    margin-top: 5px;
+    font-size: 15px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
   .logo-descriptor {
     font-size: 20px;
     padding-left: 15px;
