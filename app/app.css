@@ -118,7 +118,7 @@ hr {
   -o-transition-delay: 0.2s;
   transition-delay: 0.2s;
 }
-@media (max-width: 991px) {
+@media (max-width: 767px) {
   .logo {
     font-size: 17.5px;
     margin-top: 10px;
@@ -127,19 +127,11 @@ hr {
 @media (min-width: 768px) and (max-width: 991px) {
   .logo {
     font-size: 30px;
-<<<<<<< HEAD
-=======
-    padding-left: 15px;
->>>>>>> b5b092c9b5f3df07b13f7efb4bdab9d769805e1a
   }
 }
 @media (min-width: 992px) {
   .logo {
     font-size: 40px;
-<<<<<<< HEAD
-=======
-    padding-left: 15px;
->>>>>>> b5b092c9b5f3df07b13f7efb4bdab9d769805e1a
   }
 }
 .logo ul {
@@ -795,18 +787,12 @@ div.video-wrapper img {
 .thumb-left {
   margin: 0px 15px 0px 0px;
   float: left;
-<<<<<<< HEAD
-=======
   margin: 0px 15px 0px 0px;
->>>>>>> b5b092c9b5f3df07b13f7efb4bdab9d769805e1a
 }
 .thumb-right {
   margin: 0px 0px 0px 15px;
   float: right;
-<<<<<<< HEAD
-=======
   margin: 0px 0px 0px 15px;
->>>>>>> b5b092c9b5f3df07b13f7efb4bdab9d769805e1a
 }
 .content-box-projects {
   padding-bottom: 20px;
@@ -988,6 +974,10 @@ div.video-wrapper img {
   margin-left: 50px;
   margin-right: 50px;
   margin-bottom: 20px;
+}
+.connect-card {
+  margin: 0 auto;
+  width: 350px;
 }
 .connect-card h1 {
   font-size: 15px;
