@@ -169,6 +169,7 @@ hr
   color #608de6
   position fixed
   top 0px
+  padding-left 15px
   vendor-transition-property("top")
   vendor-transition-timing-function(ease-in-out)
   vendor-transition-duration(0.4s)
@@ -179,13 +180,13 @@ hr
     top 160px
     vendor-transition-delay(0.2s)
     
-  @media (max-width: $screen-sm-max)
+  @media (max-width: $screen-xs-max)
+    font-size 17.5px
+    margin-top 10px
+  @media (min-width: $screen-sm) and (max-width: $screen-sm-max)
     font-size 30px
-    padding-left 15px
   @media (min-width: $screen-md)
-    font-size 40px
-    padding-left 15px
-     
+    font-size 40px     
 
   ul
     list-style none
@@ -243,8 +244,11 @@ hr
         ul
           list-style none
           margin-left 5px
-          font-size 20px
           line-height 137.5%
+          @media (max-width: $screen-xs-max)
+            font-size 15px
+          @media (min-width: $screen-sm)
+            font-size 20px
           
           li
             display block
@@ -657,16 +661,16 @@ div.video-wrapper img
 
 .thumb-left
   @extend .thumb
-  float left
   margin 0px 15px 0px 0px
+  float left
   
   img
     @extend .thumb img
 
 .thumb-right
   @extend .thumb
-  float right
   margin 0px 0px 0px 15px
+  float right
 
   
   img

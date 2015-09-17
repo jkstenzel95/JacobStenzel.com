@@ -92,6 +92,7 @@ hr {
   color: #608de6;
   position: fixed;
   top: 0px;
+  padding-left: 15px;
   -webkit-transition-property: top;
   -moz-transition-property: top;
   -o-transition-property: top;
@@ -117,16 +118,20 @@ hr {
   -o-transition-delay: 0.2s;
   transition-delay: 0.2s;
 }
-@media (max-width: 991px) {
+@media (max-width: 767px) {
+  .logo {
+    font-size: 17.5px;
+    margin-top: 10px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
   .logo {
     font-size: 30px;
-    padding-left: 15px;
   }
 }
 @media (min-width: 992px) {
   .logo {
     font-size: 40px;
-    padding-left: 15px;
   }
 }
 .logo ul {
@@ -188,8 +193,17 @@ hr {
 .logo table tr td ul {
   list-style: none;
   margin-left: 5px;
-  font-size: 20px;
   line-height: 137.5%;
+}
+@media (max-width: 767px) {
+  .logo table tr td ul {
+    font-size: 15px;
+  }
+}
+@media (min-width: 768px) {
+  .logo table tr td ul {
+    font-size: 20px;
+  }
 }
 .logo table tr td ul li {
   display: block;
@@ -771,12 +785,12 @@ div.video-wrapper img {
   border-radius: 5px;
 }
 .thumb-left {
-  float: left;
   margin: 0px 15px 0px 0px;
+  float: left;
 }
 .thumb-right {
-  float: right;
   margin: 0px 0px 0px 15px;
+  float: right;
 }
 .content-box-projects {
   padding-bottom: 20px;
