@@ -421,6 +421,7 @@ hr {
 }
 #landingCarousel {
   position: absolute;
+  width: 100%;
 }
 .content-box {
   position: absolute;
